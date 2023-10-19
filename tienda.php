@@ -142,16 +142,16 @@
                     <?php foreach ($resultado as $row) {?>
                         <div class="producto">
                             <?php 
-                            $id= $row['id'];
-                            $imagen = "img/productos/".$id."/principal.jpg";
-                            if(!file_exists($imagen)){ 
-                                $imagen = "./img/no-photo.jpg";
-                            }
+                                $id= $row['id'];
+                                $imagen = "img/productos/".$id."/principal.jpg";
+                                if(!file_exists($imagen)){ 
+                                    $imagen = "./img/no-photo.jpg";
+                                }
                             ?>
                             <img class="producto-imagen" src="<?php echo $imagen; ?>" alt="">
                             <div class="detalles-producto">
-                                <h3 class="producto-titulo"><?php echo $row['nombre';] ?></h3>
-                                <p class="producto-precio"><?php echo number_format($row['precio';], 2, ',', '.' ); ?></p>
+                                <h3 class="producto-titulo"><?php echo $row['nombre']; ?></h3>
+                                <p class="producto-precio"><?php echo number_format($row['precio'], 2, ',', '.' ); ?></p>
                                 <button class="producto-agregar" type="button" onclick="">Detalles</button>
                                 <button class="producto-agregar">Agregar</button>
                             </div>
