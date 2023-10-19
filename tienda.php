@@ -1,4 +1,5 @@
 <?php
+    require 'config/config.php';
     require 'config/database.php';
     $db=new Database();
     $con=$db->conectar();
@@ -161,8 +162,11 @@
                             </div>
                         </div>
                         <div class="row d-flex justify-content-around align-items-center">
-                            <div class="col d-flex producto-agregar" type="button" onclick=""><a href=""><button>Agregar</button></a></div>
-                            <div class="col d-flex producto-detalles" type="button" onclick=""><a href=""><button>Detalles</button></a></div>
+                            <div class="col d-flex producto-agregar" type="button" onclick="">
+                            <a href=""><button>Agregar</button></a></div>
+                            <div class="col d-flex producto-detalles" type="button" onclick="">
+                            <a href="detalles.php?id=<?php echo $row['id']; ?>&token<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>">
+                            <button>Detalles</button></a></div>
                             <div class="col d-flex">
                                 <div class="input-group">
                                         <span class="input-group-btn">
