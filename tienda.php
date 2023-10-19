@@ -1,8 +1,9 @@
 <?php
     require 'config/database.php';
-    $db = new Database();
-    $con = $db->conectar();
-    $sql = $con->prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
+    $db=new Database();
+    $con=$db->conectar();
+    
+    $sql=$con->prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -11,10 +12,10 @@
 <!DOCTYPE html>
 <html lang="es-AR">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="author" content="Andrés Pablo" />
         <title>Semillares - Tienda</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -140,7 +141,9 @@
             <div id="wraper-grilla" class="container-fluid col col-0">
                 <div id="contenedor-productos" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center contenedor-productos">
                     <?php foreach ($resultado as $row) {?>
-                        <div class="producto">
+
+                            
+                        <div class="col-3 bg-gris-claro carta-producto prducto">
                             <?php 
                                 $id= $row['id'];
                                 $imagen = "img/productos/".$id."/principal.jpg";
@@ -148,29 +151,18 @@
                                     $imagen = "./img/no-photo.jpg";
                                 }
                             ?>
-                            <img class="producto-imagen" src="<?php echo $imagen; ?>" alt="">
-                            <div class="detalles-producto">
-                                <h3 class="producto-titulo"><?php echo $row['nombre']; ?></h3>
-                                <p class="producto-precio"><?php echo number_format($row['precio'], 2, ',', '.' ); ?></p>
-                                <button class="producto-agregar" type="button" onclick="">Detalles</button>
-                                <button class="producto-agregar">Agregar</button>
-                            </div>
-                        </div>
-                        <?php  }?>
-                    </div>    
-
-                    <div class="col-3 bg-gris-claro carta-producto">
                         <div class="row">
                             <div class="col-4">
-                                <img src="img/img productos/aceite-oliva.jpg" alt="">
+                                <img class="producto-imagen" src="<?php echo $imagen; ?>" alt="">
                             </div>
                             <div class="col">
-                                <h5>Nombre del Producto</h5>
-                                <p>00 Unidades</p>
+                                <h5><?php echo $row['nombre']; ?></h5>
+                                <p>$<?php echo number_format($row['precio'], 2, ',', '.' ); ?></p>
                             </div>
                         </div>
                         <div class="row d-flex justify-content-around align-items-center">
-                            <div class="col d-flex"><a href=""><button>Agregar al carro</button></a></div>
+                            <div class="col d-flex producto-agregar" type="button" onclick=""><a href=""><button>Agregar</button></a></div>
+                            <div class="col d-flex producto-detalles" type="button" onclick=""><a href=""><button>Detalles</button></a></div>
                             <div class="col d-flex">
                                 <div class="input-group">
                                         <span class="input-group-btn">
@@ -188,6 +180,10 @@
                             </div>
                         </div>
                     </div>
+                    <?php  }?>
+                    https://ministeriodelasmujeres.gba.gob.ar/gestor/uploads/VIOLENCIA%20OBSTETRICA%2029.5.pdf</div>    
+
+                    
 
                 </div>
             </div>
