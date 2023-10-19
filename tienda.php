@@ -181,7 +181,7 @@
                         </div>
                     </div>
                     <?php  }?>
-                    https://ministeriodelasmujeres.gba.gob.ar/gestor/uploads/VIOLENCIA%20OBSTETRICA%2029.5.pdf</div>    
+                </div>    
 
                     
 
