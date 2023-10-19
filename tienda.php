@@ -156,9 +156,9 @@
                                 <button class="producto-agregar">Agregar</button>
                             </div>
                         </div>
+                        <?php  }?>
                     </div>    
-                    <div>
-                    </div>
+
                     <div class="col-3 bg-gris-claro carta-producto">
                         <div class="row">
                             <div class="col-4">
