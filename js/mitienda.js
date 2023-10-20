@@ -13,7 +13,7 @@ function addProducto(id, token)
     }).then(respose => respose.json()) 
     .then(data =>  {
         if(data.ok){
-            let elemento = document.getElementByID("num_cart")
+            let elemento = document.getElementById("num_cart")
             elemento.innerHTML = data.numero 
         }
     })
