@@ -182,7 +182,7 @@
                             <tr>
                                 <td colspan="3"></td>
                                 <td colspan="2">
-                                    <p class="h3" id="total"><?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></p>
+                                    <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
                                 </td>
                             </tr>
                         </tbody> 
