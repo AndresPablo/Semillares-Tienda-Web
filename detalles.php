@@ -201,7 +201,26 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <!-- Scripts para tienda -->
-        <script src="js/mitienda.js"></script>
+        <script>
+            function addProducto(id, token)
+            {
+                let url = 'clases/carrito.php'
+                let formData = new FormData()
+                formData.append('id', id);
+                formData.append('token', token)
+                fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'cors'
+                }).then(respose => respose.json()) 
+                .then(data =>  {
+                    if(data.ok){
+                        let elemento = document.getElementById("num_cart")
+                        elemento.innerHTML = data.numero 
+                    }
+                })
+            }
+        </script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
