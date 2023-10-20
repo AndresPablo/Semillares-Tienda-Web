@@ -128,10 +128,10 @@
     </header>
 
 
-    <!-- WRAPER -->
-    <section class="bg-white">
+    <!-- Contenido -->
+    <main>
 
-        <div  id="wraper" class="container-fluid row">
+        <div class="container">
             <div class="table-responsive">
                 <table clas="table">
                     <thead>
@@ -179,23 +179,21 @@
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">
-                                <p class="h3" id="total">><?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></p>
+                                <p class="h3" id="total"><?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></p>
                             </td>
                         </tr>
                     </tbody> 
                     <?php } ?>  
                 </table>
             </div>
-
             <div class="row">
                 <div class="col-md-5 offset-md-7 d-grid gap-2">
                     <a href=""><button class="btn btn-primary btn-lg">Finalizar Compra</button></a>
                 </div>
             </div>
-
         </div>
 
-    </section>
+    </main>
 
     <!-- Footer-->
     <footer class="bg-verde-oscuro">
