@@ -166,12 +166,12 @@
                             <td> <?php echo $nombre; ?></td>
                             <td> <?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></td>
                             <td> 
-                                <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad; ?>" 
+                                <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" 
                                 size="5" id="cantidad_<?php echo $_id; ?>" onchange="">
                             </td>
                             <td> 
-                                <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]" <?php echo MONEDA . 
-                                number_format($precio_desc, 2, '.', ','); ?>></div>
+                                <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> <?php echo MONEDA . 
+                                number_format($subtotal, 2, '.', ','); ?>></div>
                             </td>
                             <td> <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-bs-toogle="modal" data-bs-target="eliminaModal">Eliminar </a> </td>
                         </tr>
