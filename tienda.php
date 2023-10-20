@@ -7,6 +7,9 @@
     $sql=$con->prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    session_destroy();
+    print_r($_SESSION);
 ?>
 
 
@@ -61,7 +64,7 @@
                         <form class="d-flex">
                             <button class="btn btn-outline-dark" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
-                                <span id="numerito" class="badge bg-marron text-white ms-1 rounded-pill">0</span>
+                                <span id="num_cart" class="badge bg-marron text-white ms-1 rounded-pill"><?php echo $num_cart;?></span>
                             </button>
                         </form>
                     </div>
@@ -166,7 +169,7 @@
                                 <a href=""><button type="button" onclick="addProducto(<?php echo $id;?>, '<?php echo $token_tmp; ?>')">Agregar</button></a></div>
                             <div class="col d-flex producto-detalles">
                                 <a href="detalles.php?id=<?php echo $row['id'];?>&token=<?php echo 
-                                hash_hmac('sha1', $row['id'], KEY_TOKEN);?>" class="btn btn-primary">
+                                hash_hmac('sha1', $row['id'], KEY_TOKEN);?>">
                             <button>Detalles</button></a></div>
                             <div class="col d-flex">
                                 <div class="input-group">
