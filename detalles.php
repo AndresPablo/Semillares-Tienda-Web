@@ -9,7 +9,7 @@
 
     if($id == ''  || $token == '')
     {
-        echo 'Error al procesar la peticion';
+        echo 'Error al procesar la peticion. ID o Token vacíos';
         exit;
     }
     else
