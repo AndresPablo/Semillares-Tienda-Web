@@ -148,6 +148,8 @@
         <h3><?php echo $nombre?></h3>
             <p>$<?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
             <p clas="lead"><?php echo $descripcion?></p>
+            <button type="button" onclick="addProducto(<?php echo 
+            $id; ?>, '<?php echo $token_tmp; ?>')">Agregar</button>
         </div>
     </section>
 
