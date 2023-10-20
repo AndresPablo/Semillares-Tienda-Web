@@ -143,46 +143,49 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php if($lista_carrito == null)
-                        {
-                            echo '<tr><td colspan="5 class="text-center"><b>Lista vacia</b></td></tr>';
-                        }
-                        else
-                        {
-                            $total = 0;
-                            foreach($lista_carrito as $producto)
+                        <tbody>
+                            <?php if($lista_carrito == null)
                             {
-                                $_id = $producto['id'];
-                                $nombre = $producto['nombre'];
-                                $precio = $producto['precio'];
-                                $descuento = $producto['descuento'];
-                                $cantidad = $producto['cantidad'];
-                                $precio_desc = $precio - (($precio * $descuento) / 100);
-                                $subtotal = $cantidad * $precio_desc;
-                                $total += $subtotal;
-                        ?>
-                        <tr>
-                            <td> <?php echo $nombre; ?></td>
-                            <td> <?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></td>
-                            <td> 
-                                <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" 
-                                size="5" id="cantidad_<?php echo $_id; ?>" onchange="">
-                            </td>
-                            <td> 
-                                <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]" <?php echo MONEDA . 
-                                number_format($subtotal, 2, '.', ','); ?>></div>
-                            </td>
-                            <td> <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-bs-toogle="modal" data-bs-target="eliminaModal">Eliminar </a> </td>
-                        </tr>
-                        <?php } ?>
-                        <tr>
-                            <td colspan="3"></td>
-                            <td colspan="2">
-                                <p class="h3" id="total"><?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></p>
-                            </td>
-                        </tr>
-                    </tbody> 
+                                echo '<tr><td colspan="5 class="text-center"><b>Lista vacia</b></td></tr>';
+                            }
+                            else
+                            {
+                                $total = 0;
+                                foreach($lista_carrito as $producto)
+                                {
+                                    $_id = $producto['id'];
+                                    $nombre = $producto['nombre'];
+                                    $precio = $producto['precio'];
+                                    $descuento = $producto['descuento'];
+                                    $cantidad = $producto['cantidad'];
+                                    $precio_desc = $precio - (($precio * $descuento) / 100);
+                                    $subtotal = $cantidad * $precio_desc;
+                                    $total += $subtotal;
+                            ?>
+                            <tr>
+                                <td> <?php echo $nombre; ?></td>
+                                <td> <?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></td>
+                                <td> 
+                                    <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" 
+                                    size="5" id="cantidad_<?php echo $_id; ?>" onchange="">
+                                </td>
+                                <td> 
+                                    <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]" <?php echo MONEDA . 
+                                    number_format($subtotal, 2, '.', ','); ?>></div>
+                                </td>
+                                <td> 
+                                    <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo 
+                                    $_id; ?>" data-bs-toogle="modal" data-bs-target="eliminaModal">Eliminar</a> 
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td colspan="2">
+                                    <p class="h3" id="total"><?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></p>
+                                </td>
+                            </tr>
+                        </tbody> 
                     <?php } ?>  
                 </table>
             </div>
