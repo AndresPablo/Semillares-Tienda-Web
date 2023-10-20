@@ -35,7 +35,7 @@
             exit;
         }
     }
-    session_destroy();
+    //session_destroy();
     print_r($_SESSION);
 ?>
 
