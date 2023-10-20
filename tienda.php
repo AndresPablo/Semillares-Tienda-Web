@@ -161,7 +161,7 @@
                             </div>
                             <div class="col">
                                 <h5><?php echo $row['nombre']; ?></h5>
-                                <p>$<?php echo number_format($row['precio'], 2, ',', '.' ); ?></p>
+                                <p>$<?php echo number_format($row['precio'], 0, ',', '.' ); ?></p>
                             </div>
                         </div>
                         <div class="row d-flex justify-content-around align-items-center">
