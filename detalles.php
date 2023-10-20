@@ -82,7 +82,7 @@
                                 <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.html">Registrarme</a></li>
                             </ul>
                             <form class="d-flex">
-                                <button class="btn btn-outline-dark" type="submit">
+                                <button href="checkout.php" class="btn btn-outline-dark" type="submit">
                                     <i class="bi-cart-fill me-1"></i>
                                     <span id="numerito" class="badge bg-marron text-white ms-1 rounded-pill">0</span>
                                 </button>
