@@ -163,9 +163,10 @@
                         </div>
                         <div class="row d-flex justify-content-around align-items-center">
                             <div class="col d-flex producto-agregar" >
-                            <a href=""><button type="button" onclick="addProducto(<?php echo $id;?>, '<?php echo $token_tmp; ?>')">Agregar</button></a></div>
+                                <a href=""><button type="button" onclick="addProducto(<?php echo $id;?>, '<?php echo $token_tmp; ?>')">Agregar</button></a></div>
                             <div class="col d-flex producto-detalles">
-                            <a href="detalles.php?id=<?php echo $row['id']; ?>&token<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>">
+                                <a href="detalles.php?id=<?php echo $row['id']; ?>&token<?php echo 
+                                hash_hmac('sha1', $row['id'], KEY_TOKEN);?>" class="btn-primary">
                             <button>Detalles</button></a></div>
                             <div class="col d-flex">
                                 <div class="input-group">
