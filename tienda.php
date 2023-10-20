@@ -462,8 +462,6 @@
         <script src="js/scripts.js"></script>
         <!-- Scripts para tienda -->
         <script src="js/mitienda.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/menu.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
