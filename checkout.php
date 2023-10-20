@@ -157,6 +157,7 @@
                                 $nombre = $producto['nombre'];
                                 $precio = $producto['precio'];
                                 $descuento = $producto['descuento'];
+                                $cantidad = $producto['cantidad'];
                                 $precio_desc = $precio - (($precio * $descuento) / 100);
                                 $subtotal = $cantidad * $precio_desc;
                                 $total += $subtotal;
@@ -175,10 +176,23 @@
                             <td> <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-bs-toogle="modal" data-bs-target="eliminaModal">Eliminar </a> </td>
                         </tr>
                         <?php } ?>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">
+                                <p class="h3" id="total">><?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></p>
+                            </td>
+                        </tr>
                     </tbody> 
                     <?php } ?>  
                 </table>
             </div>
+
+            <div class="row">
+                <div class="col-md-5 offset-md-7 d-grid gap-2">
+                    <a href=""><button class="btn btn-primary btn-lg">Finalizar Compra</button></a>
+                </div>
+            </div>
+
         </div>
 
     </section>
