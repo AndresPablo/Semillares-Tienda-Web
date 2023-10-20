@@ -9,7 +9,7 @@ function addProducto(id, token)
     fetch(url, {
         method: 'POST',
         body: formData,
-        mode: 'cros'
+        mode: 'cors'
     }).then(respose => respose.json()) 
     .then(data =>  {
         if(data.ok){
