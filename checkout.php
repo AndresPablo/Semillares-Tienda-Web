@@ -78,7 +78,7 @@
                 <div class="nav-inferior me-5 ms-5">
                     <ul class="container-fluid nav nav-pills nav-fill  collapse navbar-collapse">
                         <li class="nav-item ">
-                        <a class="nav-link" href="tienda.html">Tienda</a>
+                        <a class="nav-link" href="tienda.php">Tienda</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="conocenos.html">Conocenos</a>
@@ -160,8 +160,6 @@
                                 $precio_desc = $precio - (($precio * $descuento) / 100);
                                 $subtotal = $cantidad * $precio_desc;
                                 $total += $subtotal;
-                            }
-                        }
                         ?>
                         <tr>
                             <td> <?php echo $nombre; ?></td>
