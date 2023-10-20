@@ -81,7 +81,7 @@
                                 <li class="nav-item "><a class="nav-link texto-cuenta" href="login.html">Ingresar</a></li>
                                 <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.html">Registrarme</a></li>
                             </ul>
-                            <a href="checkout.php"></a>
+                            <a href="checkout.php">Checkout</a>
                             <form class="d-flex">
                                 <button  class="btn btn-outline-dark" type="submit">
                                     <i class="bi-cart-fill me-1"></i>
