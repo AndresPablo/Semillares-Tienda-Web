@@ -204,13 +204,13 @@
             function addProducto(id, token)
             {
                 let url = 'clases/carrito.php'
-                let FormData = new FormData()
-                FormData.append('id', id);
-                FormData.append('token', token)
+                let formData = new FormData()
+                formData.append('id', id);
+                formData.append('token', token)
 
                 fetch(url, {
                     method: 'POST',
-                    body: FormData,
+                    body: formData,
                     mode: 'cors'
                 }).then(respose => respose.json()) 
                 .then(data =>  {
