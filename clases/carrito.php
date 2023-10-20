@@ -1,5 +1,7 @@
 <?php
+
     require '../config/config.php';
+
     if(isset($_POST['id'])) 
     {
         $id = $_POST['id'];
@@ -12,17 +14,22 @@
             if(isset($_SESSION['carrito']['productos'][$id]))
             {
                 $_SESSION['carrito']['productos'][$id] += 1;
-            }else
+            }
+            else
             {
                 $_SESSION['carrito']['productos'][$id] = 1;
                 // 1 = 1
             }
             $datos['numero'] = count($_SESSION['carrito']['productos']);
             $datos['ok'] = true;
-        } else {
+        } 
+        else 
+        {
             $datos['ok'] = false;
         }
-    } else {
+    } 
+    else 
+    {
         $datos['ok'] = false;
     }
 

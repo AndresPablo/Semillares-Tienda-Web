@@ -15,16 +15,17 @@
     else
     {
         $token_tmp = hash_hmac('sha1', $id, KEY_TOKEN);
+
         if($token == $token_tmp)
         {
-            $sql=$con->prepare("SELECT count(id) FROM productos WHERE id=? AND activo=1");
+            $sql = $con->prepare("SELECT count(id) FROM productos WHERE id=? AND activo=1");
             $sql->execute([$id]);
             if($sql->fetchColumn() > 0)
             {
-                $sql=$con->prepare("SELECT nombre, descripcion, precio FROM productos WHERE id=? AND activo=1 LIMIT 1");
+                $sql = $con->prepare("SELECT nombre, descripcion, precio FROM productos WHERE id=? AND activo=1 LIMIT 1");
                 $sql->execute([$id]);
                 $row = $sql->fetch(PDO::FETCH_ASSOC);
-                $nombre = $row['nombre'];
+                $nombre = $row['nombre']; 
                 $precio = $row['precio'];
                 $descripcion = $row['descripcion'];
             }
@@ -64,50 +65,49 @@
 
 
     <body>
-        
- <!-- Responsive navbar-->
- <section>
-    <nav class="navbar navbar-expand-lg shadow sticky-top navbar-light ">
-        <div class="col">
-            <div class="nav-superior container-fluid row d-flex justify-content-center ">
-                <nav class="navbar navbar-expand-lg navbar-light ">
-                    <a class="navbar-brand" href="index.html"><img class="nav-logo" src="img/marca/logo-semillares-simple.png" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                  
-                    <div class="col col-5 collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item "><a class="nav-link texto-cuenta" href="login.html">Ingresar</a></li>
-                            <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.html">Registrarme</a></li>
-                        </ul>
-                        <form class="d-flex">
-                            <button class="btn btn-outline-dark" type="submit">
-                                <i class="bi-cart-fill me-1"></i>
-                                <span id="numerito" class="badge bg-marron text-white ms-1 rounded-pill">0</span>
-                            </button>
-                        </form>
-                    </div>
-            </div>      
-            <div class="nav-inferior me-5 ms-5">
-                <ul class="container-fluid nav nav-pills nav-fill  collapse navbar-collapse">
-                    <li class="nav-item ">
-                      <a class="nav-link" href="tienda.html">Tienda</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="conocenos.html">Conocenos</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="trabajo-semillares.html">Trabajo Semillares</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="cuenta.html">Mi Cuenta</a>
-                      </li>
-                  </ul>
-            </div>                
-        </div>
-    </nav>
-    </section>
+        <!-- Responsive navbar-->
+        <section>
+        <nav class="navbar navbar-expand-lg shadow sticky-top navbar-light ">
+            <div class="col">
+                <div class="nav-superior container-fluid row d-flex justify-content-center ">
+                    <nav class="navbar navbar-expand-lg navbar-light ">
+                        <a class="navbar-brand" href="index.html"><img class="nav-logo" src="img/marca/logo-semillares-simple.png" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    
+                        <div class="col col-5 collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item "><a class="nav-link texto-cuenta" href="login.html">Ingresar</a></li>
+                                <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.html">Registrarme</a></li>
+                            </ul>
+                            <form class="d-flex">
+                                <button class="btn btn-outline-dark" type="submit">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    <span id="numerito" class="badge bg-marron text-white ms-1 rounded-pill">0</span>
+                                </button>
+                            </form>
+                        </div>
+                </div>      
+                <div class="nav-inferior me-5 ms-5">
+                    <ul class="container-fluid nav nav-pills nav-fill  collapse navbar-collapse">
+                        <li class="nav-item ">
+                        <a class="nav-link" href="tienda.html">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="conocenos.html">Conocenos</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="trabajo-semillares.html">Trabajo Semillares</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="cuenta.html">Mi Cuenta</a>
+                        </li>
+                    </ul>
+                </div>                
+            </div>
+        </nav>
+        </section>
 
     <!-- Header-->
     <header class="header-tienda ">
@@ -150,7 +150,7 @@
         <h3><?php echo $nombre?></h3>
             <p>$<?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
             <p clas="lead"><?php echo $descripcion?></p>
-            <button type="button" onclick="addProducto(<?php echo 
+            <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
             $id; ?>, '<?php echo $token_tmp; ?>')">Agregar</button>
         </div>
     </section>
@@ -204,12 +204,13 @@
             function addProducto(id, token)
             {
                 let url = 'clases/carrito.php'
-                let formData = new FormData()
-                formData.append('id', id);
-                formData.append('token', token)
+                let FormData = new FormData()
+                FormData.append('id', id);
+                FormData.append('token', token)
+
                 fetch(url, {
                     method: 'POST',
-                    body: formData,
+                    body: FormData,
                     mode: 'cors'
                 }).then(respose => respose.json()) 
                 .then(data =>  {
