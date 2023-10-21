@@ -83,10 +83,12 @@
                             </ul>
                             <a href="checkout.php">Checkout</a>
                             <form class="d-flex">
-                                <button  class="btn btn-outline-dark" type="submit">
-                                    <i class="bi-cart-fill me-1"></i>
-                                    <span id="numerito" class="badge bg-marron text-white ms-1 rounded-pill">0</span>
-                                </button>
+                                <a href="checkout.php" >
+                                    <button  class="btn btn-outline-dark" type="submit">
+                                        <i class="bi-cart-fill me-1"></i>
+                                        <span id="num_cart" class="badge bg-marron text-white ms-1 rounded-pill"><?php echo $num_cart;?></span>
+                                    </button>
+                                </a>
                             </form>
                         </div>
                 </div>      
