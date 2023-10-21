@@ -132,8 +132,8 @@
     <main>
 
         <div class="container">
-            <div class="table-responsive">
-                <table clas="table">
+            <div class="table table-responsive">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Producto</th>
@@ -191,7 +191,7 @@
             </div>
             <div class="row">
                 <div class="col-md-5 offset-md-7 d-grid gap-2">
-                    <a href=""><button class="btn btn-primary btn-lg">Finalizar Compra</button></a>
+                    <button class="btn btn-primary btn-lg">Finalizar Compra</button>
                 </div>
             </div>
         </div>

@@ -149,7 +149,7 @@
             
         <img src="" alt="">
         <h3><?php echo $nombre?></h3>
-            <p>$<?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
+            <p><?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
             <p clas="lead"><?php echo $descripcion?></p>
             <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
             $id; ?>, '<?php echo $token_tmp; ?>')">Agregar</button>
@@ -201,27 +201,7 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <!-- Scripts para tienda -->
-        <script>
-            function addProducto(id, token)
-            {
-                let url = 'clases/carrito.php'
-                let formData = new FormData()
-                formData.append('id', id);
-                formData.append('token', token)
-
-                fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'cors'
-                }).then(respose => respose.json()) 
-                .then(data =>  {
-                    if(data.ok){
-                        let elemento = document.getElementById("num_cart")
-                        elemento.innerHTML = data.numero 
-                    }
-                })
-            }
-        </script>
+        <script src="js/mitienda.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
