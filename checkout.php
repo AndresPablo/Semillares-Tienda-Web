@@ -1,6 +1,7 @@
 <?php
     require 'config/config.php';
     require 'config/database.php';
+    require 'config/actualizar_carrito.php';
     $db=new Database();
     $con=$db->conectar();
 
@@ -19,9 +20,6 @@
             $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
         }
     }
-
-
-    
     //session_destroy();
 ?>
 
@@ -175,7 +173,7 @@
                                 </td>
                                 <td> 
                                     <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo 
-                                    $_id; ?>" data-bs-toogle="modal" data-bs-target="eliminaModal">Eliminar</a> 
+                                    $_id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a> 
                                 </td>
                             </tr>
                             <?php } ?>
@@ -195,8 +193,29 @@
                 </div>
             </div>
         </div>
-
     </main>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="eliminaModal" tabindex="-1" role="dialog" aria-labelledby="eliminaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="eliminaModalLabel">Advertencia</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            ¿Deseas eliminar este producto de la lista?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button id="btn-elimina" type="button" class="btn btn-danger" onclick="eliminar()">Eliminar</button>
+        </div>
+        </div>
+    </div>
+    </div>
 
     <!-- Footer-->
     <footer class="bg-verde-oscuro">
