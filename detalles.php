@@ -28,6 +28,15 @@
                 $nombre = $row['nombre']; 
                 $precio = $row['precio'];
                 $descripcion = $row['descripcion'];
+                $descuento = $row['descuento'];
+                $precio_desc = $precio - (($precio * $descuento) / 100);
+                $dir_images = 'images/productos/' . $id .  '/';
+                
+                $rutaImg = $dir_images . 'principal.jpg';
+                if(!file_exists($rutaImg))
+                {
+                    $rutaImg = 'images/no-photo.jpg';
+                }
             }
         }else
         {
