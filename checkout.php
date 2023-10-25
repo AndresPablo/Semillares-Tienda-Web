@@ -325,7 +325,7 @@
             {
                 let url = 'clases/actualizar_carrito.php'
                 let formData = new FormData()
-                formData.append('action', 'agregar')
+                formData.append('action', 'agregarrr')
                 formData.append('id', id)
                 formData.append('cantidad', cantidad)
 
