@@ -270,7 +270,7 @@
                 buttonElimina.value = id
             })
 
-            function eliminaProducto()
+            function eliminar()
             {
                 let botonElimina = document.getElementById('btn-elimina')
                 let id = botonElimina.value
