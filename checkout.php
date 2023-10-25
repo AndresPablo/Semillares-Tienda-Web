@@ -323,6 +323,9 @@
                             minimumFractionDigits: 2
                         }).format(total)
                         document.getElementById('total').innerHTML = '<?php echo MONEDA; ?>' + total
+                    }else
+                    {
+                        console.log("Data no esta OK")
                     }
                 })
             }
