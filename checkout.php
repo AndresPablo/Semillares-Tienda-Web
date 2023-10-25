@@ -276,7 +276,7 @@
                 buttonElimina.value = id
             })
 
-            function prueba(id, cantidad)
+            function prueba(cantidad, id)
             {
                 let url = 'clases/carrito.php'
                 let formData = new FormData()
