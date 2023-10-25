@@ -305,7 +305,8 @@
                     method: 'POST',
                     body: formData,
                     mode: 'cors'
-                }).then(respose => respose.json()).then(data =>  {
+                }).then(respose => respose.json()) 
+                .then(data =>  {
                     if(data.ok){
                         console.log(data)
                         // recibimos el subtotal
@@ -323,7 +324,8 @@
                             minimumFractionDigits: 2
                         }).format(total)
                         document.getElementById('total').innerHTML = '<?php echo MONEDA; ?>' + total
-                    }else
+                    }
+                    else
                     {
                         console.log("Data no esta OK")
                     }
