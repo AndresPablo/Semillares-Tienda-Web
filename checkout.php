@@ -266,8 +266,8 @@
             {
                 let url = './clases/actualizar_carrito.php'
                 let formData = new FormData()
-                formData.append('action', 'agregar');
-                formData.append('id', id);
+                formData.append('action', 'agregar')
+                formData.append('id', id)
                 formData.append('cantidad', cantidad)
 
                 fetch(url, {
@@ -278,10 +278,10 @@
                 .then(data =>  {
                     if(data.ok){
                         // recibimos el subtotal
-                        let divsubtotal = document.getElementById('subtotal_' + id);
-                        divsubtotal.innerHTML = data.sub;
-                        let total = 0.00;
-                        let list = document.getElementsByName("subtotal[]");
+                        let divsubtotal = document.getElementById('subtotal_' + id)
+                        divsubtotal.innerHTML = data.sub
+                        let total = 0.00
+                        let list = document.getElementsByName("subtotal[]")
 
                         for(let i= 0; i < list.length; i++)
                         {
@@ -290,7 +290,7 @@
                         total = new Intl.NumberFormat('es-AR', {
                             minimumIntegerDigits: 2
                         }).format(total)
-                        document.getElementById('total').innerHTML = '<?php echo MONEDA ?>' + total;
+                        document.getElementById('total').innerHTML = '<?php echo MONEDA ?>' + total
                     }
                 })
             }
@@ -311,8 +311,8 @@
 
                 let url = 'clases/actualizar_carrito.php'
                 let formData = new FormData()
-                formData.append('action', 'eliminar');
-                formData.append('id', id);
+                formData.append('action', 'eliminar')
+                formData.append('id', id)
 
                 fetch(url, {
                     method: 'POST',
