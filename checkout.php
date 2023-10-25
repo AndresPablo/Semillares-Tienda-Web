@@ -188,7 +188,7 @@
                                 </td>
                             </tr>
                         </tbody> 
-                    <?php } ?>  
+                    <?php } ?>
                 </table>
             </div>
             <div class="row">

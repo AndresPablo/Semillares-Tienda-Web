@@ -48,12 +48,9 @@ function agregar($id, $cantidad)
             $descuento = $row['descuento'];
             $precio_desc = $precio - (($precio * $descuento) / 100);
             $res = $cantidad * $precio_desc;
-            echo $res;
             return $res;
-
         }
     }else {
-        echo $res;
         return $res;
     }
 }
@@ -72,4 +69,5 @@ function eliminar($id)
         }
     }
 }
+
 ?>
