@@ -12,17 +12,16 @@ if(isset($_POST['action']))
     {
         $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : 0;
         $respuesta = agregar($id, $cantidad);
-        if($respuesta > 0)
+        if($respuesta>0)
         {
             $datos['ok'] = true;
         }else {
             $datos['ok'] = false;
         }
         $datos['sub'] = MONEDA . number_format($respuesta, 2, '.', ',');
-    }else if($action == 'eliminar'){
+    }else if($action == 'eliminar') {
         $datos['ok'] = eliminar($id);
-    } else 
-    {
+    } else {
         $datos['ok'] = false;
     }
 }else
