@@ -157,8 +157,16 @@
         <div  id="wraper" class="container-fluid row">
             
         <img src="" alt="">
-        <h3><?php echo $nombre?></h3>
-            <p><?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
+        <h2><?php echo $nombre?></h2>
+            
+            <?php if($descuento > 0) {  ?>
+                <p><del><?php echo MONEDA . number_format($precio_desc, 0, ',', '.' );?></del></p>
+                <h3><?php echo MONEDA . number_format($precio_desc, 0, ',', '.' );?></h3>
+                <small class="text-success"><?php echo $descuento; ?>% OFF</small>
+            <?php } else { ?>
+                <p><?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
+                <?php } ?>
+
             <p clas="lead"><?php echo $descripcion?></p>
             <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
             $id; ?>, '<?php echo $token_tmp; ?>')">Agregar</button>

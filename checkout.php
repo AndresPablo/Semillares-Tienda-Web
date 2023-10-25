@@ -195,7 +195,6 @@
         </div>
     </main>
 
-
     <!-- Modal -->
     <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
