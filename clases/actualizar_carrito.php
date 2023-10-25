@@ -74,4 +74,3 @@ function eliminar($id)
 }
 
 ?>
-_

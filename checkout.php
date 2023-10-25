@@ -6,7 +6,7 @@
 
     $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
     
-    print_r($_SESSION);
+    //print_r($_SESSION);
 
     $lista_carrito = array(); 
 
@@ -165,7 +165,7 @@
                                     <td> 
                                         <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" 
                                         size="5" id="cantidad_<?php echo $_id; ?>" 
-                                        onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)">
+                                        onchange="actualizaCantidad(this.value,<?php echo $_id;?>)">
                                     </td>
                                     <td> 
                                         <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> <?php echo MONEDA . 
@@ -325,7 +325,7 @@
             {
                 let url = 'clases/actualizar_carrito.php'
                 let formData = new FormData()
-                formData.append('action', 'agregarrr')
+                formData.append('action', 'agregar')
                 formData.append('id', id)
                 formData.append('cantidad', cantidad)
 
