@@ -51,7 +51,7 @@ function addProducto(id, token)
 
 function actualizaCantidad(cantidad, id)
 {
-    let url = 'clases/actualizar_carrito.php'
+    let url = './clases/actualizar_carrito.php'
     let formData = new FormData()
     formData.append('action', 'agregar');
     formData.append('id', id);

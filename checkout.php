@@ -1,7 +1,6 @@
 <?php
     require 'config/config.php';
     require 'config/database.php';
-    require 'clases/actualizar_carrito.php';
     $db=new Database();
     $con=$db->conectar();
 
