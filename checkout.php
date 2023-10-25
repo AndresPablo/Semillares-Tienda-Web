@@ -172,10 +172,6 @@
                                         number_format($subtotal, 2, '.', ','); ?></div>
                                     </td>
                                     <td> 
-                                    <input type="number" min="1" max="20" step="1" value="0" 
-                                        size="5" onchange="prueba(this.value, <?php echo $_id; ?>)">
-                                    </td>
-                                    <td> 
                                         <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo 
                                         $_id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a> 
                                     </td>
@@ -276,30 +272,6 @@
                 buttonElimina.value = id
             })
 
-            /*function prueba(cantidad, id)
-            {
-                let url = 'clases/carrito.php'
-                let formData = new FormData()
-                formData.append('id', id);
-                formData.append('cantidad', cantidad)
-
-                console.log(id)
-                console.log(cantidad)
-
-                fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'cors'
-                }).then(respose => respose.json()) 
-                .then(data =>  {
-                    if(data.ok){
-                        console.log("prueba")
-                    }else{
-                        console.log("prueba ERROR")
-                    }
-                })
-            }*/
-
             function eliminaProducto()
             {
                 let botonElimina = document.getElementById('btn-elimina')
@@ -336,7 +308,6 @@
                 }).then(respose => respose.json()) 
                 .then(data =>  {
                     if(data.ok){
-                        console.log(data)
                         // recibimos el subtotal
                         let divsubtotal = document.getElementById('subtotal_' + id)
                         divsubtotal.innerHTML = data.sub
@@ -352,11 +323,6 @@
                             minimumFractionDigits: 2
                         }).format(total)
                         document.getElementById('total').innerHTML = '<?php echo MONEDA; ?>' + total
-                    }
-                    else
-                    {
-                        console.log("Data no esta OK")
-                        console.log(data)
                     }
                 })
             }
