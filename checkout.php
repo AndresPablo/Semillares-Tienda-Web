@@ -263,7 +263,7 @@
         <!-- Scripts para tienda -->
         <script>
             let eliminaModal = document.getElementById('eliminaModal')
-            eliminaModal-addEventListener('show.bs.modal', function(event)
+            eliminaModal.addEventListener('show.bs.modal', function(event)
             {
                 let button = event.relatedTarget
                 let id = button.getAttribute('data-bs-id')
@@ -292,10 +292,10 @@
                     }
                 })
             }
-            
+
             function actualizaCantidad(cantidad, id)
             {
-                let url = './clases/actualizar_carrito.php'
+                let url = 'clases/actualizar_carrito.php'
                 let formData = new FormData()
                 formData.append('action', 'agregar')
                 formData.append('id', id)
