@@ -276,7 +276,7 @@
                 buttonElimina.value = id
             })
 
-            function prueba(cantidad, id)
+            /*function prueba(cantidad, id)
             {
                 let url = 'clases/carrito.php'
                 let formData = new FormData()
@@ -298,7 +298,7 @@
                         console.log("prueba ERROR")
                     }
                 })
-            }
+            }*/
 
             function eliminaProducto()
             {
@@ -356,6 +356,7 @@
                     else
                     {
                         console.log("Data no esta OK")
+                        console.log(data)
                     }
                 })
             }
