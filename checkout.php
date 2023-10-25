@@ -164,7 +164,8 @@
                                 <td> <?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></td>
                                 <td> 
                                     <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" 
-                                    size="5" id="cantidad_<?php echo $_id; ?>" onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)">
+                                    size="5" id="cantidad_<?php echo $_id; ?>" 
+                                    onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)">
                                 </td>
                                 <td> 
                                     <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> <?php echo MONEDA . 
@@ -309,7 +310,7 @@
                 .then(data =>  {
                     if(data.ok){
                         // recibimos el subtotal
-                        let divsubtotal = document.getElementById('subtotal_'+id)
+                        let divsubtotal = document.getElementById('subtotal_' + id)
                         divsubtotal.innerHTML = data.sub
                         let total = 0.00
                         let list = document.getElementsByName("subtotal[]")
