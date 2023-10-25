@@ -286,8 +286,7 @@
                     method: 'POST',
                     body: formData,
                     mode: 'cors'
-                }).then(respose => respose.json()) 
-                .then(data =>  {
+                }).then(respose => respose.json()).then(data =>  {
                     if(data.ok){
                         location.reload()
                     }
@@ -306,9 +305,9 @@
                     method: 'POST',
                     body: formData,
                     mode: 'cors'
-                }).then(respose => respose.json()) 
-                .then(data =>  {
+                }).then(respose => respose.json()).then(data =>  {
                     if(data.ok){
+                        console.log(data)
                         // recibimos el subtotal
                         let divsubtotal = document.getElementById('subtotal_' + id)
                         divsubtotal.innerHTML = data.sub
