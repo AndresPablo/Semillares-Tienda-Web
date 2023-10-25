@@ -276,9 +276,25 @@
                 buttonElimina.value = id
             })
 
-            function prueba()
+            function prueba(id, cantidad)
             {
-                console.log("Data no esta OK");
+                let url = 'clases/carrito.php'
+                let formData = new FormData()
+                formData.append('id', id);
+                formData.append('cantidad', cantidad)
+
+                fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'cors'
+                }).then(respose => respose.json()) 
+                .then(data =>  {
+                    if(data.ok){
+                        console.log("prueba")
+                    }else{
+                        console.log("prueba ERROR")
+                    }
+                })
             }
 
             function eliminaProducto()
