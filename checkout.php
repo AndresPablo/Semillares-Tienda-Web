@@ -309,7 +309,7 @@
                 .then(data =>  {
                     if(data.ok){
                         // recibimos el subtotal
-                        let divsubtotal = document.getElementById('subtotal_' + id)
+                        let divsubtotal = document.getElementById('subtotal_'+id)
                         divsubtotal.innerHTML = data.sub
                         let total = 0.00
                         let list = document.getElementsByName("subtotal[]")
