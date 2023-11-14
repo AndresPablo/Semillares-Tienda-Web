@@ -233,8 +233,8 @@ if($productos != null && count($productos) > 0) {
            "success" => "http://semillares.com.ar/captura.php",
            "failure" => "http://semillares.com.ar/fallo.php"
         );
-        $preferece->auto_return = "approved";
-        $preferece->binary_mode = true;
+        $preference->auto_return = "approved";
+        $preference->binary_mode = true;
 
         $preference->save();
      ?>
