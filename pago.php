@@ -1,23 +1,42 @@
 <?php
-    require 'config/config.php';
-    require 'config/database.php';
-    $db=new Database();
-    $con=$db->conectar();
 
-    $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+require 'config/config.php';
+require 'config/database.php';
+require 'vendor/autoload.php';
 
-    $lista_carrito = array(); 
+MercadoPago\SDK::setAccessToken(TOKEN_MP);
 
-    if($productos != null)
-    {
-        foreach($productos as $clave => $cantidad)
-        {
-            $sql=$con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo=1");
-            $sql->execute([$clave]);
-            $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
-        }
+$preference = new MercadoPago\Preference();
+$productos_mp = array();
+
+$item = new MercadoPago\Item();
+$item->id = '0001';
+$item->title = 'Producto CDP';
+$item->quantity = 1;
+$item->unit_price = 150.00;
+$item->currency = "ARS";
+$preference->items = array($item);
+
+$db = new Database();
+$con = $db->conectar();
+
+$productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+
+$lista_carrito = array();
+
+if($productos != null && count($productos) > 0) {
+    foreach($productos as $clave => $cantidad) {
+        $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? activo=1");
+        $sql->execute([$clave]);
+        $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
     }
+    } else {
+        header("location: index.php");
+        exit;
+    }
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -41,6 +60,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://sdk.mercadopago.com/js/v2"></script> 
     </head>
 
 
@@ -126,13 +146,32 @@
     <main>
 
         <div class="container">
+
+        <div class="row">
+            <div class="col-6">
+                <h4>Detalles de pago</h4>
+                <div class="row">
+                    <div class= "col-12">
+                        <div id="paypal-button-container"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class= "col-12">
+                        <div class="checkout-btn"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            
+            
+        <div class="col-6">            
+        </div>
             <div class="table table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
                             <th>Subtotal</th>
                             <th></th>
                         </tr>
@@ -155,22 +194,22 @@
                                     $precio_desc = $precio - (($precio * $descuento) / 100);
                                     $subtotal = $cantidad * $precio_desc;
                                     $total += $subtotal;
+
+                                    $item = new MercadoPago\Item();
+                                    $item->id = $_id;
+                                    $item->title = $nombre;
+                                    $item->quantity = $cantidad;
+                                    $item->unit_price = $precio_desc;
+                                    $item->currency = "ARS";
+                                    
+                                    array_push($productos_mp, $item);
+                                    unset($item);
                                 ?>
                                 <tr>
                                     <td> <?php echo $nombre; ?></td>
-                                    <td> <?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></td>
-                                    <td> 
-                                        <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" 
-                                        size="5" id="cantidad_<?php echo $_id; ?>" 
-                                        onchange="actualizaCantidad(this.value,<?php echo $_id;?>)">
-                                    </td>
                                     <td> 
                                         <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> <?php echo MONEDA . 
                                         number_format($subtotal, 2, '.', ','); ?></div>
-                                    </td>
-                                    <td> 
-                                        <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo 
-                                        $_id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a> 
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -184,37 +223,22 @@
                     <?php } ?>
                 </table>
             </div>
-
-            <?php if($lista_carrito != null)
-            { ?>
-                <div class="row">
-                    <div class="col-md-5 offset-md-7 d-grid gap-2">
-                        <button href="pago.php"class="btn btn-primary btn-lg">Realizar Pago</button>
-                    </div>
-                </div>
-            <?php  }?>
+        </div> 
         </div>
     </main>
 
-    <!-- Modal -->
-    <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="eliminaModalLabel">Advertencia</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            ¿Deseas eliminar este producto de la lista?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button id="btn-elimina" type="button" class="btn btn-danger" onclick="eliminar()">Eliminar</button>
-        </div>
-        </div>
-    </div>
-    </div>
+     <?php
+        $preference->items = $productos_mp;
+        $preference->back_urls = array(
+           "success" => "http://semillares.com.ar/captura.php",
+           "failure" => "http://semillares.com.ar/fallo.php"
+        );
+        $preferece->auto_return = "approved";
+        $preferece->binary_mode = true;
 
+        $preference->save();
+     ?>
+    
     <!-- Footer-->
     <footer class="bg-verde-oscuro">
         <div class="container">
@@ -261,71 +285,20 @@
         <script src="js/scripts.js"></script>
         <!-- Scripts para tienda -->
         <script>
-            let eliminaModal = document.getElementById('eliminaModal')
-            eliminaModal.addEventListener('show.bs.modal', function(event)
-            {
-                let button = event.relatedTarget
-                let id = button.getAttribute('data-bs-id')
-                let buttonElimina = eliminaModal.querySelector('.modal-footer #btn-elimina')
-                buttonElimina.value = id
-            })
+            // Clave publica
+            const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489', {
+                locale: 'es-AR'
+            });
 
-            function eliminar()
-            {
-                let botonElimina = document.getElementById('btn-elimina')
-                let id = botonElimina.value
-
-                let url = 'clases/actualizar_carrito.php'
-                let formData = new FormData()
-                formData.append('action', 'eliminar')
-                formData.append('id', id)
-
-                fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'cors'
-                }).then(respose => respose.json()).then(data =>  {
-                    if(data.ok){
-                        location.reload()
-                    }
-                })
-            }
-
-            function actualizaCantidad(cantidad, id)
-            {
-                let url = 'clases/actualizar_carrito.php'
-                let formData = new FormData()
-                formData.append('action', 'agregar')
-                formData.append('id', id)
-                formData.append('cantidad', cantidad)
-
-                fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'cors'
-                }).then(respose => respose.json()) 
-                .then(data =>  {
-                    if(data.ok){
-                        // recibimos el subtotal
-                        let divsubtotal = document.getElementById('subtotal_' + id)
-                        divsubtotal.innerHTML = data.sub
-                        let total = 0.00
-                        let list = document.getElementsByName("subtotal[]")
-
-                        for(let i = 0; i < list.length; i++)
-                        {
-                            total += parseFloat(list[i].innerHTML.replace(/[$,]/g, ''))
-                        }
-
-                        total = new Intl.NumberFormat('en-US', {
-                            minimumFractionDigits: 2
-                        }).format(total)
-                        document.getElementById('total').innerHTML = '<?php echo MONEDA; ?>' + total
-                    }
-                })
-            }
-
-            
+            mp.checkout({
+                preference:{
+                    id: '<?php echo $preference->id; ?> '
+                },
+                render: {
+                    container: '.checkout-btn',
+                    label: 'Pagar con MP'
+                }
+            });
         </script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->

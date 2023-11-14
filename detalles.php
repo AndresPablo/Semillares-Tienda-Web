@@ -165,9 +165,21 @@
                 <p><?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
                 <?php } ?>
 
-            <p clas="lead"><?php echo $descripcion?></p>
-            <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
-            $id; ?>, '<?php echo $token_tmp; ?>')">Agregar</button>
+            <p clas="lead">
+                <?php echo $descripcion?>
+            </p>
+            
+            <div class="col-3 my-3">
+                Cantidad: <input class="form-control" id="cantidad" name="cantidad"
+                 type="number" min="1" max="10" value="1" >
+            </div>
+
+            <div class="d-grid gap-3 col-10 mx-auto">
+                <button class="btn btn-primary" type="button">Comprar ahora</button>
+                <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
+                $id; ?>, '<?php echo $token_tmp; ?>')">Agregar</button>
+            </div>
+
         </div>
     </section>
 

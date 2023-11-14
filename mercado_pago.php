@@ -1,6 +1,7 @@
 <?php
+ require 'config/config.php';
  require 'vendor/autoload.php';
- MercadoPago\SDK::setAccessToken('TEST-2201111208646800-111318-a4f836fb220b257ac19c45656d760d73-521156782');
+ MercadoPago\SDK::setAccessToken(TOKEN_MP);
  $preference = new MercadoPago\Preference();
  $item = new MercadoPago\Item();
  $item->id = '0001';
@@ -9,6 +10,17 @@
  $item->unit_price = 150.00;
  $item->currency = "ARS";
  $preference->items = array($item);
+
+ $preference->back_urls = array($item);
+
+ $preference->back_urls = array(
+    "success" => "http://semillares.com.ar/captura.php",
+    "failure" => "http://semillares.com.ar/fallo.php"
+ );
+
+ $preferece->auto_return = "approved";
+ $preferece->binary_mode = true;
+
  $preference->save();
 ?>
 
@@ -34,7 +46,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <// SDK MercadoPago.js
         <script src="https://sdk.mercadopago.com/js/v2"></script>
     </head>
 

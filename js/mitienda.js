@@ -1,8 +1,9 @@
-function addProducto(id, token)
+function addProducto(id, cantidad, token)
 {
     let url = 'clases/carrito.php'
     let formData = new FormData()
     formData.append('id', id);
+    formData.append('cantidad', cantidad);
     formData.append('token', token)
 
     fetch(url, {
