@@ -166,7 +166,7 @@
                         <div class="row d-flex justify-content-around align-items-center">
                             <div class="col d-flex producto-agregar" >
                                 <button type="button" onclick="addProducto(<?php echo 
-                                $row['id']; ?>, '<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>')">Agregar</button>
+                                $row['id']; ?>, 1, '<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>')">Agregar</button>
                                 </div>
                             <div class="col d-flex producto-detalles">
                                 <a href="detalles.php?id=<?php echo $row['id'];?>&token=<?php echo 
