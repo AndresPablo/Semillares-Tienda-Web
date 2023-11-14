@@ -27,7 +27,7 @@ class RuntimeReflectionService implements ReflectionService
 
     public function __construct()
     {
-        $this->supportsTypedPropertiesWorkaround = version_compare(phpversion(), '7.4.0') >= 0;
+        $this->supportsTypedPropertiesWorkaround = version_compare(phpversion(), '8.0.0') >= 0;
     }
 
     /**
