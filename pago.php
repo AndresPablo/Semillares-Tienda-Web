@@ -20,6 +20,10 @@ $preference->items = array($item);
 $db = new Database();
 $con = $db->conectar();
 
+if (!$con) {
+    die("Error de conexión a la base de datos");
+}
+
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
 $lista_carrito = array();
@@ -27,6 +31,13 @@ $lista_carrito = array();
 if($productos != null && count($productos) > 0) {
     foreach($productos as $clave => $cantidad) {
         $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo=1");
+        if (!$sql) {
+            die("Error en la preparación de la consulta");
+        }
+        
+        if (!$sql->execute()) {
+            die("Error al ejecutar la consulta");
+        }
         $sql->execute([$clave]);
         $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
     }
@@ -59,7 +70,8 @@ if($productos != null && count($productos) > 0) {
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src="https://sdk.mercadopago.com/js/v2"></script> 
     </head>
 
@@ -152,7 +164,7 @@ if($productos != null && count($productos) > 0) {
                 <h4>Detalles de pago</h4>
                 <div class="row">
                     <div class= "col-12">
-                        <div id="paypal-button-container"></div>
+                        <div id="paypal-button-container">Boton Paypal</div>
                     </div>
                 </div>
                 <div class="row">
@@ -179,7 +191,7 @@ if($productos != null && count($productos) > 0) {
                         <tbody>
                             <?php if($lista_carrito == null)
                             {
-                                echo '<tr><td colspan="5 class="text-center"><b>Lista vacia</b></td></tr>';
+                                echo '<tr><td colspan="5" class="text-center"><b>Lista vacia</b></td></tr>';
                             }
                             else
                             {
