@@ -190,7 +190,7 @@
                 <div class="row">
                     <div class="col-md-5 offset-md-7 d-grid gap-2">
                         <a href="pago.php"><button class="btn btn-primary btn-lg">Realizar Pago</button></a>
-                        <a href="pago.php"><button class="btn btn-primary btn-lg">Realizar MercadoPago</button></a>
+                        <a href="mercado_pago.php"><button class="btn btn-primary btn-lg">Realizar MercadoPago</button></a>
                     </div>
                 </div>
             <?php  }?>
