@@ -47,28 +47,12 @@ $preference->back_urls = array(
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://sdk.mercadopago.com/js/v2"></script>
+        <script src="js/pruebaMP.js"></script>
     </head>
 
     <body>
         <h3> Mercado Pago </h3>
         <div class="checkout-btn"></div>
-
-        <script>
-            // Clave publica
-            const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489', {
-                locale: 'es-MX'
-            });
-
-            mp.checkout({
-                preference:{
-                    id: '<?php echo $preference->id; ?> '
-                },
-                render: {
-                    container: '.checkout-btn',
-                    label: 'Pagar con MP'
-                }
-            });
-        </script>
     </body>
 
 
