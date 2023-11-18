@@ -1,7 +1,7 @@
 <?php
  require 'config/config.php';
  require 'vendor/autoload.php';
- MercadoPago\SDK::setAccessToken(TOKEN_MP);
+ MercadoPago\SDK::setAccessToken("TEST-2201111208646800-111318-a4f836fb220b257ac19c45656d760d73-521156782");
  $preference = new MercadoPago\Preference();
  $item = new MercadoPago\Item();
  $item->id = '0001';
@@ -56,7 +56,7 @@ $preference->back_urls = array(
         <script>
             // Clave publica
             const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489', {
-                locale: 'es-AR'
+                locale: 'es-MX'
             });
 
             mp.checkout({
