@@ -28,24 +28,26 @@ $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['pr
 
 $lista_carrito = array();
 
-if($productos != null && count($productos) > 0) {
-    foreach($productos as $clave => $cantidad) {
-        $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo=1");
-        if (!$sql) {
-            die("Error en la preparación de la consulta");
+    if($productos != null && count($productos) > 0) 
+    {
+        foreach($productos as $clave => $cantidad) 
+        {
+            $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo=1");
+            if (!$sql) 
+            {
+                die("Error en la preparación de la consulta");
+            }
+            if (!$sql->execute()) {
+                die("Error al ejecutar la consulta");
+            }
+            $sql->execute([$clave]);
+            $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
         }
-        
-        if (!$sql->execute()) {
-            die("Error al ejecutar la consulta");
-        }
-        $sql->execute([$clave]);
-        $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
-    }
-    } else {
+    } else 
+    {
         header("location: index.php");
         exit;
     }
-
 ?>
 
 
