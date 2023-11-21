@@ -11,10 +11,17 @@
     // Crear preferencia
     $preference = new MercadoPago\Preference();
 
+    $lista_carrito = array();
+
+    // conexion a base de datos
+    $db = new Database();
+    $con = $db->conectar();
+    var_dump($con);
+
     // Tomar productos del carrito de la sesión
     $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
-    $lista_carrito = array();
+    print_r($_SESSION);
 
     if ($productos != null && count($productos) > 0) {
         foreach ($productos as $clave => $cantidad) {
@@ -50,10 +57,6 @@
 
     // Guardar preferencia
     $preference->save();
-
-    $db = new Database();
-    $con = $db->conectar();
-    var_dump($con);
 
     if (!$con) {
         die("Error de conexión a la base de datos: " . $db->getLastError());
