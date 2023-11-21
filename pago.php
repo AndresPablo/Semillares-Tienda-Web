@@ -53,6 +53,7 @@
 
     $db = new Database();
     $con = $db->conectar();
+    var_dump($con);
 
     if (!$con) {
         die("Error de conexión a la base de datos: " . $db->getLastError());
