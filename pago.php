@@ -14,11 +14,13 @@
 
     // Agregar item al carrito
     $item = new MercadoPago\Item();
+    $item->id = '0001';
     $item->title = 'Mi Producto';
     $item->quantity = 1;
     $item->unit_price = 150; 
     $item->currency = "ARS";
 
+    $productos_mp = array();
     $preference->items = array($item);
     // Guardar preferencia
     $preference->save();
@@ -28,6 +30,32 @@
 
     if (!$con) {
         die("Error de conexión a la base de datos");
+    }
+
+    // tomar productos del carrito de la sesion
+    $productos_mp = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+
+    $lista_carrito = array();
+
+    if($productos_mp != null && count($productos_mp) > 0) 
+    {
+        foreach($productos_mp as $clave => $cantidad) 
+        {
+            $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo=1");
+            if (!$sql) 
+            {
+                die("Error en la preparación de la consulta");
+            }
+            if (!$sql->execute()) {
+                die("Error al ejecutar la consulta");
+            }
+            $sql->execute([$clave]);
+            $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
+        }
+    } else 
+    {
+        header("location: index.php");
+        exit;
     }
 ?>
 
