@@ -35,6 +35,7 @@ $preference->back_urls = array(
         <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' https://cdn.jsdelivr.net https://sdk.mercadopago.com/js/v2 'unsafe-eval';
+    style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com 'unsafe-inline';
     style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
     font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com;
     connect-src 'self' https://api.mercadolibre.com https://api.mercadopago.com https://events.mercadopago.com https://www.mercadolibre.com;
