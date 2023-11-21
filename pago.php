@@ -33,24 +33,26 @@
     }
 
     // tomar productos del carrito de la sesion
-    $productos_mp = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+    $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
     $lista_carrito = array();
 
-    if($productos_mp != null && count($productos_mp) > 0) 
+    if($productos != null && count($productos) > 0) 
     {
-        foreach($productos_mp as $clave => $cantidad) 
+        foreach($productos as $clave => $cantidad) 
         {
-            $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo=1");
+            $sql = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo=1");
             if (!$sql) 
             {
                 die("Error en la preparación de la consulta");
             }
-            if (!$sql->execute()) {
+            if (!$sql->execute([$clave])) {
                 die("Error al ejecutar la consulta");
             }
-            $sql->execute([$clave]);
-            $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
+            $producto = $sql->fetch(PDO::FETCH_ASSOC);
+            // Agrega la cantidad al array de resultados
+            $producto['cantidad'] = $cantidad;
+            $lista_carrito[] = $producto;
         }
     } else 
     {
