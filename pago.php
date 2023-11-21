@@ -4,6 +4,7 @@
 
     // SDK Mercado Pago
     require __DIR__ .  '/vendor/autoload.php'; 
+    
 
     // Configurar SDK
     MercadoPago\SDK::setAccessToken(TOKEN_MP);  
@@ -21,16 +22,19 @@
     $preference->items = array($item);
     // Guardar preferencia
     $preference->save();
-
 ?>
 
+
+
+<!-- HTML -->
 <!DOCTYPE html>
 <html lang="es-AR">
+
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semillares - Checkout Mercado Pago</title>
-  <title>Semillares </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semillares - Checkout Mercado Pago</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -42,10 +46,13 @@
     <!-- Fuentes (Montserrat) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- SDK Mercado Pago -->
-  <script src="https://sdk.mercadopago.com/js/v2"></script>
-
+    <!-- SDK Mercado Pago -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <!-- Funciones SDK Mercado Pago -->
+    <script src="js/funciones-MP.js"></script>
 </head>
+
+
 <body>
   
 
@@ -133,24 +140,10 @@
         </div>
         </main>
 
-    <!-- MOVER a otro script -->
-    <script>
-        // Inicializar Mercado Pago
-        const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489', {
-                    locale: 'es-AR'
-        });
-
-        // Abrir checkout
-        mp.checkout({
-        preference: {
-            id: '<?php echo $preference->id; ?>'
-        },
-        render: {
-            container: '.cho-container', // Class container
-            label: 'Pagar con MP', // Botón de pago
-        }
-        });
-    </script>
+        <script>
+            // Llamar a la función para inicializar Mercado Pago
+            initializeMercadoPago(PUBLIC_KEY, '<?php echo $preference->id; ?>');
+        </script>
 
 </body>
 </html>
