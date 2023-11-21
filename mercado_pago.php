@@ -34,14 +34,20 @@ $preference->back_urls = array(
         <meta name="author" content="Andrés Pablo" />
         <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' https://cdn.jsdelivr.net https://sdk.mercadopago.com/js/v2 'unsafe-eval';
-    style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com 'unsafe-inline';
-    style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
-    font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com;
+    script-src 'self' https://cdn.jsdelivr.net https://sdk.mercadopago.com/js/v2 https://code.jquery.com 'unsafe-eval';
+    style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline' https://fonts.googleapis.com;
+    object-src 'none';
+    base-uri 'self';
     connect-src 'self' https://api.mercadolibre.com https://api.mercadopago.com https://events.mercadopago.com https://www.mercadolibre.com;
-    img-src 'self' data: https://picsum.photos https://www.mercadolibre.com https://www.mercadopago.com.ar;
+    font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com;
     frame-src 'self' https://mercadopago.com.ar https://www.mercadolibre.com https://www.mercadopago.com.ar;
+    img-src 'self' data: https://picsum.photos https://www.mercadolibre.com https://www.mercadopago.com.ar;
+    manifest-src 'self';
+    media-src 'self';
+    report-uri https://6558f88579107a8bf3ffe707.endpoint.csper.io/?v=1;
+    worker-src 'none';
 ">
+
         <title>Semillares - Tienda</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
