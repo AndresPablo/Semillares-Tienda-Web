@@ -142,7 +142,7 @@
 
         <script>
             // Llamar a la función para inicializar Mercado Pago
-            initializeMercadoPago(PUBLIC_KEY, '<?php echo $preference->id; ?>');
+            initializeMercadoPago(PUBLIC_KEY_MP, '<?php echo $preference->id; ?>');
         </script>
 
 </body>
