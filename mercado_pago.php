@@ -33,20 +33,14 @@ $preference->back_urls = array(
         <meta name="description" content="" />
         <meta name="author" content="Andrés Pablo" />
         <meta http-equiv="Content-Security-Policy" content="
-            default-src 'self';
-            script-src 'report-sample' 'self' https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js https://cdn.startbootstrap.com/sb-forms-latest.js https://code.jquery.com/jquery-1.11.1.min.js https://http2.mlstatic.com/storage/event-metrics-sdk/js https://sdk.mercadopago.com/js/v2;
-            style-src 'report-sample' 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com;
-            object-src 'none';
-            base-uri 'self';
-            connect-src 'self' https://api.mercadolibre.com https://api.mercadopago.com https://events.mercadopago.com https://www.mercadolibre.com;
-            font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com;
-            frame-src 'self' https://mercadopago.com.ar https://www.mercadolibre.com https://www.mercadopago.com.ar;
-            img-src 'self' data: https://picsum.photos https://www.mercadolibre.com https://www.mercadopago.com.ar;
-            manifest-src 'self';
-            media-src 'self';
-            report-uri https://6558f88579107a8bf3ffe707.endpoint.csper.io/?v=1;
-            worker-src 'none';
-        ">
+    default-src 'self';
+    script-src 'self' https://cdn.jsdelivr.net https://sdk.mercadopago.com/js/v2 'unsafe-eval';
+    style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+    font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com;
+    connect-src 'self' https://api.mercadolibre.com https://api.mercadopago.com https://events.mercadopago.com https://www.mercadolibre.com;
+    img-src 'self' data: https://picsum.photos https://www.mercadolibre.com https://www.mercadopago.com.ar;
+    frame-src 'self' https://mercadopago.com.ar https://www.mercadolibre.com https://www.mercadopago.com.ar;
+">
         <title>Semillares - Tienda</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
