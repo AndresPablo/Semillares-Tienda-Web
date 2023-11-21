@@ -4,7 +4,7 @@
 require __DIR__ .  '/vendor/autoload.php'; 
 
 // Configurar SDK
-MercadoPago\SDK::setAccessToken('TU_ACCESS_TOKEN');  
+MercadoPago\SDK::setAccessToken('TEST-2201111208646800-111318-a4f836fb220b257ac19c45656d760d73-521156782');  
 
 // Crear preferencia
 $preference = new MercadoPago\Preference();
@@ -38,7 +38,7 @@ $preference->save();
 
   <script>
     // Inicializar Mercado Pago
-    const mp = new MercadoPago('PUBLIC_KEY');
+    const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489');
 
     // Abrir checkout
     mp.checkout({
