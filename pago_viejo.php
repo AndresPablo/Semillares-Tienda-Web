@@ -241,7 +241,7 @@ $lista_carrito = array();
         </div>
     </main>
 
-     <?php
+    <?php
         $preference->items = $productos_mp;
         $preference->back_urls = array(
            "success" => "http://semillares.com.ar/captura.php",
@@ -251,7 +251,7 @@ $lista_carrito = array();
         $preference->binary_mode = true;
 
         $preference->save();
-     ?>
+    ?>
     
     <!-- Footer-->
     <footer class="bg-verde-oscuro">
