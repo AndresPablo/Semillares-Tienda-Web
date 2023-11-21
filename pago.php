@@ -16,6 +16,8 @@ $item = new MercadoPago\Item();
 $item->title = 'Mi Producto';
 $item->quantity = 1;
 $item->unit_price = 150; 
+$item->currency = "ARS";
+
 $preference->items = array($item);
 
 // Guardar preferencia
@@ -40,7 +42,9 @@ $preference->save();
 
   <script>
     // Inicializar Mercado Pago
-    const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489');
+    const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489', {
+                locale: 'es-AR'
+    });
 
     // Abrir checkout
     mp.checkout({
@@ -49,7 +53,7 @@ $preference->save();
       },
       render: {
         container: '.cho-container', // Class container
-        label: 'Pagar', // Botón de pago
+        label: 'Pagar con MP', // Botón de pago
       }
     });
   </script>
