@@ -21,7 +21,7 @@
     // Tomar productos del carrito de la sesión
     $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
-    print_r($_SESSION);
+    //print_r($_SESSION);
 
     if ($productos != null && count($productos) > 0) {
         foreach ($productos as $clave => $cantidad) {
@@ -89,8 +89,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- Bootstrap forms -->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <!-- SDK Mercado Pago -->
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <!-- Funciones SDK Mercado Pago -->
