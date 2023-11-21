@@ -101,12 +101,12 @@
       <main>
         <div class="container">
 
-        <div class="row">
+        <div class="row my-5">
             <div class="col-6">
                 <h4>Detalles de pago</h4>
                 <div class="row">
                     <div class= "col-12">
-                        <div id="paypal-button-container">Boton Paypal</div>
+                        <div id="paypal-button-container"></div>
                     </div>
                 </div>
                 <div class="row">

@@ -24,7 +24,7 @@ class Database
             return $pdo;
         } catch(PDOException $e)
         {
-            echo 'Error conexion: ' . $e->getMessage();
+            die('Error conexión: ' . $e->getMessage() . ' ' . print_r($pdo->errorInfo(), true));
             exit;
         }
     }
