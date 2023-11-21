@@ -1,37 +1,47 @@
 <?php
-require 'config/config.php';
-require 'config/database.php';
+    require 'config/config.php';
+    require 'config/database.php';
 
-// SDK Mercado Pago
-require __DIR__ .  '/vendor/autoload.php'; 
+    // SDK Mercado Pago
+    require __DIR__ .  '/vendor/autoload.php'; 
 
-// Configurar SDK
-MercadoPago\SDK::setAccessToken(TOKEN_MP);  
+    // Configurar SDK
+    MercadoPago\SDK::setAccessToken(TOKEN_MP);  
 
-// Crear preferencia
-$preference = new MercadoPago\Preference();
+    // Crear preferencia
+    $preference = new MercadoPago\Preference();
 
-// Agregar item al carrito
-$item = new MercadoPago\Item();
-$item->title = 'Mi Producto';
-$item->quantity = 1;
-$item->unit_price = 150; 
-$item->currency = "ARS";
+    // Agregar item al carrito
+    $item = new MercadoPago\Item();
+    $item->title = 'Mi Producto';
+    $item->quantity = 1;
+    $item->unit_price = 150; 
+    $item->currency = "ARS";
 
-$preference->items = array($item);
-
-// Guardar preferencia
-$preference->save();
+    $preference->items = array($item);
+    // Guardar preferencia
+    $preference->save();
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout Mercado Pago</title>
-
+  <title>Semillares - Checkout Mercado Pago</title>
+  <title>Semillares </title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Custom CSS (personalizado)-->
+    <link href="css/custom.css" rel="stylesheet" />
+    <!-- Fuentes (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- SDK Mercado Pago -->
   <script src="https://sdk.mercadopago.com/js/v2"></script>
 
