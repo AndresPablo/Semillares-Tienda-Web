@@ -55,7 +55,7 @@
     $con = $db->conectar();
 
     if (!$con) {
-        die("Error de conexión a la base de datos");
+        die("Error de conexión a la base de datos: " . $db->getLastError());
     }
 ?>
 
