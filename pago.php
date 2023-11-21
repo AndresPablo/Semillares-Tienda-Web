@@ -4,7 +4,6 @@
 
     // SDK Mercado Pago
     require __DIR__ .  '/vendor/autoload.php'; 
-    
 
     // Configurar SDK
     MercadoPago\SDK::setAccessToken(TOKEN_MP);  
@@ -12,38 +11,15 @@
     // Crear preferencia
     $preference = new MercadoPago\Preference();
 
-    // Agregar item al carrito
-    $item = new MercadoPago\Item();
-    $item->id = '0001';
-    $item->title = 'Mi Producto';
-    $item->quantity = 1;
-    $item->unit_price = 150; 
-    $item->currency = "ARS";
-
-    $productos_mp = array();
-    $preference->items = array($item);
-    // Guardar preferencia
-    $preference->save();
-
-    $db = new Database();
-    $con = $db->conectar();
-
-    if (!$con) {
-        die("Error de conexión a la base de datos");
-    }
-
-    // tomar productos del carrito de la sesion
+    // Tomar productos del carrito de la sesión
     $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
     $lista_carrito = array();
 
-    if($productos != null && count($productos) > 0) 
-    {
-        foreach($productos as $clave => $cantidad) 
-        {
+    if ($productos != null && count($productos) > 0) {
+        foreach ($productos as $clave => $cantidad) {
             $sql = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo=1");
-            if (!$sql) 
-            {
+            if (!$sql) {
                 die("Error en la preparación de la consulta");
             }
             if (!$sql->execute([$clave])) {
@@ -53,13 +29,36 @@
             // Agrega la cantidad al array de resultados
             $producto['cantidad'] = $cantidad;
             $lista_carrito[] = $producto;
+
+            // Agregar item al carrito
+            $item = new MercadoPago\Item();
+            $item->id = $producto['id'];
+            $item->title = $producto['nombre'];
+            $item->quantity = $producto['cantidad'];
+            $item->unit_price = $producto['precio'] - (($producto['precio'] * $producto['descuento']) / 100);
+            $item->currency = "ARS";
+
+            $productos_mp[] = $item;
         }
-    } else 
-    {
+    } else {
         header("location: index.php");
         exit;
     }
+
+    // Agregar items al carrito
+    $preference->items = $productos_mp;
+
+    // Guardar preferencia
+    $preference->save();
+
+    $db = new Database();
+    $con = $db->conectar();
+
+    if (!$con) {
+        die("Error de conexión a la base de datos");
+    }
 ?>
+
 
 
 
