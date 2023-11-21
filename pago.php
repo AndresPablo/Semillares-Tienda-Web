@@ -1,4 +1,6 @@
 <?php
+require 'config/config.php';
+require 'config/database.php';
 
 // SDK Mercado Pago
 require __DIR__ .  '/vendor/autoload.php'; 
