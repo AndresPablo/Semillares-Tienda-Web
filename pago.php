@@ -40,7 +40,7 @@ $preference->save();
 
   <script>
     // Inicializar Mercado Pago
-    const mp = new MercadoPago(PUBLIC_KEY_MP);
+    const mp = new MercadoPago('TEST-37621760-87a1-41e5-86c6-0956594e0489');
 
     // Abrir checkout
     mp.checkout({
