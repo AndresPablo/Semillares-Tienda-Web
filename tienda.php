@@ -173,7 +173,7 @@
                             <div class="col d-flex">
                                 <div class="input-group">
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" 
+                                            <button type="button" class="btn btn-number" data-type="minus" 
                                             data-field="quant[<?php echo $id; ?>]" onclick="decrementarCantidad('cantidad_<?php echo $id; ?>')">
                                                 <span class="glyphicon glyphicon-minus">-</span>
                                             </button>
