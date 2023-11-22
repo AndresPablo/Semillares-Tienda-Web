@@ -17,4 +17,6 @@ function addProducto(id, cantidad, token)
             elemento.innerHTML = data.numero 
         }
     })
+
+    
 }
