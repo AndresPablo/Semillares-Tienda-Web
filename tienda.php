@@ -54,7 +54,6 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
-                  
                     <div class="col col-5 collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item "><a class="nav-link texto-cuenta" href="login.html">Ingresar</a></li>
@@ -273,9 +272,6 @@
         let cantidadInput = document.getElementById("cantidad_<?php echo $id; ?>");
         if (parseInt(cantidadInput.value) === 1) {
             document.querySelector('button[data-type="minus"]').setAttribute('disabled', 'disabled');
-        } else {
-            // Habilitar el botón "-" si la cantidad es mayor a 1
-            document.querySelector('button[data-type="minus"]').removeAttribute('disabled');
         }
     </script>
     </body>
