@@ -175,14 +175,14 @@
                                 <div class="input-group">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" 
-                                            data-field="quant[1]" onclick="decrementarCantidad('cantidad_<?php echo $id; ?>')">
+                                            data-field="quant[<?php echo $id; ?>]" onclick="decrementarCantidad('cantidad_<?php echo $id; ?>')">
                                                 <span class="glyphicon glyphicon-minus">-</span>
                                             </button>
                                         </span>
                                         <input type="text" id="cantidad_<?php echo $id; ?>" name="quant[1]" class="form-control input-number" value="1" min="1" max="99">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn  btn-number" data-type="plus" 
-                                            data-field="quant[1]" onclick="incrementarCantidad('cantidad_<?php echo $id; ?>')">
+                                            data-field="quant[<?php echo $id; ?>]" onclick="incrementarCantidad('cantidad_<?php echo $id; ?>')">
                                                 <span class="glyphicon glyphicon-plus">+</span>
                                             </button>
                                         </span>
