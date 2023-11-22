@@ -166,8 +166,7 @@
                         <div class="row d-flex justify-content-around align-items-center">
                             <div class="col d-flex producto-agregar" >
                                 <button type="button" onclick="addProducto(<?php echo 
-                                $row['id']; ?>, 1, '<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>')">Agregar</button>
-                                onclick="addProducto(<?php echo $id; ?>, cantidad.value, '<?php echo $token_tmp; ?>')"
+                                $row['id']; ?>, cantidad.value, '<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>')">Agregar</button>
                                 </div>
                             <div class="col d-flex producto-detalles">
                                 <a href="detalles.php?id=<?php echo $row['id'];?>&token=<?php echo 
@@ -176,13 +175,15 @@
                             <div class="col d-flex">
                                 <div class="input-group">
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn  btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                            <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" 
+                                            data-field="quant[1]" onclick="decrementarCantidad('cantidad_<?php echo $id; ?>')">
                                                 <span class="glyphicon glyphicon-minus">-</span>
                                             </button>
                                         </span>
                                         <input type="text" id="cantidad_<?php echo $id; ?>" name="quant[1]" class="form-control input-number" value="1" min="1" max="99">
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn  btn-number" data-type="plus" data-field="quant[1]">
+                                            <button type="button" class="btn  btn-number" data-type="plus" 
+                                            data-field="quant[1]" onclick="incrementarCantidad('cantidad_<?php echo $id; ?>')">
                                                 <span class="glyphicon glyphicon-plus">+</span>
                                             </button>
                                         </span>
@@ -468,5 +469,22 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- Script para botones +/- de productos -->
+        <script>
+            function incrementarCantidad(id) {
+                var inputCantidad = document.getElementById(id);
+                var valor = parseInt(inputCantidad.value, 10);
+                if (!isNaN(valor) && valor < 99) {
+                    inputCantidad.value = valor + 1;
+                }
+            }
+            function decrementarCantidad(id) {
+                var inputCantidad = document.getElementById(id);
+                var valor = parseInt(inputCantidad.value, 10);
+                if (!isNaN(valor) && valor > 1) {
+                    inputCantidad.value = valor - 1;
+                }
+            }
+        </script>
     </body>
 </html>
