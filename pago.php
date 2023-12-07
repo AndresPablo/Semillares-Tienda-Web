@@ -55,14 +55,6 @@
     // Agregar items al carrito
     $preference->items = $productos_mp;
 
-    // Salidas de captura fallo y exito
-    $preference->back_urls = array(
-        "success"=> "http://semillares.com/captura.php",
-        "failure"=> "http://semillares.com/captura.php",
-    );
-
-    $preference->auto_return = "aproved"; // Los compradores vuelven a mi sitio tras terminar con exito la compra
-    $preference->binary_mode = true; // el pago solo puede ser aprobado o rechazado (instantaneo)
 
     // Guardar preferencia
     $preference->save();
@@ -186,6 +178,22 @@
         </div> 
         </div>
         </main>
+
+        
+        <?php //TODO: atenti con todo ese bloque 
+            // Salidas de captura fallo y exito
+            $preference->back_urls = array(
+                "success"=> "http://semillares.com/captura.php",
+                "failure"=> "http://semillares.com/captura.php",
+            );
+
+            // Los compradores vuelven a mi sitio tras terminar con exito la compra
+                //$preference->auto_return = "aproved"; 
+            // el pago solo puede ser aprobado o rechazado (instantaneo)
+                //$preference->binary_mode = true; 
+            // Guardar preferencia
+            $preference->save();
+        ?>
 
         <script>
             // Llamar a la función para inicializar Mercado Pago
