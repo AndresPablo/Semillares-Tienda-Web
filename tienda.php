@@ -166,10 +166,10 @@
                             <div class="col d-flex producto-agregar" >
                                 <button type="button" onclick="addProducto(<?php echo $row['id']; ?>, document.getElementById('cantidad_<?php echo $id; ?>').value, '<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>')">Agregar</button>
                             </div>
-                            <div class="col d-flex producto-detalles">
+                            <!--<div class="col d-flex producto-detalles">
                                 <a href="detalles.php?id=<?php echo $row['id'];?>&token=<?php echo 
                                 hash_hmac('sha1', $row['id'], KEY_TOKEN);?>">
-                            <button>Detalles</button></a></div>
+                            <button>Detalles</button></a></div>-->
                             <div class="col d-flex">
                                 <div class="input-group">
                                         <span class="input-group-btn">
