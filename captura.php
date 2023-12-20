@@ -31,9 +31,9 @@ if(is_array($datos)){
     $email = $datos['detalles']['payer']['email_adress'];
     $id_cliente = $datos['detalles']['payer']['payer_id'];
 
-    $sql = $con->prepare("INSERT INTO compra (id_transaccion, fecha,status, email,id_cliente, total)VALUES (?
-    ,?,?,?,?,?)");
-    $sql->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
+    $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha,status, email,id_cliente, total)
+    VALUES (?,?,?,?,?,?)");
+    $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
 
     if($id > 0)
@@ -43,9 +43,9 @@ if(is_array($datos)){
         {
             foreach($productos as $clave => $cantidad)
             {
-                $sql = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo =1");
-                $sql->execute([$clave]);
-                $row_prod = $sql->fetch(PDO::FETCH_ASSOC);
+                $sqlProd = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo =1");
+                $sqlProd->execute([$clave]);
+                $row_prod = $sqlProd->fetch(PDO::FETCH_ASSOC);
 
                 $precio = $row_prod['precio'];
                 $descuento = $row_prod['descuento'];
@@ -54,8 +54,7 @@ if(is_array($datos)){
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id-compra, id-producto, nombre, precio, cantidad)");
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
             }
-            //TODO: habilitar 
-            //include 'enviar_mail.php';
+            include 'enviar_mail.php';
         }
         unset($_SESSION['carrito']);
     }

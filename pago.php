@@ -118,64 +118,64 @@
             </div>
         </div>
         <div class="col-6">            
-        </div>
-            <div class="table table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Subtotal</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                        <tbody>
-                            <?php if($lista_carrito == null)
-                            {
-                                echo '<tr><td colspan="5" class="text-center"><b>Lista vacia</b></td></tr>';
-                            }
-                            else
-                            {
-                                $total = 0;
-                                foreach($lista_carrito as $producto)
+            </div>
+                <div class="table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Subtotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <?php if($lista_carrito == null)
                                 {
-                                    $_id = $producto['id'];
-                                    $nombre = $producto['nombre'];
-                                    $precio = $producto['precio'];
-                                    $descuento = $producto['descuento'];
-                                    $cantidad = $producto['cantidad'];
-                                    $precio_desc = $precio - (($precio * $descuento) / 100);
-                                    $subtotal = $cantidad * $precio_desc;
-                                    $total += $subtotal;
+                                    echo '<tr><td colspan="5" class="text-center"><b>Lista vacia</b></td></tr>';
+                                }
+                                else
+                                {
+                                    $total = 0;
+                                    foreach($lista_carrito as $producto)
+                                    {
+                                        $_id = $producto['id'];
+                                        $nombre = $producto['nombre'];
+                                        $precio = $producto['precio'];
+                                        $descuento = $producto['descuento'];
+                                        $cantidad = $producto['cantidad'];
+                                        $precio_desc = $precio - (($precio * $descuento) / 100);
+                                        $subtotal = $cantidad * $precio_desc;
+                                        $total += $subtotal;
 
-                                    $item = new MercadoPago\Item();
-                                    $item->id = $_id;
-                                    $item->title = $nombre;
-                                    $item->quantity = $cantidad;
-                                    $item->unit_price = $precio_desc;
-                                    $item->currency = "ARS";
-                                    
-                                    array_push($productos_mp, $item);
-                                    unset($item);
-                                ?>
+                                        $item = new MercadoPago\Item();
+                                        $item->id = $_id;
+                                        $item->title = $nombre;
+                                        $item->quantity = $cantidad;
+                                        $item->unit_price = $precio_desc;
+                                        $item->currency = "ARS";
+                                        
+                                        array_push($productos_mp, $item);
+                                        unset($item);
+                                    ?>
+                                    <tr>
+                                        <td> <?php echo $nombre; ?></td>
+                                        <td> 
+                                            <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> <?php echo MONEDA . 
+                                            number_format($subtotal, 2, '.', ','); ?></div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                                 <tr>
-                                    <td> <?php echo $nombre; ?></td>
-                                    <td> 
-                                        <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> <?php echo MONEDA . 
-                                        number_format($subtotal, 2, '.', ','); ?></div>
+                                    <td colspan="3"></td>
+                                    <td colspan="2">
+                                        <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
                                     </td>
                                 </tr>
-                            <?php } ?>
-                            <tr>
-                                <td colspan="3"></td>
-                                <td colspan="2">
-                                    <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
-                                </td>
-                            </tr>
-                        </tbody> 
-                    <?php } ?>
-                </table>
-            </div>
-        </div> 
+                            </tbody> 
+                        <?php } ?>
+                    </table>
+                </div>
+            </div> 
         </div>
         </main>
 
@@ -188,9 +188,9 @@
             );
 
             // Los compradores vuelven a mi sitio tras terminar con exito la compra
-                //$preference->auto_return = "aproved"; 
+                $preference->auto_return = "aproved"; 
             // el pago solo puede ser aprobado o rechazado (instantaneo)
-                //$preference->binary_mode = true; 
+                $preference->binary_mode = true; 
             // Guardar preferencia
             $preference->save();
         ?>
