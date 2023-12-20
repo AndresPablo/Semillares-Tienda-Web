@@ -183,8 +183,8 @@
         <?php //TODO: atenti con todo ese bloque 
             // Salidas de captura fallo y exito
             $preference->back_urls = array(
-                "success"=> "http://semillares.com/captura.php",
-                "failure"=> "http://semillares.com/captura.php",
+                "success"=> "http://semillares.com/clases/captura.php",
+                "failure"=> "http://semillares.com/clases/captura.php",
             );
 
             // Los compradores vuelven a mi sitio tras terminar con exito la compra
