@@ -6,7 +6,7 @@ require '../phpmailer/src/SMTP.php';
 require '../phpmailer/src/Exception.php';
 
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -24,7 +24,7 @@ try {
 
     //Recipients
     $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
-    $mail->addAddress('contacto@semillares.com.ar', 'Contacto');     //Add a recipient
+    $mail->addAddress('andrespablo.mm@gmail.com.ar', 'Contacto');     //Add a recipient
     $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');    
 
     //Content
