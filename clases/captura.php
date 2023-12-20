@@ -1,7 +1,7 @@
 <?php
 
-require 'config/config.php';
-require 'config/database.php';
+require '../config/config.php';
+require '../config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
@@ -54,6 +54,7 @@ if(is_array($datos)){
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id-compra, id-producto, nombre, precio, cantidad)");
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
             }
+            console.log($detalles);
             include 'enviar_mail.php';
         }
         unset($_SESSION['carrito']);
