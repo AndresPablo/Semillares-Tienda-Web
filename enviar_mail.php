@@ -19,16 +19,12 @@ try {
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'no-responder@semillares.com.ar';                     //SMTP username
     $mail->Password   = '@G1mjr48lV';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares NR');
+    $mail->setFrom('andrespablo.mm@gmail.com', 'Tienda Semillares NR');
     $mail->addAddress('contacto@semillares.com.ar', 'Contacto');     //Add a recipient
-
-    //Attachments
-    $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
@@ -38,9 +34,10 @@ try {
     $mail->Body    = utf8_decode($cuerpo);
     $mail->AltBody = 'Le enviamos los detalles de su compra';
 
+    $mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
     $mail->send();
-    echo 'Message has been sent';
+    echo 'Mail enviado con exito';
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Error al enviar el correo de compra: {$mail->ErrorInfo}";
 }
 ?>
