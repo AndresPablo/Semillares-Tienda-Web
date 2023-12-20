@@ -23,15 +23,16 @@ try {
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('andrespablo.mm@gmail.com', 'Tienda Semillares NR');
+    $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
     $mail->addAddress('contacto@semillares.com.ar', 'Contacto');     //Add a recipient
+    $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');    
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Detalle de su compra';
     $cuerpo = "<h4> Gracias por su compra! <\h4>";
     $cuerpo = "<p> El ID de su compra es ... <\p>";
-    $mail->Body    = utf8_decode($cuerpo);
+    $mail->Body    = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
     $mail->AltBody = 'Le enviamos los detalles de su compra';
 
     $mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
