@@ -57,6 +57,7 @@ if(is_array($datos)){
             // Enviar correo única vez después de insertar productos
             include 'enviar_mail.php';
         }
+        include 'enviar_mail.php';
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }
     // TODO: revisar luego borrar
