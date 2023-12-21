@@ -40,6 +40,7 @@
 
         $mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
         $mail->send();
+        unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
         echo 'Mail enviado con exito';
     } catch (Exception $e) {
         echo "Error al enviar el correo de compra: {$mail->ErrorInfo}";
