@@ -6,7 +6,7 @@ $db = new Database();
 $con = $db->conectar();
 
 $json = file_get_contents('php://input');
-$datos = file_get_contents($json, true);
+$datos = json_decode($json, true);
 
 $payment = $_GET['payment_id'];
 $status = $_GET['status'];
@@ -19,7 +19,7 @@ echo $status.'<br>';
 echo $payment_type.'<br>';
 echo $order_id.'<br>';
 
-// unset($_SESSION['carrito']);
+unset($_SESSION['carrito']);
 
 if(is_array($datos)){
 
