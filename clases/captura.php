@@ -19,7 +19,7 @@ echo $status.'<br>';
 echo $payment_type.'<br>';
 echo $order_id.'<br>';
 
-unset($_SESSION['carrito']);
+//unset($_SESSION['carrito']);
 
 if(is_array($datos)){
 
