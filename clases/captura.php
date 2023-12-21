@@ -39,11 +39,14 @@ if(is_array($datos)){
 
     if($id > 0)
     {
+        echo "id es mas de cero";
         $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
         if($productos != null)
         {
+            echo "Hay productos";
             foreach($productos as $clave => $cantidad)
             {
+                echo "iteracion de producto";
                 $sqlProd = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo =1");
                 $sqlProd->execute([$clave]);
                 $row_prod = $sqlProd->fetch(PDO::FETCH_ASSOC);
@@ -56,8 +59,10 @@ if(is_array($datos)){
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
             }
             // Enviar correo única vez después de insertar productos
+            echo "llamando enviar_mail.php";
             require 'enviar_mail.php';
         }
+        echo "Borrar (unset) carrito";
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }
     // TODO: revisar luego borrar
