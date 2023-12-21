@@ -19,7 +19,7 @@ echo $status.'<br>';
 echo $payment_type.'<br>';
 echo $order_id.'<br>';
 
-// unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
+// unset($_SESSION['carrito']);
 
 if(is_array($datos)){
 
@@ -54,7 +54,6 @@ if(is_array($datos)){
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id-compra, id-producto, nombre, precio, cantidad)");
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
             }
-            console.log($detalles);
             include 'enviar_mail.php';
         }
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
@@ -63,3 +62,5 @@ if(is_array($datos)){
     // timestamp
     // https://youtu.be/fRYErum_xkY?list=PL-Mlm_HYjCo-Odv5-wo3CCJ4nv0fNyl9b&t=1527
 }
+
+?>

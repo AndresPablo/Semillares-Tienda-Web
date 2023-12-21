@@ -183,9 +183,9 @@
         <?php //TODO: atenti con todo ese bloque 
             // Salidas de captura fallo y exito
             $preference->back_urls = array(
-                "success"=> "http://semillares.com/clases/captura.php",
-                //"success"=> "http://semillares.com/clases/completado.php?key=" + $id_transaccion, PAYPAL
-                "failure"=> "http://semillares.com/clases/fallo.php",
+                "success"=> "https://semillares.com.ar/clases/captura.php",
+                //"success"=> "http://semillares.com/clases/completado.php?key=" + $id_transaccion, //PAYPAL
+                "failure"=> "https://semillares.com.ar/clases/fallo.php",
             );
 
             // Los compradores vuelven a mi sitio tras terminar con exito la compra
