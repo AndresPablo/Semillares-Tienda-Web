@@ -19,7 +19,7 @@ echo $status.'<br>';
 echo $payment_type.'<br>';
 echo $order_id.'<br>';
 
-unset($_SESSION['carrito']);
+// unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
 
 if(is_array($datos)){
 
@@ -57,7 +57,7 @@ if(is_array($datos)){
             console.log($detalles);
             include 'enviar_mail.php';
         }
-        unset($_SESSION['carrito']);
+        unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }
     // TODO: revisar luego borrar
     // timestamp

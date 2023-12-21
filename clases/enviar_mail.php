@@ -31,7 +31,7 @@ try {
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Detalle de su compra';
     $cuerpo = '<h4> Gracias por su compra! <\h4>';
-    $cuerpo = '<p> El ID de su compra es '. $id_transaccion . '<\p>';
+    $cuerpo += '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
     $mail->Body    = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
     $mail->AltBody = 'Le enviamos los detalles de su compra';
 
@@ -40,6 +40,6 @@ try {
     echo 'Mail enviado con exito';
 } catch (Exception $e) {
     echo "Error al enviar el correo de compra: {$mail->ErrorInfo}";
-    exit; // quitar una vez que funcione porque se detiene aca
+    //exit; // quitar una vez que funcione porque se detiene aca
 }
 ?>

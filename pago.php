@@ -184,11 +184,12 @@
             // Salidas de captura fallo y exito
             $preference->back_urls = array(
                 "success"=> "http://semillares.com/clases/captura.php",
-                "failure"=> "http://semillares.com/clases/captura.php",
+                //"success"=> "http://semillares.com/clases/completado.php?key=" + $id_transaccion, PAYPAL
+                "failure"=> "http://semillares.com/clases/fallo.php",
             );
 
             // Los compradores vuelven a mi sitio tras terminar con exito la compra
-                $preference->auto_return = "aproved"; 
+                $preference->auto_return = "approved"; 
             // el pago solo puede ser aprobado o rechazado (instantaneo)
                 $preference->binary_mode = true; 
             // Guardar preferencia
