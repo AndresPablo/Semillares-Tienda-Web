@@ -14,6 +14,7 @@ $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
 
 echo "<h3> Pago exitoso! </h3>";
+
 echo $payment.'<br>';
 echo $status.'<br>';
 echo $payment_type.'<br>';
@@ -51,13 +52,12 @@ if(is_array($datos)){
                 $descuento = $row_prod['descuento'];
                 $precio_desc =  $precio - (( $precio * $descuento)/100);
                 
-                $sql_insert = $con->prepare("INSERT INTO detalle_compra (id-compra, id-producto, nombre, precio, cantidad)");
+                $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)");
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
             }
             // Enviar correo única vez después de insertar productos
             include 'enviar_mail.php';
         }
-        include 'enviar_mail.php';
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }
     // TODO: revisar luego borrar
