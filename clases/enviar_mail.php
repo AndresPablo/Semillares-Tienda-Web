@@ -30,8 +30,15 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Detalle de su compra';
+
+
     $cuerpo = '<h4> Gracias por su compra! <\h4>';
-    $cuerpo += '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
+    $cuerpo .= '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
+
+    // TODO: borrar! TEST
+    error_log($cuerpo);
+    print_r($cuerpo);
+
     $mail->Body    = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
     $mail->AltBody = 'Le enviamos los detalles de su compra';
 
