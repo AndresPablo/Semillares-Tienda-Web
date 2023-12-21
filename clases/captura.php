@@ -56,7 +56,7 @@ if(is_array($datos)){
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
             }
             // Enviar correo única vez después de insertar productos
-            require "enviar_mail.php";
+            require 'enviar_mail.php';
         }
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }
