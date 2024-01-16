@@ -5,6 +5,8 @@ require '../config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
+print_r($_POST);  // Borrar
+
 $json = file_get_contents('php://input');
 $datos = json_decode($json, true);
 
