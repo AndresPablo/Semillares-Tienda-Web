@@ -39,6 +39,7 @@
 
         $mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
         $mail->send();
+        echo $mail->SMTPDebug;
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
         echo 'Mail enviado con exito';
     } catch (Exception $e) {
