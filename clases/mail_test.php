@@ -23,7 +23,6 @@
 
     $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
     $mail->addAddress('andrespablo.mm@gmail.com', 'Prueba');
-    $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');    
 
 
     $mail->Subject = 'Prueba';

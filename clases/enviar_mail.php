@@ -25,7 +25,7 @@
         //Recipients
         $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
         $mail->addAddress('andrespablo.mm@gmail.com', 'Prueba');     //Add a recipient
-        $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');    
+        $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');   // responde a esta direccion en lugar de la otra 
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
