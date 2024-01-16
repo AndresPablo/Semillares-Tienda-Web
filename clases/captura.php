@@ -2,11 +2,18 @@
 
 require '../config/config.php';
 require '../config/database.php';
+require 'enviar_mail.php';
 $db = new Database();
 $con = $db->conectar();
 
 $json = file_get_contents('php://input');
 $datos = json_decode($json, true);
+
+if(!empty($datos)) {
+    echo "Datos del pago recibidos";
+  } else {
+    echo "No se recibieron datos del pago";
+  }
 
 $payment = $_GET['payment_id'];
 $status = $_GET['status'];
@@ -38,6 +45,7 @@ if(is_array($datos)){
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
     echo "evaluando si id > 0";
+
     if($id > 0)
     {
         echo "id es mas de cero";
@@ -61,7 +69,6 @@ if(is_array($datos)){
             }
             // Enviar correo única vez después de insertar productos
             echo "llamando enviar_mail.php";
-            require 'enviar_mail.php';
             include 'enviar_mail.php';
         }
         // TEST 15-1 no funciona todavia
