@@ -22,7 +22,9 @@
     $mail->Password   = '@Nore2023';                            //SMTP password
 
     $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
-    $mail->addAddress('andrespablo.mm@gmail.com');
+    $mail->addAddress('andrespablo.mm@gmail.com', 'Prueba');
+    $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');    
+
 
     $mail->Subject = 'Prueba';
     $mail->Body = 'Este es un correo de prueba';
