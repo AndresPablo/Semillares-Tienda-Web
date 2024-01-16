@@ -21,6 +21,7 @@ echo $payment_type.'<br>';
 echo $order_id.'<br>';
 
 //unset($_SESSION['carrito']);
+print_r($datos);
 
 if(is_array($datos)){
 
@@ -36,7 +37,7 @@ if(is_array($datos)){
     VALUES (?,?,?,?,?,?)");
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
-    echo "captura";
+    echo "evaluando si id > 0";
     if($id > 0)
     {
         echo "id es mas de cero";
@@ -60,8 +61,11 @@ if(is_array($datos)){
             }
             // Enviar correo única vez después de insertar productos
             echo "llamando enviar_mail.php";
+            require 'enviar_mail.php';
             include 'enviar_mail.php';
         }
+        // TEST 15-1 no funciona todavia
+        include 'enviar_mail.php';
         echo "Borrar (unset) carrito";
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }

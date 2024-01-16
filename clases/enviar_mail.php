@@ -31,7 +31,6 @@
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Detalle de su compra';
 
-
         $cuerpo = '<h4> Gracias por su compra! </h4>';
         $cuerpo .= '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
 
@@ -46,3 +45,4 @@
         echo "Error al enviar el correo de compra: {$mail->ErrorInfo}";
         //exit; // quitar una vez que funcione porque se detiene aca
     }
+    
