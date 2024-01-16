@@ -36,7 +36,7 @@ if(is_array($datos)){
     VALUES (?,?,?,?,?,?)");
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
-
+    echo "captura";
     if($id > 0)
     {
         echo "id es mas de cero";
