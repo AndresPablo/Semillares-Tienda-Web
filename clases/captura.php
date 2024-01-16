@@ -7,6 +7,7 @@ $con = $db->conectar();
 
 print_r($_POST);  // Borrar
 
+// Recibe la informacion desde una funcion AJAX en "pago.php"
 $json = file_get_contents('php://input');
 $datos = json_decode($json, true);
 
@@ -72,8 +73,6 @@ if(is_array($datos)){
             echo "llamando enviar_mail.php";
             include 'enviar_mail.php';
         }
-        // TEST 15-1 no funciona todavia
-        include 'enviar_mail.php';
         echo "Borrar (unset) carrito";
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }

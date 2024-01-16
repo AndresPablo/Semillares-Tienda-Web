@@ -16,7 +16,7 @@
     // conexion a base de datos
     $db = new Database();
     $con = $db->conectar();
-    var_dump($con);
+    //var_dump($con); // TEST
 
     // Tomar productos del carrito de la sesión
     $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
@@ -54,7 +54,6 @@
 
     // Agregar items al carrito
     $preference->items = $productos_mp;
-
 
     // Guardar preferencia
     $preference->save();
@@ -181,6 +180,7 @@
 
         
         <?php //TODO: atenti con todo ese bloque 
+            //$preference->items = $productos_mp;
             // Salidas de captura fallo y exito
             $preference->back_urls = array(
                 "success"=> "https://semillares.com.ar/clases/captura.php",
@@ -194,7 +194,24 @@
                 $preference->binary_mode = true; 
             // Guardar preferencia
             $preference->save();
-        ?>
+
+            // Array con datos a enviar a captura.php
+            $datos_pago = [
+                'preference_id' => $preference->id, 
+                'total' => $total, // total de la compra
+            ];
+            
+            // Encode a JSON  
+            $json = json_encode($datos_pago);
+            
+            // Envía los datos vía POST
+            $ch = curl_init('https://semillares.com.ar/clases/captura.php');
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+            $response = curl_exec($ch);
+            curl_close($ch);
+                    ?>
 
         <script>
             // Llamar a la función para inicializar Mercado Pago
