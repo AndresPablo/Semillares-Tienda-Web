@@ -179,39 +179,23 @@
         </main>
 
         
-        <?php //TODO: atenti con todo ese bloque 
+        <?php 
+            //TODO: atenti con todo ese bloque 
             //$preference->items = $productos_mp;
             // Salidas de captura fallo y exito
             $preference->back_urls = array(
                 "success"=> "https://semillares.com.ar/clases/captura.php",
-                //"success"=> "http://semillares.com/clases/completado.php?key=" + $id_transaccion, //PAYPAL
                 "failure"=> "https://semillares.com.ar/clases/fallo.php",
             );
 
             // Los compradores vuelven a mi sitio tras terminar con exito la compra
-                $preference->auto_return = "approved"; 
+                $preference->auto_return = "approved";
             // el pago solo puede ser aprobado o rechazado (instantaneo)
                 $preference->binary_mode = true; 
             // Guardar preferencia
             $preference->save();
 
-            // Array con datos a enviar a captura.php
-            $datos_pago = [
-                'preference_id' => $preference->id, 
-                'total' => $total, // total de la compra
-            ];
-            
-            // Encode a JSON  
-            $json = json_encode($datos_pago);
-            
-            // Envía los datos vía POST
-            $ch = curl_init('https://semillares.com.ar/clases/captura.php');
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-            $response = curl_exec($ch);
-            curl_close($ch);
-                    ?>
+        ?>
 
         <script>
             // Llamar a la función para inicializar Mercado Pago
