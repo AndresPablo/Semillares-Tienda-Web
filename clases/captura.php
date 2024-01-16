@@ -2,7 +2,6 @@
 
 require '../config/config.php';
 require '../config/database.php';
-require 'enviar_mail.php';
 $db = new Database();
 $con = $db->conectar();
 
