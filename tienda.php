@@ -158,8 +158,8 @@
                                 <img class="producto-imagen" src="<?php echo $imagen; ?>" alt="">
                             </div>
                             <div class="col">
-                            <a class="producto-detalles" href="detalles.php?id=<?php echo $row['id'];?>&token=<?php echo 
-                                hash_hmac('sha1', $row['id'], KEY_TOKEN);?>"><h5><?php echo $row['nombre']; ?></h5></a>
+                            <a class="producto-detalles nav-link" href="detalles.php?id=<?php echo $row['id'];?>&token=<?php echo 
+                                hash_hmac('sha1', $row['id'], KEY_TOKEN);?>"><h5 class="producto-detalles nav-link" ><?php echo $row['nombre']; ?></h5></a>
                                 <p>$<?php echo number_format($row['precio'], 0, ',', '.' ); ?></p>
                             </div>
                         </div>
