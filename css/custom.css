@@ -409,8 +409,8 @@ footer h4 {
 }
 
 .producto-detalles{
-    color: #000000;
-    text-decoration: none;
+    color: #000000!important;
+    text-decoration: none!important;
 }
 
 /*------------------------------------------------------------*/
