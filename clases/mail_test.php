@@ -22,11 +22,11 @@
     $mail->Password   = '@Nore2023';                            //SMTP password
 
     $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
-    $mail->addAddress('andrespablo.mm@gmail.com', 'Prueba');
+    $mail->addAddress('semillares.lp@gmail.com', 'Prueba Semillares');
 
 
     $mail->Subject = 'Prueba';
-    $mail->Body = 'Este es un correo de prueba';
+    $mail->Body = 'El ID de tu compra es';
 
     if($mail->send()) {
         echo 'Correo enviado!';
