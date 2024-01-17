@@ -170,7 +170,7 @@
                         <div id="carouselImages" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="<?php echo $rutaImg?> img/productos/1/principal.jpg" class="d-block w-100" alt="...">
+                                    <img src="<?php echo $rutaImg; ?>" class="d-block w-100" alt="...">
                                 </div>
                                     <?php foreach($imagenes as $img) { ?>
                                         <div class="carousel-item">
