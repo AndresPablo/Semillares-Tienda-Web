@@ -209,7 +209,7 @@
                         </div>
 
                         <div class="d-grid gap-3 col-10 mx-auto">
-                            <button class="btn btn-primary" type="button">Comprar ahora</button>
+                            <!--<button class="btn btn-primary" type="button">Comprar ahora</button>-->
                             <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
                             $id; ?>, cantidad.value, '<?php echo $token_tmp; ?>')">Agregar</button>
                         </div>
