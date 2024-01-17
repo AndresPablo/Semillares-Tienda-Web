@@ -29,7 +29,6 @@ echo $status.'<br>';
 echo $payment_type.'<br>';
 echo $order_id.'<br>';
 
-//unset($_SESSION['carrito']);
 print_r($datos);
 
 if(is_array($datos)){
@@ -41,7 +40,7 @@ if(is_array($datos)){
     $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
     $email = $datos['detalles']['payer']['email_adress'];
     $id_cliente = $datos['detalles']['payer']['payer_id'];
-
+    // Prepara los datos para insertarlos en la base de datos
     $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha,status, email,id_cliente, total)
     VALUES (?,?,?,?,?,?)");
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);

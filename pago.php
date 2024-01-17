@@ -11,6 +11,18 @@
     // Crear preferencia
     $preference = new MercadoPago\Preference();
 
+
+    $preference->back_urls = array(
+        "success"=> "https://semillares.com.ar/clases/captura.php",
+        "failure"=> "https://semillares.com.ar/clases/fallo.php",
+    );
+
+    // Los compradores vuelven a mi sitio tras terminar con exito la compra
+        $preference->auto_return = "approved";
+    // el pago solo puede ser aprobado o rechazado (instantaneo)
+        $preference->binary_mode = true; 
+
+
     $lista_carrito = array();
 
     // conexion a base de datos
@@ -180,6 +192,7 @@
 
         
         <?php 
+        /*
             //TODO: atenti con todo ese bloque 
             //$preference->items = $productos_mp;
             // Salidas de captura fallo y exito
@@ -194,7 +207,7 @@
                 $preference->binary_mode = true; 
             // Guardar preferencia
             $preference->save();
-
+            */
         ?>
 
         <script>
