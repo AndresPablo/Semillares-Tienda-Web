@@ -5,7 +5,11 @@ require '../config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
-if(!empty($payment)) {
+// Recibe la informacion desde una funcion AJAX en "pago.php"
+$json = file_get_contents('php://input');
+$datos = json_decode($json, true);
+
+if(!empty($datos)) {
     echo "Datos del pago recibidos";
   } else {
     echo "No se recibieron datos del pago";
@@ -23,7 +27,7 @@ echo $status.'<br>';
 echo $payment_type.'<br>';
 echo $order_id.'<br>';
 
-print_r($payment);
+print_r($datos);
 
 if(is_array($datos))
 {

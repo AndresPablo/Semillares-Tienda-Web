@@ -14,14 +14,13 @@
 
     $preference->back_urls = array(
         "success"=> "https://semillares.com.ar/clases/captura.php",
-        "failure"=> "https://semillares.com.ar/clases/fallo.php",
+        "failure"=> "https://semillares.com.ar/clases/fallo.php"
     );
 
     // Los compradores vuelven a mi sitio tras terminar con exito la compra
         $preference->auto_return = "approved";
     // el pago solo puede ser aprobado o rechazado (instantaneo)
         $preference->binary_mode = true; 
-
 
     $lista_carrito = array();
 
@@ -33,7 +32,6 @@
     // Tomar productos del carrito de la sesión
     $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
-    //print_r($_SESSION);
 
     if ($productos != null && count($productos) > 0) {
         foreach ($productos as $clave => $cantidad) {
@@ -81,7 +79,6 @@
 <!-- HTML -->
 <!DOCTYPE html>
 <html lang="es-AR">
-
 
 <head>
     <meta charset="UTF-8">
@@ -192,13 +189,12 @@
 
         
         <?php 
-        /*
             //TODO: atenti con todo ese bloque 
             //$preference->items = $productos_mp;
             // Salidas de captura fallo y exito
             $preference->back_urls = array(
                 "success"=> "https://semillares.com.ar/clases/captura.php",
-                "failure"=> "https://semillares.com.ar/clases/fallo.php",
+                "failure"=> "https://semillares.com.ar/clases/fallo.php"
             );
 
             // Los compradores vuelven a mi sitio tras terminar con exito la compra
@@ -207,7 +203,6 @@
                 $preference->binary_mode = true; 
             // Guardar preferencia
             $preference->save();
-            */
         ?>
 
         <script>
