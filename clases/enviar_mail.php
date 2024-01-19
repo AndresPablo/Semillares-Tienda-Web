@@ -20,7 +20,7 @@
         $mail->Username   = 'no-responder@semillares.com.ar';       //SMTP username
         $mail->Password   = '@Nore2023';                            //SMTP password
         $mail->SMTPSecure = 'ssl';                                  //Enable implicit TLS encryption
-        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Port       =  465;                                   //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
         $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
@@ -33,17 +33,17 @@
 
         $cuerpo = '<h4> Gracias por su compra! </h4>';
         $cuerpo .= '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
+        $cuerpo .= '<br><p>En breve te contactamos para coordinar el envío, o llamanos al (221) 123-456.</p>';
 
         $mail->Body    = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
         $mail->AltBody = 'Le enviamos los detalles de su compra';
 
         $mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
         $mail->send();
-        echo $mail->SMTPDebug;
+        //echo $mail->SMTPDebug;
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
-        echo 'Mail enviado con exito';
     } catch (Exception $e) {
         echo "Error al enviar el correo de compra: {$mail->ErrorInfo}";
-        //exit; // quitar una vez que funcione porque se detiene aca
+        exit; // quitar una vez que funcione porque se detiene aca
     }
     

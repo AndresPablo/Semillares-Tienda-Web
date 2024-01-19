@@ -5,15 +5,16 @@ require '../config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
-// Recibe la informacion desde una funcion AJAX en "pago.php"
-$json = file_get_contents('php://input');
-$datos = json_decode($json, true);
 
-if(!empty($payment)) {
-    echo "Datos del pago recibidos";
-  } else {
-    echo "No se recibieron datos del pago";
-  }
+// Consultar BD
+//$sql = "SELECT preference_id FROM pagos WHERE ...";
+
+//$row = ...;
+$preferenceId = $row['preference_id'];
+$paymentInfo = $sdk->payment->get($preferenceId);
+$payment = $paymentInfo['response'];
+
+
 
 $payment = $_GET['payment_id'];
 $status = $_GET['status'];
@@ -22,6 +23,17 @@ $order_id = $_GET['merchant_order_id'];
 $live_mode = $_GET['live_mode'];
 $payer = $_GET['payer'];
 $card = $_GET['card'];
+
+var_dump($payment); // TEST
+
+$paymentId = $payment['id']; 
+$status = $payment['status'];
+
+if(!empty($payment)) {
+    echo "Datos del pago recibidos";
+  } else {
+    echo "No se recibieron datos del pago";
+}
 
 echo "<h3> Pago exitoso! </h3>";
 
@@ -44,8 +56,8 @@ if($payment > 0)
 
 if(is_array($datos))
 {
-
-    $id_transaccion = $datos['detalles']['id'];
+    //$id_transaccion = $datos['detalles']['id']; // paypal
+    $id_transaccion = $payment;
     $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
     $status = $datos['detalles']['status'];
     $fecha = $datos['detalles']['update_time'];
@@ -57,7 +69,6 @@ if(is_array($datos))
     VALUES (?,?,?,?,?,?)");
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
-    echo "evaluando si id > 0";
 
     if($id > 0)
     {

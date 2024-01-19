@@ -27,7 +27,6 @@
     // conexion a base de datos
     $db = new Database();
     $con = $db->conectar();
-    //var_dump($con); // TEST
 
     // Tomar productos del carrito de la sesión
     $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
@@ -67,6 +66,10 @@
 
     // Guardar preferencia
     $preference->save();
+
+    $preferenceId = $preference->id;
+    // Guardar en BD  
+    $sql = "INSERT INTO pagos(preference_id) VALUES ($preferenceId)";
 
     if (!$con) {
         die("Error de conexión a la base de datos: " . $db->getLastError());
@@ -199,6 +202,8 @@
 
             // Los compradores vuelven a mi sitio tras terminar con exito la compra
                 $preference->auto_return = "approved";
+            // redirecciona después de 5 segundos
+                $preference->auto_return_after = 5; 
             // el pago solo puede ser aprobado o rechazado (instantaneo)
                 $preference->binary_mode = true; 
             // Guardar preferencia
