@@ -9,7 +9,7 @@ $con = $db->conectar();
 $json = file_get_contents('php://input');
 $datos = json_decode($json, true);
 
-if(!empty($datos)) {
+if(!empty($payment)) {
     echo "Datos del pago recibidos";
   } else {
     echo "No se recibieron datos del pago";
@@ -33,6 +33,14 @@ echo $live_mode.'<br>';
 echo $card.'<br>';
 
 print_r($datos);
+
+if($payment > 0)
+{
+    echo "llamando enviar_mail.php";
+    include 'enviar_mail.php';
+    echo "Borrar (unset) carrito";
+    unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
+}
 
 if(is_array($datos))
 {
