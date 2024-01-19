@@ -33,7 +33,7 @@
 
         $cuerpo = '<h4> Gracias por su compra! </h4>';
         $cuerpo .= '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
-        $cuerpo .= '<br><p>En breve te contactamos para coordinar el envío, o llamanos al (221) 123-456.</p>';
+        $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al (221) 123-456.</p>';
 
         $mail->Body    = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
         $mail->AltBody = 'Le enviamos los detalles de su compra';

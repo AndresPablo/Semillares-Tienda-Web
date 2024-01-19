@@ -46,13 +46,10 @@ echo $order_id.'<br>';
 echo $live_mode.'<br>';
 echo $card.'<br>';
 
-print_r($datos);
-
 if($payment > 0)
 {
-    echo "llamando enviar_mail.php";
+    $id_transaccion = $payment;
     include 'enviar_mail.php';
-    echo "Borrar (unset) carrito";
     unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
 }
 
