@@ -19,6 +19,9 @@ $payment = $_GET['payment_id'];
 $status = $_GET['status'];
 $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
+$live_mode = $_GET['live_mode'];
+$payer = $_GET['payer'];
+$card = $_GET['card'];
 
 echo "<h3> Pago exitoso! </h3>";
 
@@ -26,6 +29,8 @@ echo $payment.'<br>';
 echo $status.'<br>';
 echo $payment_type.'<br>';
 echo $order_id.'<br>';
+echo $live_mode.'<br>';
+echo $card.'<br>';
 
 print_r($datos);
 
