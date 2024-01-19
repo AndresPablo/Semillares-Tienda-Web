@@ -8,11 +8,10 @@ $con = $db->conectar();
 
 // Consultar BD
 //$sql = "SELECT preference_id FROM pagos WHERE ...";
-
 //$row = ...;
-$preferenceId = $row['preference_id'];
-$paymentInfo = $sdk->payment->get($preferenceId);
-$payment = $paymentInfo['response'];
+//$preferenceId = $row['preference_id'];
+//$paymentInfo = $sdk->payment->get($preferenceId);
+//$payment = $paymentInfo['response'];
 
 
 
