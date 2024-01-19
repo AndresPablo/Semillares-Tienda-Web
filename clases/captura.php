@@ -14,14 +14,10 @@ $con = $db->conectar();
 //$payment = $paymentInfo['response'];
 
 
-
 $payment = $_GET['payment_id'];
 $status = $_GET['status'];
 $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
-$live_mode = $_GET['live_mode'];
-$payer = $_GET['payer'];
-$card = $_GET['card'];
 
 var_dump($payment); // TEST
 
@@ -34,26 +30,7 @@ if(!empty($payment)) {
     echo "No se recibieron datos del pago";
 }
 
-
-
-
-echo "<h3> Pago exitoso! </h3>";
-
-echo $payment.'<br>';
-echo $status.'<br>';
-echo $payment_type.'<br>';
-echo $order_id.'<br>';
-echo $live_mode.'<br>';
-echo $card.'<br>';
-
 if($payment > 0)
-{
-    $id_transaccion = $payment;
-    include 'enviar_mail.php';
-    unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
-}
-
-if(is_array($datos))
 {
     //$id_transaccion = $datos['detalles']['id']; // paypal
     $id_transaccion = $payment;
@@ -101,15 +78,43 @@ if(is_array($datos))
 
 ?>
 
-<html>
-    <main>
-        <div class="container">
-            <h3>Tu pago se realizó con éxito</h3>
-            <h5>Te hemos enviado un correo con los datos de tu compra</h5>
-            <a href=""> <button>
-                Volver a la tienda
-            </button></a>
-            <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
-        </div>
-    </main>
+<!DOCTYPE html>
+<html lang="es-AR">
+        
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Semillares - Checkout Mercado Pago</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Custom CSS (personalizado)-->
+        <link href="css/custom.css" rel="stylesheet" />
+        <!-- Fuentes (Montserrat) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <!-- SDK Mercado Pago -->
+        <script src="https://sdk.mercadopago.com/js/v2"></script>
+        <!-- Funciones SDK Mercado Pago -->
+        <script src="js/funciones-MP.js"></script>
+    </head>
+
+    <body>
+        <section>
+            <div class="container">
+                <h3>Tu pago se realizó con éxito</h3>
+                <h5>Te hemos enviado un correo con los datos de tu compra</h5>
+                <a href=""> <button>
+                    Volver a la tienda
+                </button></a>
+                <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
+            </div>
+        </section>
+    <body>
 </html>
