@@ -35,6 +35,9 @@ if(!empty($payment)) {
     echo "No se recibieron datos del pago";
 }
 
+
+
+
 echo "<h3> Pago exitoso! </h3>";
 
 echo $payment.'<br>';
@@ -98,7 +101,19 @@ if(is_array($datos))
         echo "Borrar (unset) carrito";
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
     }
-    // TODO: revisar luego borrar
-    // timestamp
-    // https://youtu.be/fRYErum_xkY?list=PL-Mlm_HYjCo-Odv5-wo3CCJ4nv0fNyl9b&t=1527
 }
+
+?>
+
+<html>
+    <main>
+        <div class="container">
+            <h3>Tu pago se realizó con éxito</h3>
+            <h5>Te hemos enviado un correo con los datos de tu compra</h5>
+            <a href=""> <button>
+                Volver a la tienda
+            </button></a>
+            <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
+        </div>
+    </main>
+</html>

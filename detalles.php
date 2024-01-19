@@ -218,9 +218,7 @@
             </div>
         </main>
         
-        <div  id="wraper" class="container-fluid row">
-           
-        </div>
+
     </section>
 
     <!-- Footer-->
