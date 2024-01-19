@@ -12,7 +12,8 @@ $con = $db->conectar();
 //$preferenceId = $row['preference_id'];
 //$paymentInfo = $sdk->payment->get($preferenceId);
 //$payment = $paymentInfo['response'];
-
+//$paymentId = $payment['id']; 
+//$status = $payment['status'];
 
 $payment = $_GET['payment_id'];
 $status = $_GET['status'];
@@ -20,9 +21,6 @@ $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
 
 var_dump($payment); // TEST
-
-$paymentId = $payment['id']; 
-$status = $payment['status'];
 
 if(!empty($payment)) {
     echo "Datos del pago recibidos";
