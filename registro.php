@@ -86,7 +86,7 @@
                     <!-- Columna derecha -->
                     <div class="col-md-6 ingreso-derecha d-flex flex-column align-items-center justify-content-center">
                         <div class="row">
-                            <div class="col-sm-6"><a class="" href="login.html">Iniciar Sesión</a></div>
+                            <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="active bold" href="registro.html">Registrarme</a></div>
                         </div>
                         <div class="signin_form s_form d-grid justify-content-center p-3 "> 
@@ -131,7 +131,7 @@
                     <!-- Columna derecha -->
                     <div class="col-6 d-inline-flex flex-column ingreso-derecha align-items-center justify-content-center">
                         <div class="row">
-                            <div class="col-sm-6"><a class="" href="login.html">Iniciar Sesión</a></div>
+                            <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="active bold" href="registro.html">Registrarme</a></div>
                         </div>
                         <div class="signin_form s_form d-grid justify-content-center p-3 "> 
