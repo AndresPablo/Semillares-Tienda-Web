@@ -56,8 +56,8 @@
                     </button>
                     <div class="col col-5 collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item "><a class="nav-link texto-cuenta" href="login.html">Ingresar</a></li>
-                            <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.html">Registrarme</a></li>
+                            <li class="nav-item "><a class="nav-link texto-cuenta" href="login.php">Ingresar</a></li>
+                            <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.php">Registrarme</a></li>
                         </ul>
                         <form class="d-flex">
                             <a href="checkout.php" class="btn btn-outline-dark" type="submit">
