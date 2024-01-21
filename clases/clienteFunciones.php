@@ -9,7 +9,7 @@ function generarToken()
 function registraCliente(array $datos, $con)
 {
     // estamos trabajando con PDO para los valores, pore eso los ?????
-    $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,?,1, now())");
+    $sql = $con->prepare ("INSERT INTO clientes (id, nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,?,?,1, now())");
     if($sql->execute($datos))
     {
         return $con->lastInsertId();
