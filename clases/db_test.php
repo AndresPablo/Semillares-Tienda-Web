@@ -1,9 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require '../config/config.php';
 require '../config/database.php';
 require 'clienteFunciones.php';
@@ -13,7 +9,6 @@ $db = new Database();
 $con = $db->conectar();   
 
 $errors = [];
-
 
 
 $nombres = 'pepe';
@@ -61,6 +56,7 @@ try{
     }else
     {
         $errors[] = "error al registrar Cliente";
+        error_log(print_r($datos, true)); // registro en log
     }
 }catch (PDOException $e) {
     echo "Error PDO: " . $e->getMessage();
