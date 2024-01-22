@@ -8,6 +8,25 @@ require 'clienteFunciones.php';
 $db = new Database();
 $con = $db->conectar();   
 
+// Imprimir valor de la conexión
+echo "<pre>";
+print_r($con); 
+echo "</pre>";
+
+// Verifica que no sea null
+if($con == null) {
+  echo "Error de conexión";
+  exit;
+}
+
+// Verifica que esté conectado 
+if(!$con->getAttribute(PDO::ATTR_SERVER_INFO)) {
+  echo "Error de conexión";
+  exit;
+}
+
+
+
 $errors = [];
 
 
