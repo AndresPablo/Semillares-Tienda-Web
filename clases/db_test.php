@@ -12,7 +12,6 @@ $errors = [];
 
 
 
-
 $nombres = trim('pepe');
 $apellidos = trim('flores');
 $email = trim('correo@servicio.com');
@@ -22,7 +21,21 @@ $usuario = trim('mi_user_99');
 $contraseña = trim('1234');
 $recontraseña = trim('1234');
 
+$datos = [];
+
+// agregar valores 
+$datos['nombres'] = $nombres; 
+$datos['apellidos'] = $apellidos;
+$datos['email'] = $email; 
+$datos['telefono'] = $telefono;
+$datos['dni'] = $dni; 
+$datos['usuario'] = $usuario;
+$datos['contraseña'] = $contraseña; 
+$datos['recontraseña'] = $recontraseña;
+
+
 $id =  0;
+
 // estamos trabajando con PDO para los valores, pore eso los ?????
 $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
 if($sql->execute($datos))
