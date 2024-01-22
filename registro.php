@@ -26,7 +26,7 @@
         {
             $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
             $token = generarToken();
-            if(!registraUsuario([$usuario, $password, $token, $id], $con))
+            if(!registraUsuario([$usuario, $pass, $token, $id], $con))
             {
                 $errors[] = "error al registrar Usuario";
             }
