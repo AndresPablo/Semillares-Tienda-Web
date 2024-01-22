@@ -86,9 +86,9 @@
                     <!-- Columna derecha -->
                     <div class="col-md-6 ingreso-derecha d-flex flex-column align-items-center justify-content-center">
                         <div class="row">
-                                    <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
-                                    <div class="col-sm-6"><a class="active bold" href="registro.html">Registrarme</a></div>
-                                </div>
+                            <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
+                            <div class="col-sm-6"><a class="active bold" href="#">Registrarme</a></div>
+                        </div>
                         <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
                             <div class="signin_form s_form d-grid justify-content-center p-3 "> 
                                 <div class="input_text my-1"> 
@@ -109,7 +109,7 @@
                                 </div> 
                                 <div class="input_text my-1"> 
                                     <i class="bi bi-telephone"></i> <span class="text-danger">*</span>
-                                    <input class="text form-control" required type="email" name="telefono" id="telefono" placeholder="Telefono"> 
+                                    <input class="text form-control" required type="text" name="telefono" id="telefono" placeholder="Telefono"> 
                                 </div> 
                                 <div class="input_text my-1"> 
                                     <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> <span class="text-danger">*</span>
