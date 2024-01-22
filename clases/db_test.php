@@ -26,7 +26,7 @@ $datos['apellido'] = $apellido;
 print_r($datos);
 
 $sql = $con->prepare ("INSERT INTO prueba (nombre, apellido) VALUES (?, ?)"); 
-$sql->execute($datos);
+$sql->execute([$nombre, $apellido]);
 
 
 
