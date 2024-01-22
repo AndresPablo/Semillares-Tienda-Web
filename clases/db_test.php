@@ -20,10 +20,10 @@ $nombres = 'pepe';
 $apellidos = 'flores';
 $email = 'correo@servicio.com';
 $telefono = '123345';
-$dni = '01010101';
-$usuario = 'mi_user_99';
-$contraseña = '1234';
-$recontraseña = '1234';
+$dni = 01010101;
+$usuario = 'miUser99';
+$contraseña = 'Prueba_198654*';
+$recontraseña = 'Prueba_198654*';
 
 $datos = [];
 
@@ -41,8 +41,8 @@ $datos['recontraseña'] = $recontraseña;
 $id =  0;
 
 // estamos trabajando con PDO para los valores, pore eso los ?????
-$sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta, fecha_modifica)
-VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())");
+$sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta)
+VALUES (?, ?, ?, ?, ?, 1, NOW())");
 if($sql->execute($datos))
 {
     $id = $con->lastInsertId();
