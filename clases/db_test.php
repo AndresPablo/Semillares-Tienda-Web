@@ -15,8 +15,8 @@ $nombre = 'Pepe';
 $apellido = 'Flores';
 
 // agregar valores 
-$datos['nombre'] = $nombre; 
-$datos['apellido'] = $apellido;
+$datos['nombre'] = 'Luis'; 
+$datos['apellido'] = 'Gomez';
 
 
 $sql = $con->prepare ("INSERT INTO prueba (nombre, apellido) VALUES (?,?)");
