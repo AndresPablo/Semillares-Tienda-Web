@@ -37,7 +37,7 @@ $datos['recontraseña'] = $recontraseña;
 $id =  0;
 
 // estamos trabajando con PDO para los valores, pore eso los ?????
-$sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
+$sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(NULL,?,?,?,?,?,1, now(), NULL, NULL)");
 if($sql->execute($datos))
 {
     $id = $con->lastInsertId();
