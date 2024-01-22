@@ -16,6 +16,7 @@ $con = $db->conectar();
 
 $datos = [];
 
+/*
 $nombre = 'Pepe';
 $apellido = 'Flores';
 
@@ -25,7 +26,21 @@ $datos['apellido'] = $apellido;
 
 print_r($datos);
 
-//$sql = $con->prepare ("INSERT INTO prueba (nombre, apellido) VALUES (?, ?)"); 
+$sql = $con->prepare ("INSERT INTO prueba (nombre, apellido) VALUES (?, ?)"); */
+
+
+$nombre = 'Pepe';
+$apellido = 'Flores';
+$email = 'Pepito@servicio.com';
+$telefono = '011 1568987';
+$dni = '30303030';
+
+$datos['nombres'] = $nombre; 
+$datos['apellidos'] = $apellido;
+$datos['emaiñ'] = $email; 
+$datos['telefono'] = $telefono;
+$datos['dni'] = $dni; 
+
 $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
 
 $sql->execute(array_values($datos));
