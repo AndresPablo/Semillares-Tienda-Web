@@ -26,7 +26,11 @@ $datos['apellido'] = $apellido;
 print_r($datos);
 
 $sql = $con->prepare ("INSERT INTO prueba (nombre, apellido) VALUES (?, ?)"); 
-$sql->execute([$nombre, $apellido]);
+
+$sql->execute(array_values($datos));
+//$sql->execute($datos); // NO funciona
+//$sql->execute([$nombre, $apellido]); // Funciona
+
 
 
 
