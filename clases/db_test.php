@@ -10,6 +10,18 @@ $con = $db->conectar();
 
 $errors = [];
 
+
+
+
+$nombres = trim('pepe');
+$apellidos = trim('flores');
+$email = trim('correo@servicio.com');
+$telefono = trim('123345');
+$dni = trim('01010101');
+$usuario = trim('mi_user_99');
+$contraseña = trim('1234');
+$recontraseña = trim('1234');
+
 $id =  0;
 // estamos trabajando con PDO para los valores, pore eso los ?????
 $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,?,1, now())");
