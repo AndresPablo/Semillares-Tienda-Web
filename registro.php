@@ -16,15 +16,15 @@
         $telefono = trim($_POST['telefono']);
         $dni = trim($_POST['dni']);
         $usuario = trim($_POST['usuario']);
-        $contraseña = trim($_POST['contraseña']);
-        $recontraseña = trim($_POST['recontraseña']);
+        $pass = trim($_POST['pass']);
+        $repass = trim($_POST['repass']);
 
         $id = registraCliente([$nombres, $apellidos, $email, $telefono, $dni], $con);
         
         // si es mayor a 0 es porque hay un error y nose registro el cliente
         if($id > 0)
         {
-            $pass_hash = password_hash($contraseña, PASSWORD_DEFAULT);
+            $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
             $token = generarToken();
             if(!registraUsuario([$usuario, $password, $token, $id], $con))
             {
@@ -86,35 +86,54 @@
                     <!-- Columna derecha -->
                     <div class="col-md-6 ingreso-derecha d-flex flex-column align-items-center justify-content-center">
                         <div class="row">
-                            <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
-                            <div class="col-sm-6"><a class="active bold" href="registro.html">Registrarme</a></div>
-                        </div>
-                        <div class="signin_form s_form d-grid justify-content-center p-3 "> 
-                            <div class="input_text my-1"> 
-                                <i class="bi bi-person"></i> 
-                                <input type="text" placeholder="Nombre de usuario"> 
+                                    <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
+                                    <div class="col-sm-6"><a class="active bold" href="registro.html">Registrarme</a></div>
+                                </div>
+                        <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
+                            <div class="signin_form s_form d-grid justify-content-center p-3 "> 
+                                <div class="input_text my-1"> 
+                                    <i class="bi bi-person"></i><span class="text-danger">*</span> 
+                                    <input type="text" class="form-control" required name="nombres" id="nombres" placeholder="Nombres"> 
+                                </div> 
+                                <div class="input_text my-1"> 
+                                    <i class="bi bi-person"></i> <span class="text-danger">*</span>
+                                    <input type="text" class="form-control" required name="apellidos" id="apellidos" placeholder="Apellidos"> 
+                                </div> 
+                                <div class="input_text my-1"> 
+                                    <i class="bi bi-person"></i> <span class="text-danger">*</span>
+                                    <input type="text" class="form-control" required name="usuario" id="usuario"placeholder="Alias"> 
+                                </div> 
+                                <div class="input_text my-1"> 
+                                    <i class="bi bi-envelope"></i> <span class="text-danger">*</span>
+                                    <input class="signin_email form-control" required type="email" name="correo" id="correo" placeholder="Correo electrónico"> 
+                                </div> 
+                                <div class="input_text my-1"> 
+                                    <i class="bi bi-telephone"></i> <span class="text-danger">*</span>
+                                    <input class="text form-control" required type="email" name="telefono" id="telefono" placeholder="Telefono"> 
+                                </div> 
+                                <div class="input_text my-1"> 
+                                    <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> <span class="text-danger">*</span>
+                                    <input class="signin_pass form-control" required type="password" name="pass" id="pass" placeholder="Contraseña"> 
+                                </div>
+                                <div class="input_text my-1"> 
+                                    <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> <span class="text-danger">*</span>
+                                    <input class="signin_pass form-control" required type="password" name="repass" id="repass" placeholder="Confirme Contraseña"> 
+                                </div>
+                                
+                                <div class="login_btn d-flex align-items-center justify-content-center my-3">
+                                    <a href="cuenta.html" type="submit"> <button class="btn-primary">Resgistrarme</button></a>
+                                </div>
+                                <div class="text-center">O registrate con</div>
+                                <div class="social-login">
+                                    <a href="#" class="facebook">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                    <a href="#" class="google">
+                                        <i class="bi bi-google"></i>
+                                    </a>
+                                </div>
                             </div> 
-                            <div class="input_text my-1"> 
-                                <i class="bi bi-envelope"></i> <i class="fa fa-eye-slash"></i>
-                                <input class="signin_email" type="email" name="email" placeholder="Correo electrónico"> 
-                            </div> 
-                            <div class="input_text my-1"> 
-                                <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> 
-                                <input class="signin_pass" type="password" name="password" placeholder="Contraseña"> 
-                            </div>
-                            <div class="login_btn d-flex align-items-center justify-content-center my-3">
-                                <a href="cuenta.html"> <button class="btn-primary">Resgistrarme</button></a>
-                            </div>
-                            <div class="text-center">O registrate con</div>
-                            <div class="social-login">
-                                <a href="#" class="facebook">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <a href="#" class="google">
-                                    <i class="bi bi-google"></i>
-                                </a>
-                            </div>
-                        </div>  
+                        </form> 
                     </div>
                 </div>
             </div>
@@ -207,48 +226,6 @@
             </footer>
             
         </section>
-
-        <section>
-            <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
-                <div class="col-md-6"> 
-                    <label for="nombres"><span class="text-danger">*</span>Nombres</label>
-                    <input type="text" name="nombres" id="nombres" class="form-control" required> 
-                </div>
-                <div class="col-md-6"> 
-                    <label for="apellidos"><span class="text-danger">*</span>Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos" class="form-control" required> 
-                </div>
-                <div class="col-md-6"> 
-                    <label for="correo"><i class="bi bi-envelope"></i><span class="text-danger">*</span>Correo electrónico</label>
-                    <input type="email" name="correo" id="correo" class="form-control" required> 
-                </div>
-                <div class="col-md-6"> 
-                    <label for="telefono"><span class="text-danger">*</span>Teléfono</label>
-                    <input type="tel" name="telefono" id="telefono" class="form-control" required> 
-                </div>
-                <div class="col-md-6"> 
-                    <label for="dni"><span class="text-danger">*</span>DNI</label>
-                    <input type="text" name="dni" id="dni" class="form-control" required> 
-                </div>
-                <div class="col-md-6"> 
-                    <label for="usuario"><span class="text-danger">*</span>Alias de Usuario</label>
-                    <input type="text" name="usuario" id="usuario" class="form-control" required> 
-                </div>
-                <div class="col-md-6"> 
-                    <label for="contraseña"><span class="text-danger">*</span>Contraseña</label>
-                    <input type="password" name="contraseña" id="contraseña" class="form-control" required> 
-                </div>
-                <div class="col-md-6"> 
-                    <label for="recontraseña"><span class="text-danger">*</span>Repetir Contraseña</label>
-                    <input type="password" name="recontraseña" id="recontraseña" class="form-control" required> 
-                </div>
-                <i><b>Nota:</b>los campos con asteriscos son obligatorios</i>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Registrar</button>
-                </div>
-            </form>
-        </section>
-        
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
