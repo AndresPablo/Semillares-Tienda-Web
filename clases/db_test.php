@@ -24,10 +24,10 @@ $recontraseña = trim('1234');
 
 $id =  0;
 // estamos trabajando con PDO para los valores, pore eso los ?????
-$sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,?,1, now())");
+$sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
 if($sql->execute($datos))
 {
-    $id =   $con->lastInsertId();
+    $id = $con->lastInsertId();
 }
 
  // si es mayor a 0 es porque hay un error y nose registro el cliente
