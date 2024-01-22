@@ -9,8 +9,8 @@ function generarToken()
 function registraCliente(array $datos, $con)
 {
     // estamos trabajando con PDO para los valores, pore eso los ?????
-    $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,?,?,1, now())");
-    if($sql->execute($datos))
+    $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
+    if($sql->execute(array_values($datos)))
     {
         return $con->lastInsertId();
     }
@@ -21,7 +21,7 @@ function registraUsuario(array $datos, $con)
 {
     // omitimos la columna "activacion"
     $sql = $con->prepare ("INSERT INTO usuarios (usuario, password, token, id_cliente) VALUES(?,?,?,?)");
-    if($sql->execute($datos))
+    if($sql->execute(array_values($datos)))
     {
         return true;
     }
