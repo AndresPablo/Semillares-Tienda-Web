@@ -12,7 +12,7 @@
     if(!empty($_POST)){
         $nombres = trim($_POST['nombres']);
         $apellidos = trim($_POST['apellidos']);
-        $email = trim($_POST['email']);
+        $correo = trim($_POST['correo']);
         $telefono = trim($_POST['telefono']);
         $dni = trim($_POST['dni']);
         $usuario = trim($_POST['usuario']);
