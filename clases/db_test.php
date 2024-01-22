@@ -16,14 +16,14 @@ $errors = [];
 
 
 
-$nombres = trim('pepe');
-$apellidos = trim('flores');
-$email = trim('correo@servicio.com');
-$telefono = trim('123345');
-$dni = trim('01010101');
-$usuario = trim('mi_user_99');
-$contraseña = trim('1234');
-$recontraseña = trim('1234');
+$nombres = 'pepe';
+$apellidos = 'flores';
+$email = 'correo@servicio.com';
+$telefono = '123345';
+$dni = '01010101';
+$usuario = 'mi_user_99';
+$contraseña = '1234';
+$recontraseña = '1234';
 
 $datos = [];
 
