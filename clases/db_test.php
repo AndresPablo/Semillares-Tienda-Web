@@ -8,5 +8,16 @@ require 'clienteFunciones.php';
 $db = new Database();
 $con = $db->conectar();   
 
-$sql = $con->prepare ("INSERT INTO prueba (nombre, apellido) VALUES ('pepe', 'flores')");
+
+$datos = [];
+
+$nombre = 'Pepe';
+$apellido = 'Flores';
+
+// agregar valores 
+$datos['nombre'] = $nombre; 
+$datos['apellido'] = $apellido;
+
+
+$sql = $con->prepare ("INSERT INTO prueba (nombre, apellido) VALUES (?,?)");
 $sql->execute($datos);
