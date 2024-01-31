@@ -48,14 +48,10 @@ $sql->execute(array_values($datos));
 
 // --------------------------------------------
 // PRUEBA insertar compra
-$status = "pendiente";
-$id_transaccion = 123456789; 
-$datos_compra = 123456789;
-$total = 1235;
-$fecha = date('Y-m-d H:i:s');
-$fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
+$id_transaccion = 'mi id de transaccion 12356'; 
 $email = 'correo@servicioejemplo.com';
 $id_cliente = '123';
+$total = 1235.00;
 // Prepara los datos para insertarlos en la base de datos
 $comando = $con->prepare ("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,now(),1,?,?,?)");
 $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
