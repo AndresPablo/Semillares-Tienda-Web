@@ -60,6 +60,24 @@ if($payment > 0)
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
 
+
+//
+    $id_transaccion = 'mi id de transaccion 12356'; 
+    $email = 'correo@servicioejemplo.com';
+    $id_cliente = '123';
+    $total = 1235.00;
+    
+    $datos['id_transaccion'] = $id_transaccion; 
+    $datos['email'] = $email; 
+    $datos['id_cliente'] = $id_cliente;
+    $datos['total'] = $total; 
+    // Prepara los datos para insertarlos en la base de datos
+    $sql = $con->prepare ("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,now(),1,?,?,?)");
+    //$comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
+    $sql->execute(array_values($datos)); // Funciona
+    $id = $con->lastInsertId();
+//
+
     if($id > 0)
     {
         echo "id es mas de cero";
