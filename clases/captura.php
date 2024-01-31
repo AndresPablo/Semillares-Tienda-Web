@@ -37,6 +37,7 @@ if(!empty($payment)) {
 if($payment > 0)
 {
     echo $payment;
+    $status = "completado";
     /*$id_transaccion = $datos['detalles']['id']; // paypal
     $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
     $status = $datos['detalles']['status'];
