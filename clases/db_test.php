@@ -37,7 +37,7 @@ $dni = '30303030';
 
 $datos['nombres'] = $nombre; 
 $datos['apellidos'] = $apellido;
-$datos['emaiñ'] = $email; 
+$datos['email'] = $email; 
 $datos['telefono'] = $telefono;
 $datos['dni'] = $dni; 
 

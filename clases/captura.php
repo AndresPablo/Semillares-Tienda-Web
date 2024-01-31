@@ -21,11 +21,11 @@ $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
 
 // TEST
-$pago = $sdk->payment->get($payment);
+/*$pago = $sdk->payment->get($payment);
 
 var_dump($payment); // TEST
 var_dump($pago); // TEST
-
+*/
 if(!empty($payment)) {
     echo "Datos del pago recibidos";
   } else {
@@ -43,17 +43,16 @@ if($payment > 0)
     $id_cliente = $datos['detalles']['payer']['payer_id'];*/
     $id_transaccion = $payment;
     $total = 1235;
-    $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
-    $fecha = $datos['detalles']['update_time'];
+    $fecha = date('Y-m-d H:i:s');
     $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
-    $email = $datos['detalles']['payer']['email_adress'];
-    $id_cliente = $datos['detalles']['payer']['payer_id'];
+    $email = 'correo@servicioejemplo.com';
+    $id_cliente = '123';
     if(empty($status)) {
         $status = "pendiente"; // asignar valor por defecto
       }
     // Prepara los datos para insertarlos en la base de datos
     $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha, status, email,id_cliente, total)
-    VALUES (?,?,?,?,?,?)");
+    VALUES (?,now(),?,?,?,?)");
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
 
