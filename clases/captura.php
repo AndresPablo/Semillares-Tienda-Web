@@ -22,17 +22,15 @@ $order_id = $_GET['merchant_order_id'];
 
 // TEST
 /*$pago = $sdk->payment->get($payment);
-
-var_dump($payment); // TEST
-var_dump($pago); // TEST
-*/
 if(!empty($payment)) {
     echo "Datos del pago recibidos";
     echo $payment;
     var_dump($payment);
+    var_dump($pago);
   } else {
     echo "No se recibieron datos del pago";
 }
+*/
 
 if($payment > 0)
 {
@@ -55,6 +53,7 @@ if($payment > 0)
     $fecha = date('Y-m-d H:i:s');
     $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
 
+    $datos = [];
     $datos['id_transaccion'] = $id_transaccion; 
     $datos['fecha_nueva'] = $fecha_nueva; 
     $datos['status'] = $status; 
@@ -89,16 +88,25 @@ if($payment > 0)
                 $precio = $row_prod['precio'];
                 $descuento = $row_prod['descuento'];
                 $precio_desc =  $precio - (( $precio * $descuento)/100);
+
+                $detalles = [];
+                $detalles['id_compra'] = $id; 
+                $detalles['id_producto'] = $clave; 
+                $detalles['nombre'] = $row_prod['nombre']; 
+                $detalles['precio'] = $precio_desc; 
+                $detalles['cantidad'] = $cantidad; 
+
                 
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)");
-                $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
+                $sql->execute(array_values($detalles)); // Inserta la compra en la tabla "compra"
+                //$sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]); // VIEJO tira error
             }
             // Enviar correo única vez después de insertar productos
             echo "llamando enviar_mail.php";
             include 'enviar_mail.php';
         }
-        echo "Borrar (unset) carrito";
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
+        echo "Borrado (unset) carrito";
     }
 }
 
