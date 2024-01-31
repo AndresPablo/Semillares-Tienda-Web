@@ -49,8 +49,8 @@ $sql->execute(array_values($datos));
 // --------------------------------------------
 // PRUEBA insertar compra
 $status = "pendiente";
-$id_transaccion = $nombre; 
-$datos_compra = $payment;
+$id_transaccion = 123456789; 
+$datos_compra = 123456789;
 $total = 1235;
 $fecha = date('Y-m-d H:i:s');
 $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
