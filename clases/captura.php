@@ -100,9 +100,9 @@ if($payment > 0)
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
         <!-- Custom CSS (personalizado)-->
-        <link href="css/custom.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
         <!-- Fuentes (Montserrat) -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
