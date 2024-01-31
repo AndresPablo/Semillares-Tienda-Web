@@ -56,7 +56,7 @@ if($payment > 0)
       }
     // Prepara los datos para insertarlos en la base de datos
     $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha, status, email,id_cliente, total)
-    VALUES (?,now(),?,?,?,?)");
+    VALUES (?,now(),?,?,?)");
     $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
     $id = $con->lastInsertId();
 
