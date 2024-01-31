@@ -45,42 +45,36 @@ if($payment > 0)
     $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
     $email = $datos['detalles']['payer']['email_adress'];
     $id_cliente = $datos['detalles']['payer']['payer_id'];*/
-    $id_transaccion = $payment;
-    $total = 1235;
-    $fecha = date('Y-m-d H:i:s');
-    $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
-    $email = 'correo@servicioejemplo.com';
-    $id_cliente = '123';
-    if(empty($status)) {
-        $status = "pendiente"; // asignar valor por defecto
-      }
-    // Prepara los datos para insertarlos en la base de datos
-    $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha, status, email,id_cliente, total)
-    VALUES (?,now(),?,?,?)");
-    $comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
-    $id = $con->lastInsertId();
-
-
-//
-    $id_transaccion = 'mi id de transaccion 12356'; 
+    //
+    echo $payment;
+    $id_transaccion = $payment; 
     $email = 'correo@servicioejemplo.com';
     $id_cliente = '123';
     $total = 1235.00;
-    
+    $status = 'OK';
+    $fecha = date('Y-m-d H:i:s');
+    $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
+
     $datos['id_transaccion'] = $id_transaccion; 
+    $datos['fecha_nueva'] = $fecha_nueva; 
+    $datos['status'] = $status; 
     $datos['email'] = $email; 
     $datos['id_cliente'] = $id_cliente;
     $datos['total'] = $total; 
-    // Prepara los datos para insertarlos en la base de datos
-    $sql = $con->prepare ("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,now(),1,?,?,?)");
-    //$comando->execute([$id_transaccion, $fecha_nueva, $status, $email, $id_cliente, $total]);
-    $sql->execute(array_values($datos)); // Funciona
-    $id = $con->lastInsertId();
-//
 
-    if($id > 0)
+    // Prepara los datos para insertarlos en la base de datos
+    $sql = $con->prepare ("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,?,?,?,?,?)");
+    $sql->execute(array_values($datos)); // Inserta la compra en la tabla "compra"
+    $id = $con->lastInsertId(); // La id de la insercion, para encontrarlo en la DB
+    //
+
+    if($id > 0) // Si la ID es mayor a 0 significa que la DB cargo y devolvio correctamente el indice de referencia
     {
-        echo "id es mas de cero";
+        echo "ID de la transaccion de MP: ";
+        echo $id_transaccion;
+        echo "id de la compra es: ";
+        echo $id;
+
         $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
         if($productos != null)
         {
