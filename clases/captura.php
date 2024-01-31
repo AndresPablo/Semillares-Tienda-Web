@@ -28,12 +28,15 @@ var_dump($pago); // TEST
 */
 if(!empty($payment)) {
     echo "Datos del pago recibidos";
+    echo $payment;
+    var_dump($payment);
   } else {
     echo "No se recibieron datos del pago";
 }
 
 if($payment > 0)
 {
+    echo $payment;
     /*$id_transaccion = $datos['detalles']['id']; // paypal
     $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
     $status = $datos['detalles']['status'];
