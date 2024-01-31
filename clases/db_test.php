@@ -64,10 +64,6 @@ $id = $con->lastInsertId();
 echo "ID compra: ";
 echo $id;
 // -------------------------------------------------------------------------------------------------------------
-
-$sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
-$sql->execute(array_values($datos));
-
 //$sql->execute($datos); // NO funciona
 // $sql->execute(array_values($datos)); // Funciona
 //$sql->execute([$nombre, $apellido]); // Funciona
