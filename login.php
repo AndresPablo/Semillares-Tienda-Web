@@ -73,33 +73,36 @@ if(!empty($_POST))
                             <div class="col-sm-6"><a class="active bold" href="login.html">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="" href="registro.php">Registrarme</a></div>
                         </div>
-                        <div class="signin_form  s_form d-grid justify-content-center p-3 "> 
-                            <div class="input_text form-floating my-1"> 
-                                <i class="bi bi-envelope"></i> <i class="fa fa-eye-slash"></i>
-                                <label for="usuario">Usuario</label>
-                                <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Usuario"> 
+                        <form class="row g-3" action="login.php" method="post" autocomplete="off">
+                            <div class="signin_form  s_form d-grid justify-content-center p-3 "> 
+                                <div class="input_text form-floating my-1"> 
+                                    <i class="bi bi-envelope"></i> <i class="fa fa-eye-slash"></i>
+                                    <label for="usuario">Usuario</label>
+                                    <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Usuario"> 
+                                </div> 
+                                <div class="input_text form-floating my-1"> 
+                                    <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> 
+                                    <label for="password">Contraseña</label>
+                                    <input class="form-control" type="password" name="password" placeholder="Contraseña"> 
+                                </div>
+                                <div class="col-12">
+                                    <a href="recupera.php">¿Olvidaste tu contraseña?</a>
+                                </div>
+                                <div class="login_btn d-flex align-items-center justify-content-center my-3">
+                                    <button type="submit" class="btn btn-primary" >Ingresar</button>
+                                </div>
+                                <div class="text-center">O ingresá con</div>
+                                <div class="social-login">
+                                    <a href="#" class="facebook">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                    <a href="#" class="google">
+                                        <i class="bi bi-google"></i>
+                                    </a>
+                                </div>
                             </div> 
-                            <div class="input_text form-floating my-1"> 
-                                <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> 
-                                <label for="password">Contraseña</label>
-                                <input class="form-control" type="password" name="password" placeholder="Contraseña"> 
-                            </div>
-                            <div class="col-12">
-                                <a href="recupera.php">¿Olvidaste tu contraseña?</a>
-                            </div>
-                            <div class="login_btn d-flex align-items-center justify-content-center my-3">
-                                <button class="btn btn-primary" type="submit">Ingresar</button>
-                            </div>
-                            <div class="text-center">O ingresá con</div>
-                            <div class="social-login">
-                                <a href="#" class="facebook">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <a href="#" class="google">
-                                    <i class="bi bi-google"></i>
-                                </a>
-                            </div>
-                        </div>  
+                        </form>
+                         
                     </div>
                 </div>
             </div>
