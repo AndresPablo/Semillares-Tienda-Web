@@ -83,7 +83,7 @@ if(!empty($_POST))
                                 <div class="input_text form-floating my-1"> 
                                     <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> 
                                     <label for="password">Contraseña</label>
-                                    <input class="form-control" type="password" name="password" placeholder="Contraseña"> 
+                                    <input class="form-control" type="password" name="password" id="password" placeholder="Contraseña"> 
                                 </div>
                                 <div class="col-12">
                                     <a href="recupera.php">¿Olvidaste tu contraseña?</a>
