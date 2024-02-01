@@ -4,7 +4,7 @@
     require 'clases/clienteFunciones.php';
 
     $id = isset($_GET['id']) ? $_GET['id']: '';
-    $id = isset($_GET['token']) ? $_GET['token']: '';
+    $token = isset($_GET['token']) ? $_GET['token']: '';
 
     if($id == '' || $token == '')
     {
