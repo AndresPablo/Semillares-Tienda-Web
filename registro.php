@@ -19,7 +19,7 @@
         $pass = trim($_POST['pass']);
         $repass = trim($_POST['repass']);
 
-        $id = registraCliente([$nombres, $apellidos, $email, $telefono, $dni], $con);
+        $id = registraCliente([$nombres, $apellidos, $correo, $telefono, $dni], $con);
         
         // si es mayor a 0 es porque hay un error y nose registro el cliente
         if($id > 0)
