@@ -83,11 +83,13 @@ function emailExiste($email, $con)
 
 function validaToken($id, $token, $con)
 {
-    $sql = $con->prepare ("SELECT id FROM usuarios   WHERE id = ? AND token LIKE ? LIMIT 1");
+    $msg = "";
     $datos = [];
     $datos['id'] = $id; 
     $datos['token'] = $token; 
-    $sql->execute(array_values($datos));
+    $sql = $con->prepare ("SELECT id FROM usuarios WHERE id = ? AND token LIKE ? LIMIT 1");
+    //$sql->execute(array_values($datos)); // TODO: genera error de activacion de cuenta??
+    $sql->execute([$id, $token]);
     if($sql->fetchColumn() > 0)
     {
         if(activarUsuario($id,$con))

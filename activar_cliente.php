@@ -15,6 +15,5 @@
     $db = new Database();
     $con = $db->conectar();
 
-    echo 'activando usuario...';
     echo validaToken($id, $token, $con);
 ?>
