@@ -34,7 +34,6 @@ if(!empty($payment)) {
 
 if($payment > 0)
 {
-    echo $payment;
     $status = "completado";
     /*$id_transaccion = $datos['detalles']['id']; // paypal
     $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
@@ -44,7 +43,6 @@ if($payment > 0)
     $email = $datos['detalles']['payer']['email_adress'];
     $id_cliente = $datos['detalles']['payer']['payer_id'];*/
     //
-    echo $payment;
     $id_transaccion = $payment; 
     $email = 'correo@servicioejemplo.com';
     $id_cliente = '123';
@@ -69,18 +67,11 @@ if($payment > 0)
 
     if($id > 0) // Si la ID es mayor a 0 significa que la DB cargo y devolvio correctamente el indice de referencia
     {
-        echo "ID de la transaccion de MP: ";
-        echo $id_transaccion;
-        echo "id de la compra es: ";
-        echo $id;
-
         $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
         if($productos != null)
         {
-            echo "Hay productos";
             foreach($productos as $clave => $cantidad)
             {
-                echo "iteracion de producto";
                 $sqlProd = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo =1");
                 $sqlProd->execute([$clave]);
                 $row_prod = $sqlProd->fetch(PDO::FETCH_ASSOC);
@@ -102,7 +93,6 @@ if($payment > 0)
                 //$sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]); // VIEJO tira error
             }
             // Enviar correo única vez después de insertar productos
-            echo "llamando enviar_mail.php";
             include 'enviar_mail.php';
         }
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
@@ -144,6 +134,7 @@ if($payment > 0)
             <div class="container">
                 <h3>Tu pago se realizó con éxito</h3>
                 <h5>Te hemos enviado un correo con los datos de tu compra</h5>
+                <h5>El código de tu compra es <b><?php echo $id_transaccion;?>.</b></h5>
                 <a href=""> <button>
                     Volver a la tienda
                 </button></a>
