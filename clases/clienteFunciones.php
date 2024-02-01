@@ -92,6 +92,7 @@ function validaToken($id, $token, $con)
     $sql->execute([$id, $token]);
     if($sql->fetchColumn() > 0)
     {
+        // TODO: ver FIX error aca, la cuenta se activa pero devuelve "error al activar cuenta"
         if(activarUsuario($id,$con))
         {
             $msg = "Cuenta activada.";
@@ -109,8 +110,7 @@ function activarUsuario($id, $con)
 {
     //$sql = $con->prepare ("UPDATE usuarios SET activacion = 1, token = ''  WHERE id = ?");
     $sql = $con->prepare ("UPDATE usuarios SET activacion = 1 WHERE id = ?");
-    $sql->execute([$id]);
-
+    return $sql->execute([$id]);
 }
 
 function mostrarMensajes(array $errors)
