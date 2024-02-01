@@ -1,3 +1,31 @@
+<?php
+require 'config/config.php';
+require 'config/database.php';
+require 'clases/clienteFunciones.php';
+
+$db = new Database();
+$con = $db->conectar();
+$errors = [];
+
+if(!empty($_POST))
+{
+    $usuario = trim($_POST['usuario']);
+    $pass = trim($_POST['pass']);
+
+    if(esNulo([$usuario, $pass]))
+    {
+        $errors[] = "Debe llenar todos los campos.";
+    }
+
+
+    if(count($errors) == 0)
+    {
+        $errors[] = login($usuario, $password, $con);
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es-AR">
     <head>
@@ -37,6 +65,7 @@
                             <div class="row my-3">
                                 <p>Distribuidora y fraccionadora<br>de productos naturales</p>
                             </div>
+                            <?php mostrarMensajes($errors); ?>
                         </div>
                     <!-- Columna derecha -->
                     <div class="col-lg-6 d-inline-flex flex-column ingreso-derecha align-items-center justify-content-center">
@@ -44,17 +73,22 @@
                             <div class="col-sm-6"><a class="active bold" href="login.html">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="" href="registro.php">Registrarme</a></div>
                         </div>
-                        <div class="signin_form s_form d-grid justify-content-center p-3 "> 
-                            <div class="input_text my-1"> 
+                        <div class="signin_form  s_form d-grid justify-content-center p-3 "> 
+                            <div class="input_text form-floating my-1"> 
                                 <i class="bi bi-envelope"></i> <i class="fa fa-eye-slash"></i>
-                                <input class="signin_email" type="email" name="email" placeholder="Correo electrónico"> 
+                                <label for="usuario">Usuario</label>
+                                <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Usuario"> 
                             </div> 
-                            <div class="input_text my-1"> 
+                            <div class="input_text form-floating my-1"> 
                                 <i class="bi bi-lock"></i> <i class="fa fa-eye-slash"></i> 
-                                <input class="signin_pass" type="password" name="password" placeholder="Contraseña"> 
+                                <label for="password">Contraseña</label>
+                                <input class="form-control" type="password" name="password" placeholder="Contraseña"> 
+                            </div>
+                            <div class="col-12">
+                                <a href="recupera.php">¿Olvidaste tu contraseña?</a>
                             </div>
                             <div class="login_btn d-flex align-items-center justify-content-center my-3">
-                                <a href="cuenta.html"> <button class="btn-primary">Ingresar</button></a>
+                                <button class="btn btn-primary" type="submit">Ingresar</button>
                             </div>
                             <div class="text-center">O ingresá con</div>
                             <div class="social-login">

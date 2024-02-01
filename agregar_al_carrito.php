@@ -36,6 +36,6 @@
         header('Location: tienda.php');
     } else {
         // Si no se proporciona un ID válido, redirigir a la página principal
-        header('Location: index.html');
+        header('Location: index.php');
     }
 ?>
