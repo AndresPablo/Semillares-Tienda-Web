@@ -130,7 +130,7 @@ function mostrarMensajes(array $errors)
 function login($usuario, $password, $con)
 {
     $sql = $con->prepare ("SELECT id from usuarios WHERE usuario LIKE ? LIMIT 1");
-    return $sql->execute([$usuario]);
+    $sql->execute([$usuario]);
     if($row = $sql->fetch(PDO::FETCH_ASSOC))
     {
         if(esActivo($usuario, $con))
