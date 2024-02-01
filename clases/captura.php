@@ -97,7 +97,7 @@ if($payment > 0)
                 $detalles['cantidad'] = $cantidad; 
 
                 
-                $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)");
+                $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)  VALUES (?,?,?,?,?)");
                 $sql->execute(array_values($detalles)); // Inserta la compra en la tabla "compra"
                 //$sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]); // VIEJO tira error
             }
