@@ -10,7 +10,7 @@ $errors = [];
 if(!empty($_POST))
 {
     $usuario = trim($_POST['usuario']);
-    $pass = trim($_POST['pass']);
+    $pass = trim($_POST['password']);
 
     if(esNulo([$usuario, $pass]))
     {
