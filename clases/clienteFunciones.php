@@ -107,7 +107,8 @@ function validaToken($id, $token, $con)
 
 function activarUsuario($id, $con)
 {
-    $sql = $con->prepare ("UPDATE usuarios SET activacion = 1, token = ''  WHERE id = ?");
+    //$sql = $con->prepare ("UPDATE usuarios SET activacion = 1, token = ''  WHERE id = ?");
+    $sql = $con->prepare ("UPDATE usuarios SET activacion = 1 WHERE id = ?");
     $sql->execute([$id]);
 
 }
