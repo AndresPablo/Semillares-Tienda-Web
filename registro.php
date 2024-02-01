@@ -61,7 +61,7 @@
                     $asunto ="Activar cuenta - Semillares";
                     $cuerpo="Estimado $nombres: <br> para confirmar su cuenta debe clickear el siguiente link <a href='$url'>Activar Cuenta</a>";
 
-                    if(Mailer->enviarEmail($correo, $asunto, $cuerpo))
+                    if($mailer->enviarMail($correo, $asunto, $cuerpo))
                     {
                         echo "para completar el proceso de registro, siga las instrucciones que enviamos a su correo electrónico $correo";
                         exit;
