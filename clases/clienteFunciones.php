@@ -62,7 +62,7 @@ function usuarioExiste($usuario, $con)
 {
     // estamos trabajando con PDO para los valores, pore eso los ?????
     $sql = $con->prepare ("SELECT id FROM usuarios WHERE usuario LIKE ? LIMIT 1");
-    $sql->execute(array_values($usuario));
+    $sql->execute([$usuario]);
     if($sql->fetchColumn() > 0)
     {
         return true;
