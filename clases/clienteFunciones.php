@@ -73,7 +73,7 @@ function usuarioExiste($usuario, $con)
 function emailExiste($email, $con)
 {
     $sql = $con->prepare ("SELECT id FROM clientes   WHERE email LIKE ? LIMIT 1");
-    $sql->execute(array_values($email));
+    $sql->execute([$email]);
     if($sql->fetchColumn() > 0)
     {
         return true;
