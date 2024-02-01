@@ -19,21 +19,51 @@
         $pass = trim($_POST['pass']);
         $repass = trim($_POST['repass']);
 
-        $id = registraCliente([$nombres, $apellidos, $correo, $telefono, $dni], $con);
-        
-        // si es mayor a 0 es porque hay un error y nose registro el cliente
-        if($id > 0)
+        if(esNulo([$nombres, $apellidos, $correo, $telefono, $usuario, $pass, $repass]))
         {
-            $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
-            $token = generarToken();
-            if(!registraUsuario([$usuario, $pass, $token, $id], $con))
-            {
-                $errors[] = "error al registrar Usuario";
-            }
-        }else
-        {
-            $errors[] = "error al registrar Cliente";
+            $errors[] = "Debe llenar todos los campos obligatorios.";
         }
+
+        if(!esEmail($correo))
+        {
+            $errors[] = "La dirección de correo no es válida.";
+        }
+
+        if(!validaPassword($pass, $repass))
+        {
+            $errors[] = "Las contraseñas no coinciden."; 
+        }
+
+        if(usuarioExiste($usuario, $con))
+        {
+            $errors[] = "El nombre de usuario $usuario ya existe."; 
+        }
+
+        if(emailExiste($email, $con))
+        {
+            $errors[] = "El correo electrónico $correo ya existe. "; 
+        }
+
+        if(count($errors) == 0)
+        {
+            $id = registraCliente([$nombres, $apellidos, $correo, $telefono, $dni], $con);
+            if($id > 0)
+            {
+                $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+                $token = generarToken();
+                if(!registraUsuario([$usuario, $pass, $token, $id], $con))
+                {
+                    $errors[] = "error al registrar Usuario";
+                }
+            }else
+            {
+                $errors[] = "error al registrar Cliente";
+            }
+        }
+
+
+        
+
 
         if(count($errors) == 0)
         {
@@ -73,6 +103,7 @@
 
         <section>
             <div class="container-fluid">
+                <?php mostrarMensajes($errors); ?>
                 <div class="row vh-100">
                     <!-- Columna izquierda -->
                     <div class="ingreso-izquierda col-md-6 d-sm-none d-md-flex flex-column align-items-center justify-content-center">
