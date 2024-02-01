@@ -1,3 +1,16 @@
+<?php
+
+require 'config/config.php';
+require 'config/database.php';
+$db = new Database();
+$con = $db->conectar();
+
+$comando = $con->prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
+$comando->execute();
+$resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
+print($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="es-AR">
     <head>
