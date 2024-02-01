@@ -49,9 +49,25 @@
             $id = registraCliente([$nombres, $apellidos, $correo, $telefono, $dni], $con);
             if($id > 0)
             {
-                $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+                require 'clases/Mailer.php';
+                $mailer = new Mailer();
                 $token = generarToken();
-                if(!registraUsuario([$usuario, $pass, $token, $id], $con))
+                $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+
+                $idUsuario =  registraUsuario([$usuario, $pass, $token, $id], $con);
+                if($idUsuario > 0)
+                {
+                    $url = SITE_URL . '/activar_cliente.php?id='.$idUsuario.'&token='.$token;
+                    $asunto ="Activar cuenta - Semillares";
+                    $cuerpo="Estimado $nombres: <br> para confirmar su cuenta debe clickear el siguiente link <a href='$url'>Activar Cuenta</a>";
+
+                    if(Mailer->enviarEmail($correo, $asunto, $cuerpo))
+                    {
+                        echo "para completar el proceso de registro, siga las instrucciones que enviamos a su correo electrónico $correo";
+                        exit;
+                    }
+                }
+                else
                 {
                     $errors[] = "error al registrar Usuario";
                 }
@@ -60,19 +76,6 @@
                 $errors[] = "error al registrar Cliente";
             }
         }
-
-
-        
-
-
-        if(count($errors) == 0)
-        {
-
-        }else
-        {
-            print_r($errors);
-        }
-
     }
 ?>
 

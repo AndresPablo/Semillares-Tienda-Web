@@ -53,9 +53,9 @@ function registraUsuario(array $datos, $con)
     $sql = $con->prepare ("INSERT INTO usuarios (usuario, password, token, id_cliente) VALUES(?,?,?,?)");
     if($sql->execute(array_values($datos)))
     {
-        return true;
+        return $con->lastInsertId();
     }
-    return false;
+    return 0;
 }
 
 function usuarioExiste($usuario, $con)
@@ -72,7 +72,6 @@ function usuarioExiste($usuario, $con)
 
 function emailExiste($email, $con)
 {
-    // estamos trabajando con PDO para los valores, pore eso los ?????
     $sql = $con->prepare ("SELECT id FROM clientes   WHERE email LIKE ? LIMIT 1");
     $sql->execute(array_values($email));
     if($sql->fetchColumn() > 0)
@@ -80,6 +79,35 @@ function emailExiste($email, $con)
         return true;
     }
     return false;
+}
+
+function validaToken($id, $token, $con)
+{
+    $sql = $con->prepare ("SELECT id FROM usuarios   WHERE id = ? AND token LIKE ? LIMIT 1");
+    $datos = [];
+    $datos['id'] = $id; 
+    $datos['token'] = $token; 
+    $sql->execute(array_values($datos));
+    if($sql->fetchColumn() > 0)
+    {
+        if(activarUsuario($id,$con))
+        {
+            $msg = "Cuenta activada.";
+        }else{
+            $msg = "Error al activar cuenta";
+        }
+    }else
+    {
+        $msg = "No existe el registro del cliente.";
+    }
+    return $msg;
+}
+
+function activarUsuario($id, $con)
+{
+    $sql = $con->prepare ("UPDATE usuarios SET activacion = 1, token = ''  WHERE id = ?");
+    $sql->execute([$id]);
+
 }
 
 function mostrarMensajes(array $errors)

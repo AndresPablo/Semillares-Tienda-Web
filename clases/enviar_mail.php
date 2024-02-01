@@ -22,10 +22,12 @@
         $mail->SMTPSecure = 'ssl';                                  //Enable implicit TLS encryption
         $mail->Port       =  465;                                   //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-        //Recipients
-        $mail->setFrom('no-responder@semillares.com.ar', 'Tienda Semillares');
-        $mail->addAddress('andrespablo.mm@gmail.com', 'Prueba');     //Add a recipient
-        $mail->addAddress('semillares.lp@gmail.com', 'Prueba de compra');     //Add a recipient
+        // Correo emisor y nombre
+        $mail->setFrom(MAIL_USER, 'Tienda Semillares');
+        // Correo receptor y nombre
+        $mail->addAddress('andrespablo.mm@gmail.com', 'Prueba de compra'); 
+        $mail->addAddress('semillares.lp@gmail.com', 'Prueba de compra');  
+        // Enviar copia correo
         $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');   // responde a esta direccion en lugar de la otra 
 
         //Content
