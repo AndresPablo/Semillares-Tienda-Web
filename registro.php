@@ -54,7 +54,7 @@
                 $token = generarToken();
                 $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
-                $idUsuario =  registraUsuario([$usuario, $pass, $token, $id], $con);
+                $idUsuario =  registraUsuario([$usuario, $pass_hash, $token, $id], $con);
                 if($idUsuario > 0)
                 {
                     $url = SITE_URL . '/activar_cliente.php?id='.$idUsuario.'&token='.$token;
