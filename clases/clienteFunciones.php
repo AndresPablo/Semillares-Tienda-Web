@@ -130,7 +130,7 @@ print($_SESSION);
 
 function login($usuario, $password, $con)
 {
-    $sql = $con->prepare ("SELECT id from usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql = $con->prepare ("SELECT id, password from usuarios WHERE usuario LIKE ? LIMIT 1");
     $sql->execute([$usuario]);
     if($row = $sql->fetch(PDO::FETCH_ASSOC))
     {
@@ -143,6 +143,9 @@ function login($usuario, $password, $con)
                 $_SESSION['user_name'] = $row['usuario'];
                 header("Location: index.php");
                 exit;
+            }else
+            {
+                return 'Contraseña no verificada';
             }
         }
         else
