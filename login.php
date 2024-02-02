@@ -10,9 +10,9 @@ $errors = [];
 if(!empty($_POST))
 {
     $usuario = trim($_POST['usuario']);
-    $pass = trim($_POST['password']);
+    $password = trim($_POST['password']);
 
-    if(esNulo([$usuario, $pass]))
+    if(esNulo([$usuario, $password]))
     {
         $errors[] = "Debe llenar todos los campos.";
     }
@@ -20,8 +20,10 @@ if(!empty($_POST))
 
     if(count($errors) == 0)
     {
-        $errors[] = login($usuario, $pass, $con);
+        $errors[] = login($usuario, $password, $con);
     }
+
+    echo $errors;
 }
 ?>
 
@@ -65,6 +67,7 @@ if(!empty($_POST))
                             <div class="row my-3">
                                 <p>Distribuidora y fraccionadora<br>de productos naturales</p>
                             </div>
+                            <?php $errors?>
                             <?php mostrarMensajes($errors); ?>
                         </div>
                     <!-- Columna derecha -->
