@@ -20,7 +20,7 @@ if(!empty($_POST))
 
     if(count($errors) == 0)
     {
-        $errors[] = login($usuario, $password, $con);
+        $errors[] = login($usuario, $pass, $con);
     }
 }
 ?>

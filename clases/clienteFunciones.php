@@ -138,6 +138,7 @@ function login($usuario, $password, $con)
         {
             if(password_verify($password, $row['password']))
             {
+                // Inicio exitoso
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['user_name'] = $row['usuario'];
                 header("Location: index.php");
