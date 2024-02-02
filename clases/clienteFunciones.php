@@ -141,9 +141,6 @@ function login($usuario, $password, $con)
                 $_SESSION['user_name'] = $row['usuario'];
                 header("Location: index.php");
                 exit;
-            }else
-            {
-                return 'Contraseña no verificada';
             }
         }
         else

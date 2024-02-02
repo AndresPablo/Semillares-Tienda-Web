@@ -16,14 +16,10 @@ if(!empty($_POST))
     {
         $errors[] = "Debe llenar todos los campos.";
     }
-
-
     if(count($errors) == 0)
     {
         $errors[] = login($usuario, $password, $con);
     }
-
-    echo $errors;
 }
 ?>
 
@@ -67,7 +63,6 @@ if(!empty($_POST))
                             <div class="row my-3">
                                 <p>Distribuidora y fraccionadora<br>de productos naturales</p>
                             </div>
-                            <?php $errors?>
                             <?php mostrarMensajes($errors); ?>
                         </div>
                     <!-- Columna derecha -->
