@@ -117,13 +117,13 @@ function mostrarMensajes(array $errors)
 {
     if(count($errors) > 0)
     {
-        echo '<div class="alert alert-warning alert-dismissable fade show" role="alert">';
+        echo '<div class="alert alert-warning alert-dismissable fade show" role="alert"><ul>';
         foreach($errors as $error)
         {
             echo '<li>' . $error . '</li>';
         }
-        echo '<ul>';
-        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button> </div>';
+        echo '</ul>';
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button></div>';
     }
 }
 
