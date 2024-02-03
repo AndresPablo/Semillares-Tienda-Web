@@ -26,7 +26,7 @@ if ($idTransaccion != '') {
     $datos['total'] = $monto; 
 
     // Prepara los datos para insertarlos en la base de datos
-    $comando = $con->prepare("INSERT INTO compra (fecha, status, email, id_cliente, total, id_transaccion) VALUES (?,?,?,?,?,?)");
+    $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,?,?,?,?,?)");
     $comando->execute(array_values($datos)); // Inserta la compra en la tabla "compra"
     $id = $con->lastInsertId(); // La id de la insercion, para encontrarlo en la DB
 
