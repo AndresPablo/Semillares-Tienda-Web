@@ -13,7 +13,7 @@ if ($idTransaccion != '') {
     $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
     $idCliente = $_SESSION['user_cliente'];
     $sqlClientes = $con->prepare("SELECT email FROM clientes WHERE id=? AND estatus=1");
-    $sqlClientes->execute([$id_cliente]);
+    $sqlClientes->execute([$idCliente]);
     $row_cliente = $sqlClientes->fetch(PDO::FETCH_ASSOC);
     $email = $row_cliente['email'];
 
@@ -22,7 +22,7 @@ if ($idTransaccion != '') {
     $datos['fecha_nueva'] = $fecha; 
     $datos['status'] = $status; 
     $datos['email'] = $email; 
-    $datos['id_cliente'] = $id_cliente;
+    $datos['id_cliente'] = $idCliente;
     $datos['total'] = $monto; 
 
     // Prepara los datos para insertarlos en la base de datos
