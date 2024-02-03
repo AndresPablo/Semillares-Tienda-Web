@@ -5,8 +5,8 @@ require '../config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
-$idTransaccion = isset($_GET['payment_id']) ? $_GET['payment_id'] : ''; // $idTransaccion
-$$status = isset($_GET['status']) ? $_GET['status'] : ''; // $status
+$idTransaccion = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
+$$status = isset($_GET['status']) ? $_GET['status'] : ''; 
 
 if ($idTransaccion != '') {
     $fecha = date("Y-m-d H:i:s");
@@ -102,88 +102,6 @@ if(!empty($payment)) {
     echo "No se recibieron datos del pago";
 }
 */
-
-if($payment > 0)
-{
-    $status = "completado";
-    /*$id_transaccion = $datos['detalles']['id']; // paypal
-    $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
-    $status = $datos['detalles']['status'];
-    $fecha = $datos['detalles']['update_time'];
-    $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
-    $email = $datos['detalles']['payer']['email_adress'];
-    $id_cliente = $datos['detalles']['payer']['payer_id'];*/
-    //
-
-    //$id_cliente = '123';
-    $id_cliente = $_SESSION['user_cliente'];
-    $sqlCliente = $con->prepare("SELECT email FROM clientes WHERE id=? AND activo estatus=1");
-    $sqlCliente->execute([$id_cliente]);
-    $row_cliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
-
-    $id_transaccion = $payment; 
-    $email = $row_cliente['email'];
-    $total = 1235.00;
-    $status = 'OK';
-    $fecha = date('Y-m-d H:i:s');
-    $fecha_nueva = date('Y-m-d H:i:s', strtotime($fecha));
-
-    $datos = [];
-    $datos['id_transaccion'] = $id_transaccion; 
-    $datos['fecha_nueva'] = $fecha_nueva; 
-    $datos['status'] = $status; 
-    $datos['email'] = $email; 
-    $datos['id_cliente'] = $id_cliente;
-    $datos['total'] = $total; 
-
-    // Prepara los datos para insertarlos en la base de datos
-    $sql = $con->prepare ("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,?,?,?,?,?)");
-    $sql->execute(array_values($datos)); // Inserta la compra en la tabla "compra"
-    $id = $con->lastInsertId(); // La id de la insercion, para encontrarlo en la DB
-    //
-
-    if($id > 0) // Si la ID es mayor a 0 significa que la DB cargo y devolvio correctamente el indice de referencia
-    {
-        $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
-        if($productos != null)
-        {
-            foreach($productos as $clave => $cantidad)
-            {
-                $sqlProd = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo =1");
-                $sqlProd->execute([$clave]);
-                $row_prod = $sqlProd->fetch(PDO::FETCH_ASSOC);
-
-                $precio = $row_prod['precio'];
-                $descuento = $row_prod['descuento'];
-                $precio_desc =  $precio - (( $precio * $descuento)/100);
-
-                $detalles = [];
-                $detalles['id_compra'] = $id; 
-                $detalles['id_producto'] = $clave; 
-                $detalles['nombre'] = $row_prod['nombre']; 
-                $detalles['precio'] = $precio_desc; 
-                $detalles['cantidad'] = $cantidad; 
-
-                
-                $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)  VALUES (?,?,?,?,?)");
-                $sql_insert->execute(array_values($detalles)); // Inserta la compra en la tabla "compra"
-                //$sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]); // VIEJO tira error
-            }
-            // Enviar correo única vez después de insertar productos
-            //include 'enviar_mail.php'; // TODO: VIEJO , borrar
-            require 'Mailer.php';
-             $asunto = "Detalles de tu compra";
-             $cuerpo = '<h4> Gracias por su compra! </h4>';
-             $cuerpo .= '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
-             $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al (221) 123-456.</p>';
-     
-            $mailer = new Mailer();
-            $mailer->enviarMail($email, $asunto, $cuerpo);
-        }
-        unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
-        echo "Borrado (unset) carrito";
-    }
-}
 
 ?>
 

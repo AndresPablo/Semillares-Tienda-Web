@@ -3,8 +3,6 @@
 require 'config/config.php';
 require 'config/database.php';
 
-print_r($_SESSION);
-
 $db = new Database();
 $con = $db->conectar();
 
