@@ -6,15 +6,15 @@ $db = new Database();
 $con = $db->conectar();
 
 $idTransaccion = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
-$$status = isset($_GET['status']) ? $_GET['status'] : ''; 
+$status = isset($_GET['status']) ? $_GET['status'] : ''; 
 
 if ($idTransaccion != '') {
     $fecha = date("Y-m-d H:i:s");
     $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
     $idCliente = $_SESSION['user_cliente'];
-    $sqlClientes = $con->prepare("SELECT email FROM clientes WHERE id=? AND estatus=1");
-    $sqlClientes->execute([$idCliente]);
-    $row_cliente = $sqlClientes->fetch(PDO::FETCH_ASSOC);
+    $sqlProd = $con->prepare("SELECT email FROM clientes WHERE id=? AND estatus=1");
+    $sqlProd->execute([$idCliente]);
+    $row_cliente = $sqlProd->fetch(PDO::FETCH_ASSOC);
     $email = $row_cliente['email'];
 
     $datos = [];
@@ -26,7 +26,7 @@ if ($idTransaccion != '') {
     $datos['total'] = $monto; 
 
     // Prepara los datos para insertarlos en la base de datos
-    $comando = $con->prepare ("INSERT INTO compra (fecha, status, email, id_cliente, total, id_transaccion) VALUES (?,?,?,?,?,?)");
+    $comando = $con->prepare("INSERT INTO compra (fecha, status, email, id_cliente, total, id_transaccion) VALUES (?,?,?,?,?,?)");
     $comando->execute(array_values($datos)); // Inserta la compra en la tabla "compra"
     $id = $con->lastInsertId(); // La id de la insercion, para encontrarlo en la DB
 
