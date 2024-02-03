@@ -5,6 +5,29 @@ require '../config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
+// TODO https://youtu.be/SDXkKHF2jD8?list=PL-Mlm_HYjCo-Odv5-wo3CCJ4nv0fNyl9b&t=1517
+$id_prueba = isset($_GET['payment_id']) ? $_GET['payment_id'] : ''; // $idTransaccion
+$id_statusprueba = isset($_GET['status']) ? $_GET['status'] : ''; // $status
+
+if ($id_prueba != '') {
+    $fecha = date("Y-m-d H:i:s");
+    $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
+
+    // comando prepare
+    // comando execute
+    // id lastInsert
+
+    if($id > 0) {
+        // isset productos
+        // if(productos):
+            // foreach producto
+        
+    }
+
+    // ENVIAR mail con Mailer.php
+}
+
+
 
 // Consultar BD
 //$sql = "SELECT preference_id FROM pagos WHERE ...";
@@ -19,6 +42,8 @@ $payment = $_GET['payment_id'];
 $status = $_GET['status'];
 $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
+
+
 
 // TEST
 /*$pago = $sdk->payment->get($payment);
@@ -43,9 +68,15 @@ if($payment > 0)
     $email = $datos['detalles']['payer']['email_adress'];
     $id_cliente = $datos['detalles']['payer']['payer_id'];*/
     //
+
+    //$id_cliente = '123';
+    $id_cliente = $_SESSION['user_cliente'];
+    $sqlCliente = $con->prepare("SELECT email FROM clientes WHERE id=? AND activo estatus=1");
+    $sqlCliente->execute([$id_cliente]);
+    $row_cliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
+
     $id_transaccion = $payment; 
-    $email = 'correo@servicioejemplo.com';
-    $id_cliente = '123';
+    $email = $row_cliente['email'];
     $total = 1235.00;
     $status = 'OK';
     $fecha = date('Y-m-d H:i:s');
@@ -93,7 +124,15 @@ if($payment > 0)
                 //$sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]); // VIEJO tira error
             }
             // Enviar correo única vez después de insertar productos
-            include 'enviar_mail.php';
+            //include 'enviar_mail.php'; // TODO: VIEJO , borrar
+            require 'Mailer.php';
+             $asunto = "Detalles de tu compra";
+             $cuerpo = '<h4> Gracias por su compra! </h4>';
+             $cuerpo .= '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
+             $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al (221) 123-456.</p>';
+     
+            $mailer = new Mailer();
+            $mailer->enviarMail($email, $asunto, $cuerpo);
         }
         unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito
         echo "Borrado (unset) carrito";
@@ -128,6 +167,8 @@ if($payment > 0)
         <!-- Funciones SDK Mercado Pago -->
         <script src="js/funciones-MP.js"></script>
     </head>
+
+    <?php include 'menu.php'; ?>
 
     <body>
         <section>

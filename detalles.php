@@ -82,6 +82,8 @@
     </head>
 
     <body>
+        <?php include 'menu.php'?>
+
         <!-- Responsive navbar-->
         <section>
         <nav class="navbar navbar-expand-lg shadow sticky-top navbar-light ">

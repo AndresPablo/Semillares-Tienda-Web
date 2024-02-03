@@ -5,12 +5,16 @@ require 'clases/clienteFunciones.php';
 
 $db = new Database();
 $con = $db->conectar();
+
+$proceso =isset($GET['pago']) ? 'pago' : 'login';
+
 $errors = [];
 
 if(!empty($_POST))
 {
     $usuario = trim($_POST['usuario']);
     $password = trim($_POST['password']);
+    $proceso = $_POST['proceso'] ?? 'login';
 
     if(esNulo([$usuario, $password]))
     {
@@ -18,7 +22,7 @@ if(!empty($_POST))
     }
     if(count($errors) == 0)
     {
-        $errors[] = login($usuario, $password, $con);
+        $errors[] = login($usuario, $password, $con, $proceso);
     }
 }
 ?>
@@ -72,6 +76,7 @@ if(!empty($_POST))
                             <div class="col-sm-6"><a class="" href="registro.php">Registrarme</a></div>
                         </div>
                         <form class="row g-3" action="login.php" method="post" autocomplete="off">
+                            <input type="hidden" name="proceso" value="<?php echo $proceso; ?>">
                             <div class="signin_form  s_form d-grid justify-content-center p-3 "> 
                                 <div class="input_text form-floating my-1"> 
                                     <i class="bi bi-envelope"></i> <i class="fa fa-eye-slash"></i>
