@@ -6,9 +6,9 @@ class Mailer {
     function enviarMail($email, $asunto, $cuerpo)
     {
         require_once  __DIR__ . '/../config/config.php';
-        require __DIR__ . '/..phpmailer/src/PHPMailer.php';
-        require __DIR__ . '/..phpmailer/src/SMTP.php';
-        require __DIR__ . '/..phpmailer/src/Exception.php';
+        require __DIR__ . '/../phpmailer/src/PHPMailer.php';
+        require __DIR__ . '/../phpmailer/src/SMTP.php';
+        require __DIR__ . '/../phpmailer/src/Exception.php';
 
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
