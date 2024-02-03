@@ -9,7 +9,5 @@ unset($_SESSION['user_cliente']);
 unset($_SESSION['user_mail']);       
 //session_destroy();
 
-
-
 // Redirige al indice
 header("Location: index.php");
