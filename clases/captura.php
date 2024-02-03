@@ -5,26 +5,72 @@ require '../config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
-// TODO https://youtu.be/SDXkKHF2jD8?list=PL-Mlm_HYjCo-Odv5-wo3CCJ4nv0fNyl9b&t=1517
-$id_prueba = isset($_GET['payment_id']) ? $_GET['payment_id'] : ''; // $idTransaccion
-$id_statusprueba = isset($_GET['status']) ? $_GET['status'] : ''; // $status
+$idTransaccion = isset($_GET['payment_id']) ? $_GET['payment_id'] : ''; // $idTransaccion
+$$status = isset($_GET['status']) ? $_GET['status'] : ''; // $status
 
-if ($id_prueba != '') {
+if ($idTransaccion != '') {
     $fecha = date("Y-m-d H:i:s");
     $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
+    $idCliente = $_SESSION['user_cliente'];
+    $sqlClientes = $con->prepare("SELECT email FROM clientes WHERE id=? AND estatus=1");
+    $sqlClientes->execute([$id_cliente]);
+    $row_cliente = $sqlClientes->fetch(PDO::FETCH_ASSOC);
+    $email = $row_cliente['email'];
 
-    // comando prepare
-    // comando execute
-    // id lastInsert
+    $datos = [];
+    $datos['id_transaccion'] = $idTransaccion; 
+    $datos['fecha_nueva'] = $fecha; 
+    $datos['status'] = $status; 
+    $datos['email'] = $email; 
+    $datos['id_cliente'] = $id_cliente;
+    $datos['total'] = $monto; 
+
+    // Prepara los datos para insertarlos en la base de datos
+    $comando = $con->prepare ("INSERT INTO compra (fecha, status, email, id_cliente, total, id_transaccion) VALUES (?,?,?,?,?,?)");
+    $comando->execute(array_values($datos)); // Inserta la compra en la tabla "compra"
+    $id = $con->lastInsertId(); // La id de la insercion, para encontrarlo en la DB
 
     if($id > 0) {
-        // isset productos
-        // if(productos):
-            // foreach producto
-        
+        $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : 
+        null;
+
+        if($productos != null)
+        {
+            foreach($productos as $clave => $cantidad)
+            {
+                $sqlProd = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo =1");
+                $sqlProd->execute([$clave]);
+                $row_prod = $sqlProd->fetch(PDO::FETCH_ASSOC);
+
+                $precio = $row_prod['precio'];
+                $descuento = $row_prod['descuento'];
+                $precio_desc =  $precio - (( $precio * $descuento) / 100);
+
+                $detalles = [];
+                $detalles['id_compra'] = $id; 
+                $detalles['id_producto'] = $row_prod['id']; 
+                $detalles['nombre'] = $row_prod['nombre']; 
+                $detalles['precio'] = $precio_desc; 
+                $detalles['cantidad'] = $cantidad; 
+                
+                $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)  VALUES (?,?,?,?,?)");
+                $sql_insert->execute(array_values($detalles)); // Inserta la compra en la tabla "detalle_compra"
+            }
+            // ENVIAR mail con Mailer.php
+            require 'Mailer.php';
+            $asunto = "Detalles de tu compra";
+            $cuerpo = '<h4> Gracias por su compra! </h4>';
+            $cuerpo .= '<p>El ID de su compra es <b>'. $idTransaccion .'</b></p>';
+            $cuerpo .= '<p>Ha comprado por <b>$'. $monto .'</b></p>';
+            $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al (221) 123-456.</p>';
+    
+            $mailer = new Mailer();
+            $mailer->enviarMail($email, $asunto, $cuerpo);
+        }
+        unset($_SESSION['carrito']); // limpiamos la variable de sesion carrito       
+        header("Location: " . SITE_URL . "/completado.php?key=" . $idTransaccion);
     }
 
-    // ENVIAR mail con Mailer.php
 }
 
 
