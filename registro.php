@@ -90,7 +90,7 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <!-- Custom CSS (personalizado)-->
@@ -117,12 +117,12 @@
                             </div>
                     </div>
                     <!-- Columna derecha -->
-                    <div class="col-md-6 ingreso-derecha d-flex flex-column align-items-center justify-content-center">
-                        <div class="row">
+                    <div class="col-md-6 ingreso-derecha">
+                        <div class="row d-inline-flex flex-column ingreso-derecha align-items-center justify-content-center">
                             <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="active bold" href="#">Registrarme</a></div>
                         </div>
-                        <form action="" method="" class=" row g-3 " autocomplete="off">
+                        <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
                             <div class="signin_form s_form d-grid justify-content-center p-3 "> 
                                 <div class="input_text my-1"> 
                                     <i class="bi bi-person"></i><span class="text-danger">*</span> 

@@ -80,7 +80,7 @@ if(!empty($_POST))
                             <label for="usuario">Usuario / Correo </label>
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i><span class="text-danger">*</span></span>
+                                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
                                     <input type="text" class="form-control text-start" id="usuario" name="usuario" placeholder="Usuario"> 
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ if(!empty($_POST))
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                                    <input type="text" class="form-control text-start" id="password" name="password" placeholder="Contraseña"> 
+                                    <input type="password" class="form-control text-start" id="password" name="password" placeholder="Contraseña"> 
                                 </div>
                             </div>
 

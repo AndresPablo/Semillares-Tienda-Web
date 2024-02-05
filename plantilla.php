@@ -11,7 +11,7 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <!-- Custom CSS (personalizado)-->
@@ -24,7 +24,7 @@
 
 
     <body>
-        <?php include 'menu.php'?>
+        
         <!------- -------------------->
         <section>
             <div class="container-fluid">
@@ -39,7 +39,7 @@
                             </div>
                     </div>
                     <!-- Columna derecha -->
-                    <div class="col ingreso-derecha d-flex flex-column ">
+                    <div class="col-lg-6 d-inline-flex flex-column ingreso-derecha align-items-center justify-content-center">
                         <div class="row">
                             <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="active bold" href="#">Registrarme</a></div>
@@ -60,18 +60,18 @@
                                     <input type="text" class="form-control  text-start" id="nombre" placeholder="Ejemplo" > 
                                 </div>
                             </div>
-                            <label for="nombre">Correo Electrónico</label>
+                            <label for="email">Correo Electrónico</label>
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-envelope-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="nombre" placeholder="Ejemplo" > 
+                                    <input type="email" class="form-control  text-start" id="email" name="email" placeholder="ejemplo@correo.com" > 
                                 </div>
                             </div>
-                            <label for="nombre">Nombre de Cuenta</label>
+                            <label for="username">Nombre de Cuenta</label>
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-person-vcard"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="nombre" placeholder="Tu Local" > 
+                                    <input type="text" class="form-control  text-start" id="username"  name="username" placeholder="Tu Local" > 
                                 </div>
                             </div>
                             <label for="nombre">Dirección</label>
@@ -95,25 +95,25 @@
                                     <input type="text" class="form-control  text-start" id="nombre" placeholder="12.123.123" > 
                                 </div>
                             </div>
-                            <label for="nombre">Teléfono</label>
+                            <label for="telefono">Teléfono</label>
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-telephone-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="nombre" placeholder="(221) 123-456" > 
+                                    <input type="text" class="form-control  text-start" id="telefono" name="telefono" placeholder="(221) 123-456" > 
                                 </div>
                             </div>
-                            <label for="nombre">Contraseña</label>
+                            <label for="password">Contraseña</label>
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-lock-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control text-start" id="nombre" placeholder="Contraseña" > 
+                                    <input type="password" class="form-control text-start" id="password" name="password" placeholder="Contraseña" > 
                                 </div>
                             </div>
-                            <label for="nombre">Repetir Contraseña</label>
+                            <label for="repassword">Repetir Contraseña</label>
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-lock-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="nombre" placeholder="Contraseña" > 
+                                    <input type="password" class="form-control  text-start" id="repassword" name="repassword" placeholder="Contraseña" > 
                                 </div>
                             </div>
                     </form>
