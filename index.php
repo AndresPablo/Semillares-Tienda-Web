@@ -72,7 +72,7 @@ print_r($_SESSION);
                         <div class="col col-8-lg">
                             <h1>¡Queremos estar en tu local!</h1>
                             </br></br>
-                            <p class="">¿Estás buscando <strong> incorporar productos veganos y saludables</strong> en tu tienda o servicio?</p>
+                            <p class="">¿Estás buscando <strong>incorporar productos veganos y saludables</strong> en tu tienda o servicio?</p>
                             </br>
                             <p class="">Probá con nuestros <strong>mix de frutos secos</strong></p>
                             <button class="btn btn-primary shadow" type="button">

@@ -50,7 +50,7 @@ function registraCliente(array $datos, $con)
 function registraUsuario(array $datos, $con)
 {
     // omitimos la columna "activacion"
-    $sql = $con->prepare ("INSERT INTO usuarios (usuario, password, token, id_cliente) VALUES(?,?,?,?)");
+    $sql = $con->prepare ("INSERT INTO usuarios (usuario, password, token, id_cliente, email) VALUES(?,?,?,?,?)");
     if($sql->execute(array_values($datos)))
     {
         return $con->lastInsertId();
@@ -88,11 +88,9 @@ function validaToken($id, $token, $con)
     $datos['id'] = $id; 
     $datos['token'] = $token; 
     $sql = $con->prepare ("SELECT id FROM usuarios WHERE id = ? AND token LIKE ? LIMIT 1");
-    //$sql->execute(array_values($datos)); // TODO: genera error de activacion de cuenta??
     $sql->execute([$id, $token]);
     if($sql->fetchColumn() > 0)
     {
-        // TODO: ver FIX error aca, la cuenta se activa pero devuelve "error al activar cuenta"
         if(activarUsuario($id,$con))
         {
             $msg = "Cuenta activada.";
@@ -161,6 +159,39 @@ function login($usuario, $password, $con, $proceso)
     }
 }
 
+function login_correo($correo, $password, $con, $proceso)
+{
+    $sql = $con->prepare("SELECT id, email, password, id_cliente FROM usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql->execute([$correo]);
+    if($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+        if(esActivo($correo, $con)){
+            if(password_verify($password, $row['password']))
+            {
+                // Inicio exitoso
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['user_name'] = $row['usuario'];
+                $_SESSION['user_mail'] = $row['email'];
+                $_SESSION['user_cliente'] = $row['id_cliente'];
+                if($proceso == 'pago')
+                {
+                    header("Location: checkout.php");
+                } else{
+                    header("Location: index.php");
+                }
+                exit;
+            }
+        }
+        else
+        {
+            return 'El usuario no ha sido activado';
+        }
+    }
+    else
+    {
+        return 'El usuario y/o contraseña son incorrectos';
+    }
+}
+
 function esActivo($usuario, $con)
 {
     $sql = $con->prepare ("SELECT activacion from usuarios WHERE usuario LIKE ? LIMIT 1");
@@ -171,4 +202,16 @@ function esActivo($usuario, $con)
         return true;
     }
     return false;
+}
+
+function solicitaPassword($user_id, $con)
+{
+    $token = generarToken();
+
+    $sql = $con->prepare("UPDATE usuarios SET token_password=?, password_request=1 WHERE id=?");
+    if($sql->execute([$token, $user_id]))
+    {
+        return $token;
+    }
+    return null;
 }

@@ -470,20 +470,17 @@ footer h4 {
 {
     background-color: #D9D9D9;
     border-radius: 360px;
-    padding-right:  24px;
-    padding-left:  16px;
 
 }
 .input_text input
 {
     background-color: #D9D9D9;
     border: 0;
-    padding: 16px 0px;
     min-height: fit-content;
+    padding-left: 2.5rem;
 }
 
-.input_text i
-{
+.input-group i{
     color:#83A32C;
 }
 
@@ -527,6 +524,7 @@ footer h4 {
     width: 100%;
     padding: 4px 48px;
 }
+
 
 /*------------------------------------------------------------*/
 /* PEDIDOS - TARJETA DE PEDIDO GUARDADO */
@@ -617,6 +615,8 @@ footer h4 {
 .bg-gradiente-amarillo-blanco { 
     background: linear-gradient(90deg, rgba(227,170,3,1) 48%, rgba(255,255,255,1) 100%);
 }
+
+
 
 .text-acento {
     color:  #8C5125;

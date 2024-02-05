@@ -54,7 +54,7 @@
                 $token = generarToken();
                 $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
-                $idUsuario =  registraUsuario([$usuario, $pass_hash, $token, $id], $con);
+                $idUsuario =  registraUsuario([$usuario, $pass_hash, $token, $id, $correo], $con);
                 if($idUsuario > 0)
                 {
                     $url = SITE_URL . '/activar_cliente.php?id='.$idUsuario.'&token='.$token;
@@ -103,7 +103,6 @@
 
 
     <body>
-
         <section>
             <div class="container-fluid">
                 <?php mostrarMensajes($errors); ?>
@@ -123,7 +122,7 @@
                             <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="active bold" href="#">Registrarme</a></div>
                         </div>
-                        <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
+                        <form action="" method="" class=" row g-3 " autocomplete="off">
                             <div class="signin_form s_form d-grid justify-content-center p-3 "> 
                                 <div class="input_text my-1"> 
                                     <i class="bi bi-person"></i><span class="text-danger">*</span> 
