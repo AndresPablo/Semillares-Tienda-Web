@@ -99,7 +99,7 @@
                             <div class="form-floating mb-3 position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-telephone-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="telefono" name="telefono" placeholder="(221) 123-456" > 
+                                    <input type="text" class="form-control  text-start" id="telefono" name="telefono" placeholder="0221 570-2432" > 
                                 </div>
                             </div>
                             <label for="password">Contraseña</label>

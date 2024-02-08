@@ -210,7 +210,7 @@
                     <h4>Contactanos</h4>
                     <li class="list-group ">
                         <ul><i class="bi bi-pin"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
-                        <ul><i class="bi bi-telephone"></i><a class="#"> (221) 123-456</a></ul>
+                        <ul><i class="bi bi-telephone"></i><a class="#"> 0221 570-2432</a></ul>
                         <ul><i class="bi bi-envelope"> </i><a class="#">  semillares@gmail.com</a></ul>
                     </li>
                 </div>               

@@ -234,7 +234,7 @@
                             <h4>Contactanos</h4>
                             <li class="list-group ">
                                 <ul><i class="bi bi-pin"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
-                                <ul><i class="bi bi-telephone"></i><a class="#"> (221) 123-456</a></ul>
+                                <ul><i class="bi bi-telephone"></i><a class="#"> 0221 570-2432</a></ul>
                                 <ul><i class="bi bi-envelope"> </i><a class="#">  semillares@gmail.com</a></ul>
                             </li>
                         </div>               
@@ -242,11 +242,8 @@
                             <h4>Medios de pago</h4>
                             <div class="row logos-pago">
                                 <img src="img/medios-pago/mercadopago@2x.png" alt="Mercado Pago">
-                                <img src="img/medios-pago/banelco@2x.png" alt="Banelco">
-                                <img src="img/medios-pago/visa@2x.png" alt="Mercado Pago">
-                                <img src="img/medios-pago/mastercard@2x.png" alt="Mastercard">
-                                <img src="img/medios-pago/rapipago@2x.png" alt="Rapipago">
-                                <img src="img/medios-pago/pagofacil@2x.png" alt="Pago Facil">
+                            <img src="img/medios-pago/visa@2x.png" alt="Visa">
+                            <img src="img/medios-pago/mastercard@2x.png" alt="Mastercard">
                             </div>
                         </div>
                         <div class="col-lg-2 d-flex justify-content-center">

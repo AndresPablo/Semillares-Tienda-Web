@@ -7,6 +7,8 @@ $con = $db->conectar();
 
 $idTransaccion = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
 $status = isset($_GET['status']) ? $_GET['status'] : ''; 
+print_r($_SESSION);
+
 
 if ($idTransaccion != '') {
     $fecha = date("Y-m-d H:i:s");
@@ -62,7 +64,7 @@ if ($idTransaccion != '') {
             $cuerpo = '<h4> Gracias por su compra! </h4>';
             $cuerpo .= '<p>El ID de su compra es <b>'. $idTransaccion .'</b></p>';
             $cuerpo .= '<p>Ha comprado por <b>$'. $monto .'</b></p>';
-            $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al (221) 123-456.</p>';
+            $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al 0221 570-2432.</p>';
     
             $mailer = new Mailer();
             $mailer->enviarMail($email, $asunto, $cuerpo);
