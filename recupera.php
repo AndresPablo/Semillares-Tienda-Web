@@ -27,7 +27,7 @@
         if(emailExiste($email, $con))
         {
             $sql = $con->prepare("SELECT usuarios.id, clientes.nombres FROM usuarios
-            INNER JOIN clientes ON usuarios.id_cliente=cliente=clientes.id
+            INNER JOIN clientes ON usuarios.id_cliente=clientes.id
             WHERE clientes.email LIKE ? LIMIT 1");
             $sql->execute([$email]);
             $row = $sql->fetch(PDO::FETCH_ASSOC);
