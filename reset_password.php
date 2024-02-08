@@ -7,7 +7,7 @@ require 'clases/clienteFunciones.php';
 $user_id = $_GET['id'] ?? $_POST['user_id'] ?? '';
 $token = $_GET['token'] ?? $_POST['token'] ?? '';
 
-if($id == '' || $token == '')
+if($user_id == '' || $token == '')
 {
     header("Location: index.php");
     exit;

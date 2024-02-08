@@ -31,17 +31,18 @@
             WHERE clientes.email LIKE ? LIMIT 1");
             $sql->execute([$email]);
             $row = $sql->fetch(PDO::FETCH_ASSOC);
-            $id_usuario = $row['id'];
+            $user_id = $row['id'];
             $nombres = $row['nombres'];
-            $token = solicitaPassword($id_usuario, $con);
+            $token = solicitaPassword($user_id, $con);
             if($token !== null)
             {
                 require 'clases/Mailer.php';
                 $mailer = new Mailer();
-                $url = SITE_URL . '/reset_password.php?id=' . $id_usuario . '&token=' . $token;
+                $url = SITE_URL . '/reset_password.php?id=' . $user_id . '&token=' . $token;
                 $asunto = "Recuperar contraseña - Tienda Semillares";
                 $cuerpo = "Estimado $nombres: <br> Si has solicitado el cambio de su contraseña, hacé clic en el siguiente link <a href='$url'>$url</a>.";
                 $cuerpo .= "<br>SI no solicitaste este blanqueo, ignorá este correo.";
+                $cuerpo  = mb_convert_encoding($cuerpo, 'ISO-8859-1', 'UTF-8');
 
                 if($mailer->enviarMail($email, $asunto, $cuerpo))
                 {

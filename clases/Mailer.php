@@ -34,7 +34,7 @@ class Mailer {
 
             // Contenido
             $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = $asunto;
+            $mail->Subject = mb_convert_encoding($asunto, 'ISO-8859-1', 'UTF-8');
 
 
             $mail->Body    = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
