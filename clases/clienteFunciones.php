@@ -219,7 +219,7 @@ function solicitaPassword($user_id, $con)
 function verificaTokenRequest($userId, $token, $con)
 {
     $sql = $con->prepare("SELECT id FROM usuarios WHERE id=? AND token_password LIKE ? AND password_request=1 LIMIT 1");
-    $sql->execute($userId, $token);
+    $sql->execute([$userId, $token]);
     if($sql->fetchColumn() > 0)
     {
         return true;
