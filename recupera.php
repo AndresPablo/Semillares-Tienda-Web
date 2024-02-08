@@ -38,7 +38,7 @@
             {
                 require 'clases/Mailer.php';
                 $mailer = new Mailer();
-                $url = SITE_URL - 'user/reset_password.php?' . $id_usuario . '$token=' .$token;
+                $url = SITE_URL . 'user/reset_password.php?' . $id_usuario . '$token=' .$token;
                 $asunto = "Recuperar contraseña - Tienda Semillares";
                 $cuerpo = "Estimado $nombres: <br> Si has solicitado el cambio de su contraseña, hacé clic en el siguiente link <a href=$url'>$url </a>.";
                 $cuerpo = "<br>SI no solicitaste este blanqueo, ignorá este correo.";
