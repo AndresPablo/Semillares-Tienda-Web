@@ -31,9 +31,9 @@
             WHERE clientes.email LIKE ? LIMIT 1");
             $sql->execute([$email]);
             $row = $sql->fetch(PDO::FETCH_ASSOC);
-            $user_id = $row['id'];
+            $id_usuario = $row['id'];
             $nombres = $row['nombres'];
-            $token = solicitaPassword($user_id, $con);
+            $token = solicitaPassword($id_usuario, $con);
             if($token !== null)
             {
                 require 'clases/Mailer.php';
