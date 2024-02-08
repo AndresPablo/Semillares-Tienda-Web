@@ -36,7 +36,7 @@
             $token = solicitaPassword($user_id, $con);
             if($token !== null)
             {
-                require 'class/Mailer.php';
+                require 'clases/Mailer.php';
                 $mailer = new Mailer();
                 $url = SITE_URL - 'user/reset_password.php?' . $id_usuario . '$token=' .$token;
                 $asunto = "Recuperar contraseña - Tienda Semillares";
