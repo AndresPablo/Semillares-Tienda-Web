@@ -39,7 +39,7 @@ if(!empty($_POST))
     if(count($errors) == 0)
     {
         $pass_hash = password_hash($password, PASSWORD_DEFAULT);
-        if(actualizaPassword($user_id, $password_hash, $con))
+        if(actualizaPassword($user_id, $pass_hash, $con))
         {
             echo "Contraseña modificada <br><a href='login.php'>Iniciar Sesión</a>";
             exit;
