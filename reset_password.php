@@ -30,11 +30,11 @@ if(!empty($_POST))
 
     if(esNulo([$user_id, $token, $password, $repassword]))
     {
-
+        $erorrs[] = "Debes completar todos los campos";
     }
-    if(!validaPassword([$user_id, $token, $password, $repassword]))
+    if(!validaPassword([$password, $repassword]))
     {
-        
+        $erorrs[] = "Las contraseñas no coinciden";
     }
     if(count($errors) == 0)
     {
@@ -97,7 +97,7 @@ if(!empty($_POST))
                     <label for="password">Nueva Contraseña</label>
                 </div>
                 <div class="form-floating">
-                    <input class="form-control" type="repassword" name="repassword" id="repassword" placeholder="Confirmar Contraseña" required>
+                    <input class="form-control" type="password" name="repassword" id="repassword" placeholder="Confirmar Contraseña" required>
                     <label for="repassword">Confirmar Contraseña</label>
                 </div>
                 
