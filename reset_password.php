@@ -32,14 +32,14 @@ if(!empty($_POST))
     {
         $erorrs[] = "Debes completar todos los campos";
     }
-    if(!validaPassword([$password, $repassword]))
+    if(!validaPassword($password, $repassword))
     {
         $erorrs[] = "Las contraseñas no coinciden";
     }
     if(count($errors) == 0)
     {
         $pass_hash = password_hash($password, PASSWORD_DEFAULT);
-        if(actualizaPassword([$user_id, $password_hash, $con]))
+        if(actualizaPassword($user_id, $password_hash, $con))
         {
             echo "Contraseña modificada <br><a href='login.php'>Iniciar Sesión</a>";
             exit;
