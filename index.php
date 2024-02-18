@@ -41,7 +41,7 @@ print_r($_SESSION);
         <!-- Top Bar 
         <section>
             <div class="row justify-content-center top-bar bg-mostaza text-dark">
-                    <div class="col-4 text-center">Compra Minima $5.000</div>
+                <div class="col-4 text-center">Compra Minima $5.000</div>
             </div>
         </section>
         -->
