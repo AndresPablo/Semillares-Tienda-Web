@@ -63,7 +63,7 @@ $sqlCompra->execute([$idCliente]);
                     <p>correo@ejemplo.com</p>
                 </div>
                 <hr>
-                <?php while($row = $sqlCompra->fetch(PDO::FETCH_ASSOC)){
+                <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){
                     $rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC);
                     $idCompra = $rowCompra['id'];
 
@@ -72,11 +72,11 @@ $sqlCompra->execute([$idCliente]);
                     ?>
                     <div class="card mb-3">
                         <div class="card-header">
-                            <?php echo $row['fecha']; ?>
+                            <?php echo $rowCompra['fecha']; ?>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">     <?php echo $row['id_transaccion']; ?>     </h5>
-                            <p class="card-text">  <?php echo $row['total']; ?>  </p>
+                            <h5 class="card-title">     <?php echo $rowCompra['id_transaccion']; ?>     </h5>
+                            <p class="card-text">  <?php echo $rowCompra['total']; ?>  </p>
                             <p><strong>Fecha: </strong><?php echo $rowCompra['fecha']; ?></p>
                             <p><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?></p>
                             <p><strong>Total: </strong><?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?></p>
@@ -95,13 +95,13 @@ $sqlCompra->execute([$idCliente]);
 
                                     <tbody>
                                         <?php 
-                                        while($rowCompra = $sqlDetalle->fetch(PDO::FETCH_ASSOC)){ 
-                                            $precio = $row['precio'];
-                                            $cantidad = $row['cantidad'];
+                                        while($rowDetalle = $sqlDetalle->fetch(PDO::FETCH_ASSOC)){ 
+                                            $precio = $rowDetalle['precio'];
+                                            $cantidad = $rowDetalle['cantidad'];
                                             $subtotal = $precio * $cantidad;
                                         ?>
                                         <tr>
-                                            <td><?php echo $rowCompra['nombre']; ?></td>
+                                            <td><?php echo $rowDetalle['nombre']; ?></td>
                                             <td><?php echo MONEDA . ' ' . number_format($precio, 2, ',', '.'); ?></td>
                                             <td><?php echo $cantidad; ?></td>
                                             <td><?php echo MONEDA . ' ' . number_format($subtotal, 2, ',', '.'); ?></td>
