@@ -47,44 +47,9 @@
     <body>
         <!-- Responsive navbar-->
         <?php include 'menu.php'?>
-        
-
-        <!-- Header-->
-        <header class="header-tienda ">
-            <div class="container-fluid my-5">
-                <div class="row ">
-                    <div class="col-md-3 d-flex justify-content-center">
-                        <a href=""><button class="btn-primary px-4"><i class="bi bi-whatsapp"> </i></button></a>
-                    </div>
-                    <div class="col">
-                        <form class="w-100">
-                            <input type="search" class="form-control" placeholder="¿Que estás buscando hoy?" aria-label="Search">
-                        </form>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="dropdown">
-                            <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            Tengo Local
-                            </a>
-                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
-                            <li><a class="dropdown-item active" href="#" aria-current="page">Tengo Local</a></li>
-                            <li><a class="dropdown-item" href="#">Opcion A</a></li>
-                            <li><a class="dropdown-item" href="#">Opcion B</a></li>
-                            <li><a class="dropdown-item" href="#">Opcion C</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Opcion D</a></li>
-                            <li><a class="dropdown-item" href="#">Opcion E</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
 
         <!-- Contenido -->
         <main>
-
             <div class="container">
                 <div class="table table-responsive">
                     <table class="table">
@@ -207,11 +172,8 @@
                         <h4>Medios de pago</h4>
                         <div class="row logos-pago">
                             <img src="img/medios-pago/mercadopago@2x.png" alt="Mercado Pago">
-                            <img src="img/medios-pago/banelco@2x.png" alt="Banelco">
-                            <img src="img/medios-pago/visa@2x.png" alt="Mercado Pago">
+                            <img src="img/medios-pago/visa@2x.png" alt="Visa">
                             <img src="img/medios-pago/mastercard@2x.png" alt="Mastercard">
-                            <img src="img/medios-pago/rapipago@2x.png" alt="Rapipago">
-                            <img src="img/medios-pago/pagofacil@2x.png" alt="Pago Facil">
                         </div>
                     </div>
                     <div class="col-lg-2 d-flex justify-content-center">

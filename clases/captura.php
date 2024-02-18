@@ -7,15 +7,18 @@ $con = $db->conectar();
 
 $idTransaccion = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
 $status = isset($_GET['status']) ? $_GET['status'] : ''; 
-print_r($_SESSION);
 
 
 if ($idTransaccion != '') {
-    $fecha = date("Y-m-d H:i:s");
-    $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
+
+    // 19. asignar compras
     $idCliente = $_SESSION['user_cliente'];
     $sqlProd = $con->prepare("SELECT email FROM clientes WHERE id=? AND estatus=1");
     $sqlProd->execute([$idCliente]);
+
+    $fecha = date("Y-m-d H:i:s");
+    $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
+
     $row_cliente = $sqlProd->fetch(PDO::FETCH_ASSOC);
     $email = $row_cliente['email'];
 
@@ -26,6 +29,7 @@ if ($idTransaccion != '') {
     $datos['email'] = $email; 
     $datos['id_cliente'] = $idCliente;
     $datos['total'] = $monto; 
+    $total = 0;
 
     // Prepara los datos para insertarlos en la base de datos
     $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,?,?,?,?,?)");
@@ -58,6 +62,7 @@ if ($idTransaccion != '') {
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)  VALUES (?,?,?,?,?)");
                 $sql_insert->execute(array_values($detalles)); // Inserta la compra en la tabla "detalle_compra"
             }
+            $datos['total'] = $monto; 
             // ENVIAR mail con Mailer.php
             require 'Mailer.php';
             $asunto = "Detalles de tu compra";
@@ -134,9 +139,9 @@ if(!empty($payment)) {
         <script src="js/funciones-MP.js"></script>
     </head>
 
-    <?php include 'menu.php'; ?>
-
     <body>
+        <!-- Responsive navbar-->
+        <?php include 'menu.php'?>
         <section>
             <div class="container">
                 <h3>Tu pago se realizó con éxito</h3>
@@ -148,5 +153,69 @@ if(!empty($payment)) {
                 <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
             </div>
         </section>
+
+        <main>
+            <div class="container">
+                <div class="table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <?php if($lista_carrito == null)
+                                {
+                                    echo '<tr><td colspan="5 class="text-center"><b>Lista vacia</b></td></tr>';
+                                }
+                                else
+                                {
+                                    foreach($lista_carrito as $producto)
+                                    {
+                                        $_id = $producto['id'];
+                                        $nombre = $producto['nombre'];
+                                        $precio = $producto['precio'];
+                                        $descuento = $producto['descuento'];
+                                        $cantidad = $producto['cantidad'];
+                                        $precio_desc = $precio - (($precio * $descuento) / 100);
+                                        $subtotal = $cantidad * $precio_desc;
+                                        $total += $subtotal;
+                                        $datos['total'] += $subtotal; 
+
+                                    ?>
+                                    <tr>
+                                        <td> <?php echo $nombre; ?></td>
+                                        <td> <?php echo MONEDA . number_format($precio_desc, 2, '.', ','); ?></td>
+                                        <td> 
+                                            <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" 
+                                            size="5" id="cantidad_<?php echo $_id; ?>" 
+                                            onchange="actualizaCantidad(this.value,<?php echo $_id;?>)">
+                                        </td>
+                                        <td> 
+                                            <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> <?php echo MONEDA . 
+                                            number_format($subtotal, 2, '.', ','); ?></div>
+                                        </td>
+                                        <td> 
+                                            <a href="#" id="eliminar" class="btn btn btn-warning btn-sm" data-bs-id="<?php echo 
+                                            $_id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a> 
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td colspan="2">
+                                        <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
+                                    </td>
+                                </tr>
+                            </tbody> 
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+        </main>
     <body>
 </html>
