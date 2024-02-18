@@ -82,7 +82,9 @@ function eliminar($id)
             $descuento = $row['descuento'];
             $precio_desc = $precio - (($precio * $descuento) / 100);
             // Restar el valor del producto eliminado al total del carrito
-            $_SESSION['carrito']['total'] -= $precio_desc;
+            if (isset($_SESSION['carrito']['total'])) {
+                $_SESSION['carrito']['total'] -= $precio_desc;
+            }
             return true;
         }else
         {
