@@ -58,7 +58,7 @@ if ($idTransaccion != '') {
                 $detalles['nombre'] = $row_prod['nombre']; 
                 $detalles['precio'] = $precio_desc; 
                 $detalles['cantidad'] = $cantidad; 
-                $monto += $precio_desc;
+                $monto += $precio_desc * $cantidad;
                 
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)  VALUES (?,?,?,?,?)");
                 $sql_insert->execute(array_values($detalles)); // Inserta la compra en la tabla "detalle_compra"
