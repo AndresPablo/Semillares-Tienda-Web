@@ -10,8 +10,8 @@ $con = $db->conectar();
 print_r($_SESSION);
 $idCliente = $_SESSION['user_cliente'];
 
-$sqlProd = $con->prepare("SELECT id_transaccion, fecha, status, total FROM compra WHERE id_cliente=? ORDER BY DATE(fecha) DESC");
-$sqlProd->execute([$idCliente]);
+$sql = $con->prepare("SELECT id_transaccion, fecha, status, total FROM compra WHERE id_cliente=? ORDER BY DATE(fecha) DESC");
+$sql->execute([$idCliente]);
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,10 @@ $sqlProd->execute([$idCliente]);
 
     <body>
         
-        <!------- -------------------->
+        <!-- Responsive navbar-->
+        <?php include 'menu.php'?>
+
+        <!-- Contenido -->
         <main>
             <div class="container">
                 <h4>Mis compras</h4>
