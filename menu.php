@@ -38,7 +38,7 @@
                     <a class="nav-link" href="trabajo-semillares.html">Trabajo Semillares</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="cuenta.html">Mi Cuenta</a>
+                        <a class="nav-link" href="cuenta.php">Mi Cuenta</a>
                     </li>
                 </ul>
             </div>                
