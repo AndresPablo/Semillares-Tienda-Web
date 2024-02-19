@@ -10,7 +10,6 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
 
 
 if ($idTransaccion != '') {
-
     // 19. asignar compras
     $idCliente = $_SESSION['user_cliente'];
     $sqlProd = $con->prepare("SELECT email FROM clientes WHERE id=? AND estatus=1");
@@ -18,7 +17,6 @@ if ($idTransaccion != '') {
 
     $fecha = date("Y-m-d H:i:s");
     $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
-
     $row_cliente = $sqlProd->fetch(PDO::FETCH_ASSOC);
     $email = $row_cliente['email'];
 
@@ -29,7 +27,6 @@ if ($idTransaccion != '') {
     $datos['email'] = $email; 
     $datos['id_cliente'] = $idCliente;
     $datos['total'] = $monto; 
-    $total = 0;
 
     // Prepara los datos para insertarlos en la base de datos
     $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,?,?,?,?,?)");
@@ -58,12 +55,10 @@ if ($idTransaccion != '') {
                 $detalles['nombre'] = $row_prod['nombre']; 
                 $detalles['precio'] = $precio_desc; 
                 $detalles['cantidad'] = $cantidad; 
-                $monto += $precio_desc * $cantidad;
                 
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)  VALUES (?,?,?,?,?)");
                 $sql_insert->execute(array_values($detalles)); // Inserta la compra en la tabla "detalle_compra"
             }
-            $datos['total'] = $monto; 
             // ENVIAR mail con Mailer.php
             require 'Mailer.php';
             $asunto = "Detalles de tu compra";
