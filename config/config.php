@@ -22,8 +22,15 @@ define("MAIL_PORT", "465");
 
 session_start();
 
+// Cantidad para mostrar en el icono del carrito
 $num_cart = 0; 
+
+// Inicializar el carrito
 if(isset($_SESSION['carrito']['productos'])) {
     $num_cart = count($_SESSION['carrito']['productos']);
 }
-?>
+
+// Inicializar la variable de sesión para el total del carrito
+if (!isset($_SESSION['carrito']['total'])) {
+    $_SESSION['carrito']['total'] = 0;
+}

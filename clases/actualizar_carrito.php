@@ -48,6 +48,10 @@ function agregar($id, $cantidad)
             $descuento = $row['descuento'];
             $precio_desc = $precio - (($precio * $descuento) / 100);
             $res = $cantidad * $precio_desc;
+
+            // Actualizar el total del carrito
+            $_SESSION['carrito']['total'] += $res;
+
             return $res;
         }
     }else {
@@ -61,9 +65,21 @@ function eliminar($id)
     {
         if(isset($_SESSION['carrito']['productos'][$id]))
         {
+            // Obtener el precio y descuento del producto eliminado
+            $db = new Database();
+            $con = $db->conectar();
+            $sql = $con->prepare("SELECT precio, descuento FROM productos WHERE id=? AND activo=1 LIMIT 1");
+            $sql->execute([$id]);
+            $row = $sql->fetch(PDO::FETCH_ASSOC);
+            $precio = $row['precio'];
+            $descuento = $row['descuento'];
+            $precio_desc = $precio - (($precio * $descuento) / 100);
+
+            // Restar el valor del producto eliminado al total del carrito
+            $_SESSION['carrito']['total'] -= $precio_desc;
+            
             // Elimina el producto del carrito
             unset ($_SESSION['carrito']['productos'][$id]);
-            
             return true;
         }else
         {
@@ -71,5 +87,3 @@ function eliminar($id)
         }
     }
 }
-
-?>
