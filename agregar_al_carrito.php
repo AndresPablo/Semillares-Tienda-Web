@@ -1,4 +1,7 @@
 <?php
+
+require '/clases/actualizar_carrito.php';
+
     // Iniciar sesión
     session_start();
 
@@ -31,6 +34,9 @@
             $producto['subtotal'] = $producto['precio'];
             $_SESSION['carrito'][] = $producto;
         }
+
+        // Actualizar el total del carrito
+        $_SESSION['carrito']['total'] = calcularTotalCarrito();
         
         // Redirigir de vuelta a la página de la tienda
         header('Location: tienda.php');
