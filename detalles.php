@@ -82,141 +82,142 @@
     </head>
 
     <body>
+        <!-- Responsive navbar-->
         <?php include 'menu.php'?>
 
-    <!-- Header-->
-    <header class="header-tienda ">
-        <div class="container-fluid my-5">
-            <div class="row ">
-                <div class="col-md-3 d-flex justify-content-center">
-                    <a href=""><button class="btn-primary px-4"><i class="bi bi-whatsapp"> </i></button></a>
-                </div>
-                <div class="col">
-                    <form class="w-100">
-                        <input type="search" class="form-control" placeholder="¿Que estás buscando hoy?" aria-label="Search">
-                    </form>
-                </div>
-                <div class="col-md-2">
-                    <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tengo Local
-                        </a>
-                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
-                        <li><a class="dropdown-item active" href="#" aria-current="page">Tengo Local</a></li>
-                        <li><a class="dropdown-item" href="#">Opcion A</a></li>
-                        <li><a class="dropdown-item" href="#">Opcion B</a></li>
-                        <li><a class="dropdown-item" href="#">Opcion C</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Opcion D</a></li>
-                        <li><a class="dropdown-item" href="#">Opcion E</a></li>
-                        </ul>
+        <!-- Header-->
+        <header class="header-tienda ">
+            <div class="container-fluid my-5">
+                <div class="row ">
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <a href=""><button class="btn-primary px-4"><i class="bi bi-whatsapp"> </i></button></a>
+                    </div>
+                    <div class="col">
+                        <form class="w-100">
+                            <input type="search" class="form-control" placeholder="¿Que estás buscando hoy?" aria-label="Search">
+                        </form>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="dropdown">
+                            <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tengo Local
+                            </a>
+                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
+                            <li><a class="dropdown-item active" href="#" aria-current="page">Tengo Local</a></li>
+                            <li><a class="dropdown-item" href="#">Opcion A</a></li>
+                            <li><a class="dropdown-item" href="#">Opcion B</a></li>
+                            <li><a class="dropdown-item" href="#">Opcion C</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Opcion D</a></li>
+                            <li><a class="dropdown-item" href="#">Opcion E</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
 
-    <!-- WRAPER -->
-    <section class="bg-white">
-        <main>
-            <div class="container">
-                <div class="row">
-                    <!-- Columna A (imagen) -->
-                    <div class="col-md-6 order-md-1">
-                        <div id="carouselImages" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="<?php echo $rutaImg; ?>" class="d-block w-100" alt="...">
+        <!-- WRAPER -->
+        <section class="bg-white">
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <!-- Columna A (imagen) -->
+                        <div class="col-md-6 order-md-1">
+                            <div id="carouselImages" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="<?php echo $rutaImg; ?>" class="d-block w-100" alt="...">
+                                    </div>
+                                        <?php foreach($imagenes as $img) { ?>
+                                            <div class="carousel-item">
+                                                <img src="<?php echo $img;?>" class="d-block w-100" alt="">
+                                            </div>
+                                        <?php } ?>                                
                                 </div>
-                                    <?php foreach($imagenes as $img) { ?>
-                                        <div class="carousel-item">
-                                            <img src="<?php echo $img;?>" class="d-block w-100" alt="">
-                                        </div>
-                                    <?php } ?>                                
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
-                    </div>
-                    <!-- Columna B (texto) -->
-                    <div class="col-md-6 order-md-2">
-                        <h2><?php echo $nombre?></h2>
-                        <?php if($descuento > 0) {  ?>
-                            <p><del><?php echo MONEDA . number_format($precio_desc, 0, ',', '.' );?></del></p>
-                            <h3><?php echo MONEDA . number_format($precio_desc, 0, ',', '.' );?></h3>
-                            <small class="text-success"><?php echo $descuento; ?>% OFF</small>
-                        <?php } else { ?>
-                            <p><?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
-                            <?php } ?>
+                        <!-- Columna B (texto) -->
+                        <div class="col-md-6 order-md-2">
+                            <h2><?php echo $nombre?></h2>
+                            <?php if($descuento > 0) {  ?>
+                                <p><del><?php echo MONEDA . number_format($precio_desc, 0, ',', '.' );?></del></p>
+                                <h3><?php echo MONEDA . number_format($precio_desc, 0, ',', '.' );?></h3>
+                                <small class="text-success"><?php echo $descuento; ?>% OFF</small>
+                            <?php } else { ?>
+                                <p><?php echo MONEDA . number_format($precio, 0, ',', '.' );?></p>
+                                <?php } ?>
 
-                        <p clas="lead">
-                            <?php echo $descripcion?>
-                        </p>
-                        
-                        <div class="col-3 my-3">
-                            Cantidad: <input class="form-control" id="cantidad" name="cantidad"
-                            type="number" min="1" max="10" value="1" >
-                        </div>
+                            <p clas="lead">
+                                <?php echo $descripcion?>
+                            </p>
+                            
+                            <div class="col-3 my-3">
+                                Cantidad: <input class="form-control" id="cantidad" name="cantidad"
+                                type="number" min="1" max="10" value="1" >
+                            </div>
 
-                        <div class="d-grid gap-3 col-10 mx-auto">
-                            <!--<button class="btn btn-primary" type="button">Comprar ahora</button>-->
-                            <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
-                            $id; ?>, cantidad.value, '<?php echo $token_tmp; ?>')">Agregar</button>
+                            <div class="d-grid gap-3 col-10 mx-auto">
+                                <!--<button class="btn btn-primary" type="button">Comprar ahora</button>-->
+                                <button class="btn btn-primary" type="button" onclick="addProducto(<?php echo 
+                                $id; ?>, cantidad.value, '<?php echo $token_tmp; ?>')">Agregar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </main>
+            
+
+        </section>
+
+        <!-- Footer-->
+        <footer class="bg-verde-oscuro">
+            <div class="container">
+                <div class=" row-cols-lg-4 row row-cols-md-2 row-cols-sm-1 text-white">
+                    <div class="col-lg-0">
+                        <h4>Política de Seguridad</h4>
+                        <li class="list-group ">
+                            <ul><a href="politicas.html">Política de devolución</a></ul>
+                            <ul><a href="envios.html" class="">Envíos</a></ul>
+                            <ul><a href="preguntas.html" class="">Preguntas Frecuentes</a></ul>
+                        </li>
+                    </div>
+                    <div class="col-lg-0">
+                        <h4>Contactanos</h4>
+                        <li class="list-group ">
+                            <ul><i class="bi bi-pin"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
+                            <ul><i class="bi bi-telephone"></i><a class="#"> 0221 570-2432</a></ul>
+                            <ul><i class="bi bi-envelope"> </i><a class="#">  semillares@gmail.com</a></ul>
+                        </li>
+                    </div>               
+                    <div class="col-lg-0 ">
+                        <h4>Medios de pago</h4>
+                        <div class="row logos-pago">
+                            <img src="img/medios-pago/mercadopago@2x.png" alt="Mercado Pago">
+                            <img src="img/medios-pago/banelco@2x.png" alt="Banelco">
+                            <img src="img/medios-pago/visa@2x.png" alt="Mercado Pago">
+                            <img src="img/medios-pago/mastercard@2x.png" alt="Mastercard">
+                            <img src="img/medios-pago/rapipago@2x.png" alt="Rapipago">
+                            <img src="img/medios-pago/pagofacil@2x.png" alt="Pago Facil">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex justify-content-center">
+                        <img class="data-fiscal" src="img/Data-fiscal-Ejemplo.jpg" alt="Data Fiscal">
+                    </div>
+                </div>
+                <br>
+                <p class="m-0 text-center text-white">Copyright &copy; Semillares 2023</p>
             </div>
-        </main>
-        
-
-    </section>
-
-    <!-- Footer-->
-    <footer class="bg-verde-oscuro">
-        <div class="container">
-            <div class=" row-cols-lg-4 row row-cols-md-2 row-cols-sm-1 text-white">
-                <div class="col-lg-0">
-                    <h4>Política de Seguridad</h4>
-                    <li class="list-group ">
-                        <ul><a href="politicas.html">Política de devolución</a></ul>
-                        <ul><a href="envios.html" class="">Envíos</a></ul>
-                        <ul><a href="preguntas.html" class="">Preguntas Frecuentes</a></ul>
-                    </li>
-                </div>
-                <div class="col-lg-0">
-                    <h4>Contactanos</h4>
-                    <li class="list-group ">
-                        <ul><i class="bi bi-pin"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
-                        <ul><i class="bi bi-telephone"></i><a class="#"> 0221 570-2432</a></ul>
-                        <ul><i class="bi bi-envelope"> </i><a class="#">  semillares@gmail.com</a></ul>
-                    </li>
-                </div>               
-                <div class="col-lg-0 ">
-                    <h4>Medios de pago</h4>
-                    <div class="row logos-pago">
-                        <img src="img/medios-pago/mercadopago@2x.png" alt="Mercado Pago">
-                        <img src="img/medios-pago/banelco@2x.png" alt="Banelco">
-                        <img src="img/medios-pago/visa@2x.png" alt="Mercado Pago">
-                        <img src="img/medios-pago/mastercard@2x.png" alt="Mastercard">
-                        <img src="img/medios-pago/rapipago@2x.png" alt="Rapipago">
-                        <img src="img/medios-pago/pagofacil@2x.png" alt="Pago Facil">
-                    </div>
-                </div>
-                <div class="col-lg-2 d-flex justify-content-center">
-                    <img class="data-fiscal" src="img/Data-fiscal-Ejemplo.jpg" alt="Data Fiscal">
-                </div>
-            </div>
-            <br>
-            <p class="m-0 text-center text-white">Copyright &copy; Semillares 2023</p>
-        </div>
-    </footer>
+        </footer>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

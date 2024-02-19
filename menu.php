@@ -19,7 +19,7 @@
                                 <?php } ?>
                         </ul>
                         <form class="d-flex">
-                            <button class="btn btn-outline-dark" href="compra-datos.html" type="submit">
+                            <button class="btn btn-outline-dark" href="checkout.php" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 <span id="num_cart" class="badge bg-marron text-white ms-1 rounded-pill"><?php echo $num_cart;?></span>
                             </button>
