@@ -31,6 +31,13 @@
             $producto['subtotal'] = $producto['precio'];
             $_SESSION['carrito'][] = $producto;
         }
+
+        $_SESSION['carrito']['total'] = 0;
+        // Recalcular el valor total del carrito
+        foreach($_SESSION['carrito'] as &$item){
+            $item['subtotal'] = $item['cantidad'] * $item['precio'];
+            $_SESSION['carrito']['total'] += $item['subtotal'];
+        }
         
         // Redirigir de vuelta a la página de la tienda
         header('Location: tienda.php');
@@ -38,4 +45,4 @@
         // Si no se proporciona un ID válido, redirigir a la página principal
         header('Location: index.php');
     }
-?>
+

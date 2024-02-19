@@ -7,8 +7,6 @@
     $sql=$con->prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-    //session_destroy();
 ?>
 
 
@@ -40,7 +38,7 @@
         <!-- Top Bar -->
         <section>
             <div class="row justify-content-center top-bar bg-mostaza text-dark">
-                    <div class="col text-center"><strong>Compra mínima </strong>1 caja de cualquier producto en La Plata | 2 cajas de CABA | 5 cajas al interior del país</div>
+                    <div class="col text-center"><strong>Compra mínima</strong> 1 caja de cualquier producto en La Plata | 2 cajas de CABA | 5 cajas al interior del país</div>
             </div>
         </section>
         
