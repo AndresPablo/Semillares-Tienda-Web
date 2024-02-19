@@ -32,8 +32,8 @@
             $_SESSION['carrito'][] = $producto;
         }
 
-        $_SESSION['carrito']['total'] = 0;
         // Recalcular el valor total del carrito
+        $_SESSION['carrito']['total'] = 0;
         foreach($_SESSION['carrito'] as &$item){
             $item['subtotal'] = $item['cantidad'] * $item['precio'];
             $_SESSION['carrito']['total'] += $item['subtotal'];
