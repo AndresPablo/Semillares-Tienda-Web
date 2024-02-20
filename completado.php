@@ -53,8 +53,13 @@
             <b>Fecha de compra: </b><?php echo $fecha; ?><br>
             <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
             <br>
-            Te envaimos un correo electrónico a <b><?php echo $email ?></b> con el detalle de tu compra<br>
+            Te envaimos un correo electrónico a <b><?php echo $email; ?></b> con el detalle de tu compra<br>
             <?php echo $_SESSION['user_mail']; ?>
+            <a href=""> <button>
+                    Volver a la tienda
+            </button></a>
+            <?php echo $id_transaccion;?>
+            <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
         </div>
     </body>
 
