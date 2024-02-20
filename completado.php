@@ -20,10 +20,11 @@
             $sql = $con->prepare("SELECT id, fecha, email, total FROM compra WHERE id_transaccion=? AND
             status=? LIMIT 1");
             $sql->execute([$id_transaccion, 'COMPLETED']);
-            $row = $sql->fetch(PDO::FETCH_ASSOC);
+            $row = $sql->fetchAll(PDO::FETCH_ASSOC);
             $id_compra = $row['id'];
             $total = $row['total'];
             $fecha = $row['fecha'];
+            $correo = $row['email'];
             $email = getEmail($_SESSION['user_cliente'], $con);
 
             $sqlDet = $con->prepare("SELECT nombre, precio, cantidad FROM detalle_compra WHERE id_compra = ?");
@@ -69,6 +70,7 @@
                 <br>
                 <p>Te enviamos un correo electrónico a <b><?php echo $email; ?></b> con el detalle de tu compra</p><br>
                 <?php echo $_SESSION['user_mail']; ?>
+                <?php echo $correo; ?>
                 <a href="index.php"> <button class="btn btn-primary">
                         Volver a la tienda
                 </button></a>
