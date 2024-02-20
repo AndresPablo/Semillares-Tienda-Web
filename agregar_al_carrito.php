@@ -25,7 +25,6 @@
                 $item['cantidad']++;
                 $item['subtotal'] = $item['cantidad'] * $item['precio'];
                 $producto_existente = true;
-                $_SESSION['carrito']['total'] = calcularTotalCarrito();
                 break;
             }
         }
@@ -34,12 +33,8 @@
             $producto['cantidad'] = 1;
             $producto['subtotal'] = $producto['precio'];
             $_SESSION['carrito'][] = $producto;
-            $_SESSION['carrito']['total'] = calcularTotalCarrito();
         }
 
-        // Actualizar el total del carrito
-        $_SESSION['carrito']['total'] = calcularTotalCarrito();
-        
         // Redirigir de vuelta a la página de la tienda
         header('Location: tienda.php');
     } else {

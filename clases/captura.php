@@ -28,11 +28,12 @@ if ($idTransaccion != '') {
     $datos['id_cliente'] = $idCliente;
     $datos['total'] = $monto; 
 
-    // Prepara los datos para insertarlos en la base de datos
+    // Prepara los datos para insertarlos en la base de datos (tabla COMPRA)
     $comando = $con->prepare("INSERT INTO compra (id_transaccion, fecha, status, email, id_cliente, total) VALUES (?,?,?,?,?,?)");
     $comando->execute(array_values($datos)); // Inserta la compra en la tabla "compra"
     $id = $con->lastInsertId(); // La id de la insercion, para encontrarlo en la DB
 
+    // Inserta los datos del detalle de cada compra en la tabla DETALLES
     if($id > 0) {
         $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : 
         null;

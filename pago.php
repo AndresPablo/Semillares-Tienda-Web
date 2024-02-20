@@ -178,7 +178,12 @@
                                                 number_format($subtotal, 2, '.', ','); ?></div>
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    <?php 
+                                        // Cerramos el ciclo FOR
+                                        }
+                                        // Seteamos el total del carrito como variable de sesion
+                                        $_SESSION['carrito']['total'] = $total;
+                                    ?>
                                     <tr>
                                         <td colspan="3"></td>
                                         <td colspan="2">

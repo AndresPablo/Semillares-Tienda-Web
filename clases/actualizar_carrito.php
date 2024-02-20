@@ -68,9 +68,6 @@ function agregar($id, $cantidad)
             $descuento = $row['descuento'];
             $precio_desc = $precio - (($precio * $descuento) / 100);
             $res = $cantidad * $precio_desc;
-            
-            // Actualizar el total del carrito
-            $_SESSION['carrito']['total'] = calcularTotalCarrito();
 
             return $res;
         }
@@ -85,9 +82,6 @@ function eliminar($id)
     {
         if(isset($_SESSION['carrito']['productos'][$id]))
         {
-            // Actualizar el total del carrito
-            $_SESSION['carrito']['total'] = calcularTotalCarrito();
-            
             // Elimina el producto del carrito
             unset ($_SESSION['carrito']['productos'][$id]);
             return true;
