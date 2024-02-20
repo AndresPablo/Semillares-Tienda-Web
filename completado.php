@@ -7,9 +7,9 @@
     $db = new Database();
     $con = $db->conectar();
 
-    $id_transaccion = isset($GET['key']) ? $_GET['key'] : '0';
+    $id_transaccion = isset($_GET['key']) ? $_GET['key'] : '0';
     $error = '';
-    if($id_transaccion == '')
+    if($id_transaccion == '' || $id_transaccion == 0)
     {
         $error = 'Error al procesar la peticion';
     }else{
@@ -58,7 +58,7 @@
     </head>
 
     <body>
-        <div class="container">
+        <div class="container m-3 p-2">
             <h2>
                 Gracias por su compra.
             </h2>
