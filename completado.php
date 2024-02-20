@@ -21,8 +21,8 @@
             $sql->execute([$id_transaccion, 'COMPLETED']);
             $row = $sql->fetch(PDO::FETCH_ASSOC);
             $id_compra = $row['id'];
-            $id_compra = $row['total'];
-            $id_compra = $row['fecha'];
+            $total = $row['total'];
+            $fecha = $row['fecha'];
             $email = getEmail($_SESSION['user_cliente'], $con);
 
             $sqlDet = $con->prepare("SELECT nombre, precio, cantidad FROM detalle_compra WHERE id_compra = ?");
