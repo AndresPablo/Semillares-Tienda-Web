@@ -2,7 +2,7 @@
 
     require 'config/config.php';
     require 'config/database.php';
-    require 'clases/clienteFunciones.php';
+    //require 'clases/clienteFunciones.php';
 
     $db = new Database();
     $con = $db->conectar();
@@ -28,7 +28,6 @@
 
             $sqlDet = $con->prepare("SELECT nombre, precio, cantidad FROM detalle_compra WHERE id_compra = ?");
             $sqlDet->execute([$id_compra]);
-            $error = $id_transaccion;
         } else {
             $error = 'Error al comprobar la compra.';
         }
@@ -55,12 +54,11 @@
             <b>Fecha de compra: </b><?php echo $fecha; ?><br>
             <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
             <br>
-            Te envaimos un correo electrónico a <b><?php echo $email; ?></b> con el detalle de tu compra<br>
+            <p>Te envaimos un correo electrónico a <b><?php echo $email; ?></b> con el detalle de tu compra</p><br>
             <?php echo $_SESSION['user_mail']; ?>
             <a href=""> <button>
                     Volver a la tienda
             </button></a>
-            <?php echo $id_transaccion;?>
             <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
         </div>
     </body>
