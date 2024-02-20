@@ -1,6 +1,6 @@
 <?php
 
-    require '/clases/actualizar_carrito.php';
+    include '/clases/actualizar_carrito.php';
 
     // Iniciar sesión
     session_start();

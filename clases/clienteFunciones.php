@@ -237,3 +237,16 @@ function actualizaPassword($user_id, $password, $con)
     }
     return false;
 }
+
+function getEmail($user_id, $con)
+{
+    $sql = $con->prepare("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
+    $email = '';
+    $idCliente = $_SESSION['user_cliente'];
+    if($sql->execute([$idCliente]))
+    {
+        $row_cliente = $sql->fetch(PDO::FETCH_ASSOC);
+        $email = $row_cliente['email'];
+    }
+    return $email;
+}

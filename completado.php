@@ -2,6 +2,7 @@
 
     require 'config/config.php';
     require 'config/database.php';
+    require 'clases/clienteFunciones.php';
     $db = new Database();
     $con = $db->conectar();
 
@@ -22,6 +23,7 @@
             $id_compra = $row['id'];
             $id_compra = $row['total'];
             $id_compra = $row['fecha'];
+            $email = getEmail($_SESSION['user_cliente'], $con);
 
             $sqlDet = $con->prepare("SELECT nombre, precio, cantidad FROM detalle_compra WHERE id_compra = ?");
             $sqlDet->execute([$id_compra]);
@@ -32,14 +34,14 @@
 
 ?>
 
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="es">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Completado</title>
     </head>
 
     <body>
@@ -47,9 +49,12 @@
             Gracias por su compra.
         </h2>
         <div>
-            <b>Folio de la compra:</b> <?php echo $id_transaccion; ?><br>
-            <b>Fecha de la compra</b><?php echo $fecha; ?><br>
-            <b>Total:</b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
+            <b>Número de orden: </b> <?php echo $id_transaccion; ?><br>
+            <b>Fecha de compra: </b><?php echo $fecha; ?><br>
+            <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
+            <br>
+            Te envaimos un correo electrónico a <b>mail@ejemplo</b> con el detalle de tu compra<br>
+            <?php echo $_SESSION['user_cliente']; ?>
         </div>
     </body>
 
