@@ -27,6 +27,7 @@
 
             $sqlDet = $con->prepare("SELECT nombre, precio, cantidad FROM detalle_compra WHERE id_compra = ?");
             $sqlDet->execute([$id_compra]);
+            $error = $id_transaccion;
         } else {
             $error = 'Error al comprobar la compra.';
         }
