@@ -20,7 +20,7 @@
             {
                 $_SESSION['carrito']['productos'][$id] = $cantidad;
             }
-            $datos['numero'] = count($_SESSION['carrito']['productos']);
+            $datos['numero'] = array_sum($_SESSION['carrito']['productos']);
             $datos['ok'] = true;
         } 
         else 
