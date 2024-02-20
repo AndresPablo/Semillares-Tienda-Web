@@ -137,7 +137,7 @@ function login($usuario, $password, $con, $proceso)
                 // Inicio exitoso
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['user_name'] = $row['usuario'];
-                $_SESSION['user_mail'] = $row['usuario'];
+                $_SESSION['user_mail'] = $row['email'];
                 $_SESSION['user_cliente'] = $row['id_cliente'];
                 if($proceso == 'pago')
                 {
