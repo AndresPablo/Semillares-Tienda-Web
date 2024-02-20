@@ -67,7 +67,7 @@
                 <b>Fecha de compra: </b><?php echo $fecha; ?><br>
                 <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
                 <br>
-                <p>Te envaimos un correo electrónico a <b><?php echo $email; ?></b> con el detalle de tu compra</p><br>
+                <p>Te enviamos un correo electrónico a <b><?php echo $email; ?></b> con el detalle de tu compra</p><br>
                 <?php echo $_SESSION['user_mail']; ?>
                 <a href="index.php"> <button class="btn btn-primary">
                         Volver a la tienda
