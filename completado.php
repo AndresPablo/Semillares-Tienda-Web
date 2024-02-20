@@ -3,6 +3,7 @@
     require 'config/config.php';
     require 'config/database.php';
     require 'clases/clienteFunciones.php';
+
     $db = new Database();
     $con = $db->conectar();
 
@@ -23,7 +24,7 @@
             $id_compra = $row['id'];
             $total = $row['total'];
             $fecha = $row['fecha'];
-            $email = getEmail($_SESSION['user_cliente'], $con);
+            //$email = getEmail($_SESSION['user_cliente'], $con);
 
             $sqlDet = $con->prepare("SELECT nombre, precio, cantidad FROM detalle_compra WHERE id_compra = ?");
             $sqlDet->execute([$id_compra]);
