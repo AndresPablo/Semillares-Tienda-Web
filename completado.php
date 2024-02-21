@@ -14,12 +14,12 @@
         $error = 'Error al procesar la peticion';
     }else{
         $sql = $con->prepare("SELECT count(id) FROM compra WHERE id_transaccion=? AND status=?");
-        $sql->execute([$id_transaccion, 'COMPLETED']);
+        $sql->execute([$id_transaccion, 'approved']);
         if($sql->fetchColumn() > 0)
         {
             $sql = $con->prepare("SELECT id, fecha, email, total FROM compra WHERE id_transaccion=? AND
             status=? LIMIT 1");
-            $sql->execute([$id_transaccion, 'COMPLETED']);
+            $sql->execute([$id_transaccion, 'approved']);
             $row = $sql->fetchAll(PDO::FETCH_ASSOC);
             $id_compra = $row['id'];
             $total = $row['total'];

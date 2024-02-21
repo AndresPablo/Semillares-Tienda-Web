@@ -20,6 +20,7 @@ if ($idTransaccion != '') {
     $row_cliente = $sqlProd->fetch(PDO::FETCH_ASSOC);
     $email = $row_cliente['email'];
 
+
     $datos = [];
     $datos['id_transaccion'] = $idTransaccion; 
     $datos['fecha_nueva'] = $fecha; 
