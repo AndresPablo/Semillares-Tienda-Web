@@ -139,7 +139,7 @@ if(!empty($payment)) {
 
     <body>
         <!-- Responsive navbar-->
-        <?php include 'menu.php'?>
+        <?php include 'menu-prueba.php'?>
         <section>
             <div class="container">
                 <h3>Tu pago se realizó con éxito</h3>

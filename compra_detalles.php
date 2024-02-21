@@ -55,7 +55,7 @@ $sqlDetalle->execute([$idCompra]);
     <body>
         
         <!-- Responsive navbar-->
-        <?php include 'menu.php'?>
+        <?php include 'menu-prueba.php'?>
         <!------- -------------------->
         <main>
             <div class="container">

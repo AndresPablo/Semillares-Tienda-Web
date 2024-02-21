@@ -46,7 +46,7 @@
 
     <body>
         <!-- Responsive navbar-->
-        <?php include 'menu.php'?>
+        <?php include 'menu-prueba.php'?>
 
         <!-- Contenido -->
         <main>
