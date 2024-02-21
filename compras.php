@@ -58,7 +58,7 @@ $sqlCompra->execute([$idCliente]);
 
         <!-- Contenido -->
         <main>
-            <div class="container row">
+            <div class="container-fluid m-1 row">
                 <!-- TITULAR -->
                 <div class="mt-3 pt-3">
                     <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
