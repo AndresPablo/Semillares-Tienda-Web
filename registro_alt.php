@@ -1,4 +1,87 @@
+<?php
+    require 'config/config.php';
+    require 'config/database.php';
+    require 'clases/clienteFunciones.php';
 
+    // conexion a base de datos
+    $db = new Database();
+    $con = $db->conectar();    
+
+    $errors = [];
+
+    if(!empty($_POST)){
+        $nombres = trim($_POST['nombres']);
+        $apellidos = trim($_POST['apellidos']);
+        $correo = trim($_POST['correo']);
+        $telefono = trim($_POST['telefono']);
+        $dni = trim($_POST['dni']);
+        $usuario = trim($_POST['usuario']);
+        $provincia = trim($_POST['provincia']);
+        $localidad = trim($_POST['localidad']);
+        $direccion = trim($_POST['direccion']);
+        $referencia = trim($_POST['referencia']);
+        $pass = trim($_POST['pass']);
+        $repass = trim($_POST['repass']);
+
+        if(esNulo([$nombres, $apellidos, $correo, $telefono, $usuario, $pass, $repass]))
+        {
+            $errors[] = "Debe llenar todos los campos obligatorios.";
+        }
+
+        if(!esEmail($correo))
+        {
+            $errors[] = "La dirección de correo no es válida.";
+        }
+
+        if(!validaPassword($pass, $repass))
+        {
+            $errors[] = "Las contraseñas no coinciden."; 
+        }
+
+        if(usuarioExiste($usuario, $con))
+        {
+            $errors[] = "El nombre de usuario $usuario ya existe."; 
+        }
+
+        if(emailExiste($email, $con))
+        {
+            $errors[] = "El correo electrónico $correo ya existe. "; 
+        }
+
+        if(count($errors) == 0)
+        {
+            $id = registraClienteAvanzado([$nombres, $apellidos, $correo, $telefono, $dni, $direccion, $referencia, $provincia, $localidad], $con);
+            if($id > 0)
+            {
+                require 'clases/Mailer.php';
+                $mailer = new Mailer();
+                $token = generarToken();
+                $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+
+                $idUsuario =  registraUsuario([$usuario, $pass_hash, $token, $id, $correo], $con);
+                if($idUsuario > 0)
+                {
+                    $url = SITE_URL . '/activar_cliente.php?id='.$idUsuario.'&token='.$token;
+                    $asunto ="Activar cuenta - Semillares";
+                    $cuerpo="Estimado $nombres: <br> para confirmar su cuenta debe clickear el siguiente link <a href='$url'>Activar Cuenta</a>";
+
+                    if($mailer->enviarMail($correo, $asunto, $cuerpo))
+                    {
+                        echo "para completar el proceso de registro, siga las instrucciones que enviamos a su correo electrónico $correo";
+                        exit;
+                    }
+                }
+                else
+                {
+                    $errors[] = "error al registrar Usuario";
+                }
+            }else
+            {
+                $errors[] = "error al registrar Cliente";
+            }
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="es-AR">

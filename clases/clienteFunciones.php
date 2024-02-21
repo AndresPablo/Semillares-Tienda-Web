@@ -47,6 +47,19 @@ function registraCliente(array $datos, $con)
     return 0;
 }
 
+// Esta insercion incluye direccion, referencia, provincia y localidad
+function registraClienteAvanzado(array $datos, $con)
+{
+    // estamos trabajando con PDO para los valores, pore eso los ?????
+    $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, direccion, referencia, provincia, localidad, estatus, fecha_alta) 
+        VALUES(?,?,?,?,?,?,?,?,?,1, now())");
+    if($sql->execute(array_values($datos)))
+    {
+        return $con->lastInsertId();
+    }
+    return 0;
+}
+
 function registraUsuario(array $datos, $con)
 {
     // omitimos la columna "activacion"
