@@ -1,4 +1,20 @@
+<?php
 
+require 'config/config.php';
+require 'config/database.php';
+require 'clases/clienteFunciones.php';
+
+$token_session = $_SESSION['token'];
+$orden = $_GET['orden'] ?? null;
+$token = $_GET['token'] ?? null;
+
+if($orden == null || $token == null || $token == $token_session)
+{
+    header("Location: compras.php");
+    exit;
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="es-AR">
