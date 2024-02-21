@@ -240,7 +240,7 @@ function actualizaPassword($user_id, $password, $con)
 
 function getEmail($user_id, $con)
 {
-    $sql = $con->prepare("SELECT id, email, password, id_cliente FROM usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql = $con->prepare("SELECT email FROM clientes WHERE id = ?");
     $email = '';
     $idCliente = $_SESSION['user_cliente'];
     if($sql->execute([$idCliente]))
