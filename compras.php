@@ -7,7 +7,8 @@ require 'clases/clienteFunciones.php';
 $db = new Database();
 $con = $db->conectar();
 
-print_r($_SESSION);
+$token = generarToken();
+$_SESSION['token'] = $token;
 $idCliente = $_SESSION['user_cliente'];
 
 $sqlCliente = $con->prepare("SELECT nombres, apellidos, email, telefono, dni FROM clientes WHERE id=? LIMIT 1");
@@ -64,15 +65,16 @@ $sqlCompra->execute([$idCliente]);
                     <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
                 </div>
                 <!-- INFO PERSONAL -->
-                <div class="container mt-3">
+                <div class="container mt-3 col-12 col-md-4">
                     <h4>Información Personal</h4>
                     <hr>
                     <div class="col-12 col-md-4">
-                        <p>Nombres: <?php echo $nombres . ' ' . $apellidos; ?></p>
+                        <p>Nombre y Apellido: <?php echo $nombres . ' ' . $apellidos; ?></p>
                         <p>Apellidos: <?php echo $correo; ?></p>
                         <p>Telefono: <?php echo $telefono;?></p>
-                        <p>Localidad</p>
-                        <p>Direccion</p>
+                        <p>Localidad:  <?php echo $localidad;?></p>
+                        <p>Provincia:  <?php echo $provincia;?></p>
+                        <p>Direccion:  <?php echo $direccion;?></p>
                         <p>DNI: <?php echo $dni;?></p>
                         <a href="#" class="btn btn-primary">Editar Datos</a>
                     </div>
@@ -81,7 +83,7 @@ $sqlCompra->execute([$idCliente]);
                 <!-- COMPRAS -->
                     <h4>Mis compras</h4>
                     <hr>
-                <div class="container">
+                <div class="container col-12 col-md-8">
                     <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
                         <div class="card mb-3">
                             <div class="card-header">
@@ -94,7 +96,7 @@ $sqlCompra->execute([$idCliente]);
                             <div class="card-body">
                                 <h5 class="card-title"><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?>     </h5>
                                 <p><strong>Total: </strong><?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?></p>                                
-                                <a href="compra_detalle.php?orden=<?php echo $rowCompra['id_transaccion']; ?>" class="btn btn-primary">Detalle</a>
+                                <a href="compra_detalles.php?orden=<?php echo $rowCompra['id_transaccion']; ?>$token=<?php echo $token;?>" class="btn btn-primary">Ver Detalle</a>
                             </div>
                         </div>
                     <?php } ?>
