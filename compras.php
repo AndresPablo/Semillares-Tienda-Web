@@ -64,7 +64,7 @@ $sqlCompra->execute([$idCliente]);
                     <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
                 </div>
                 <!-- INFO PERSONAL -->
-                <div class="mt-3 col col-lg-4">
+                <div class="mt-3 col col-md-4">
                     <h4>Información Personal</h4>
                     <hr>
                     <div class="">
@@ -81,7 +81,7 @@ $sqlCompra->execute([$idCliente]);
                 </div>
                 <!-- COMPRAS -->
                     
-                <div class="col col-lg-8">
+                <div class="col col-md-8">
                     <h4>Mis compras</h4>
                     <hr>
                     <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
