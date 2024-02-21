@@ -4,6 +4,9 @@
     require 'config/database.php';
     require 'clases/clienteFunciones.php';
 
+    // https://youtu.be/SDXkKHF2jD8?list=PL-Mlm_HYjCo-Odv5-wo3CCJ4nv0fNyl9b&t=1433
+    // ESTE https://youtu.be/ox6FIJM5uY0?list=PL-Mlm_HYjCo-Odv5-wo3CCJ4nv0fNyl9b&t=1078 
+
     $db = new Database();
     $con = $db->conectar();
 
@@ -20,7 +23,7 @@
             $sql = $con->prepare("SELECT id, fecha, email, total FROM compra WHERE id_transaccion=? AND
             status=? LIMIT 1");
             $sql->execute([$id_transaccion, 'approved']);
-            $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+            $row = $sql->fetch(PDO::FETCH_ASSOC);
             $id_compra = $row['id'];
             $total = $row['total'];
             $fecha = $row['fecha'];
