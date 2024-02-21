@@ -9,7 +9,7 @@ $con = $db->conectar();
 $comando = $con->prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
 $comando->execute();
 $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
-print_r($_SESSION);
+//print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>

@@ -25,6 +25,8 @@
 
     <body>
         
+        <!-- Responsive navbar-->
+        <?php include 'menu.php'?>
         <!------- -------------------->
         <section>
             <div class="container-fluid">

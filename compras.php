@@ -20,6 +20,19 @@ $con = $db->conectar();
 print_r($_SESSION);
 $idCliente = $_SESSION['user_cliente'];
 
+$sqlCliente = $con->prepare("SELECT nombres, apellido, email, telefono, dni FROM clientes WHERE id=? LIMIT 1");
+$sqlCliente->execute([$idCliente]);
+$rowCliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
+
+$nombres = $row_cliente['nombres'];
+$apellidos = $row_cliente['apellidos'];
+$dni = $row_cliente['dni'];
+$telefono = $row_cliente['telefono'];
+$direccion = "Avenida Ejemplo 123 entre Calle A y Calle B, local verde";
+$localidad = "Localidad";
+//$direccion = $row_cliente['direccion'];
+//$localidad = $row_cliente['localidad'];
+
 $sqlCompra = $con->prepare("SELECT id_transaccion, fecha, status, total FROM compra WHERE id_cliente=? ORDER BY DATE(fecha) DESC");
 $sqlCompra->execute([$idCliente]);
 
@@ -55,66 +68,46 @@ $sqlCompra->execute([$idCliente]);
         <!-- Contenido -->
         <main>
             <div class="container">
-                <h4>Mis compras</h4>
-                <hr>
-                <div class="col-12 col-md-4">
-                    <h3>Informacion Personal</h3>
-                    <p>Nombre de usuario</p>
-                    <p>correo@ejemplo.com</p>
+                <!-- TITULAR -->
+                <div>
+                    <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
                 </div>
-                <hr>
-                <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){
-                    $rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC);
-                    $idCompra = $rowCompra['id'];
-
-                    $sqlDetalle = $con->prepare("SELECT id, id_compra, nombre, precio, cantidad FROM detalle_compra WHERE id_compra =?");
-                    $sqlDetalle->execute([$idCompra]);
-                    ?>
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <?php echo $rowCompra['fecha']; ?>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">     <?php echo $rowCompra['id_transaccion']; ?>     </h5>
-                            <p class="card-text">  <?php echo $rowCompra['total']; ?>  </p>
-                            <p><strong>Fecha: </strong><?php echo $rowCompra['fecha']; ?></p>
-                            <p><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?></p>
-                            <p><strong>Total: </strong><?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?></p>
-                            <p><strong>Fecha: </strong><?php echo $rowCompra['fecha']; ?></p>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Producto</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th>Subtotal</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <?php 
-                                        while($rowDetalle = $sqlDetalle->fetch(PDO::FETCH_ASSOC)){ 
-                                            $precio = $rowDetalle['precio'];
-                                            $cantidad = $rowDetalle['cantidad'];
-                                            $subtotal = $precio * $cantidad;
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $rowDetalle['nombre']; ?></td>
-                                            <td><?php echo MONEDA . ' ' . number_format($precio, 2, ',', '.'); ?></td>
-                                            <td><?php echo $cantidad; ?></td>
-                                            <td><?php echo MONEDA . ' ' . number_format($subtotal, 2, ',', '.'); ?></td>
-                                        </tr>
-
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <a href="compra_detalle.php" class="btn btn-primary">Detalle</a>
-                        </div>
+                <!-- INFO PERSONAL -->
+                <div class="container">
+                    <h4>Información Personal</h4>
+                    <hr>
+                    <div class="col-12 col-md-4">
+                        <p><?php echo $_SESSION['user_name']; ?></p>
+                        <p><?php echo $_SESSION['user_mail']; ?></p>
+                        <p>Telefono</p>
+                        <p>Localidad</p>
+                        <p>Direccion</p>
+                        <a href="#" class="btn btn-primary">Editar Datos</a>
                     </div>
-                <?php } ?>
+                    <hr>
+                </div>
+                <!-- COMPRAS -->
+                    <h4>Mis compras</h4>
+                    <hr>
+                <div class="container">
+                    <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <?php 
+                                    $fecha = $rowCompra['fecha'];
+                                    $fecha_formateada = date('d-m-Y H:i', strtotime($fecha));
+                                    echo $fecha_formateada; 
+                                ?>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">     <?php echo $rowCompra['id_transaccion']; ?>     </h5>
+                                <p><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?></p>
+                                <p><strong>Total: </strong><?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?></p>                                
+                                <a href="compra_detalle.php" class="btn btn-primary">Detalle</a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>                
             </div>
         </main>
         
