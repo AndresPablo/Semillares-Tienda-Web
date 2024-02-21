@@ -14,15 +14,15 @@ $sqlCliente = $con->prepare("SELECT nombres, apellidos, email, telefono, dni FRO
 $sqlCliente->execute([$idCliente]);
 $rowCliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
 
-$nombres = $row_cliente['nombres'];
-$apellidos = $row_cliente['apellidos'];
-$dni = $row_cliente['dni'];
-$correo = $row_cliente['email'];
-$telefono = $row_cliente['telefono'];
+$nombres = $rowCliente['nombres'];
+$apellidos = $rowCliente['apellidos'];
+$dni = $rowCliente['dni'];
+$correo = $rowCliente['email'];
+$telefono = $rowCliente['telefono'];
 $direccion = "Avenida Ejemplo 123 entre Calle A y Calle B, local verde";
 $localidad = "Localidad";
-//$direccion = $row_cliente['direccion'];
-//$localidad = $row_cliente['localidad'];
+//$direccion = $rowCliente['direccion'];
+//$localidad = $rowCliente['localidad'];
 
 $sqlCompra = $con->prepare("SELECT id_transaccion, fecha, status, total FROM compra WHERE id_cliente=? ORDER BY DATE(fecha) DESC");
 $sqlCompra->execute([$idCliente]);
@@ -60,16 +60,16 @@ $sqlCompra->execute([$idCliente]);
         <main>
             <div class="container">
                 <!-- TITULAR -->
-                <div class="m-3 p-3">
+                <div class="mt-3 pt-3">
                     <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
                 </div>
                 <!-- INFO PERSONAL -->
-                <div class="container">
+                <div class="container mt-3">
                     <h4>Información Personal</h4>
                     <hr>
                     <div class="col-12 col-md-4">
-                        <p><?php echo $nombres . ' ' . $apellidos; ?></p>
-                        <p><?php echo $correo; ?></p>
+                        <p>Nombres: <?php echo $nombres . ' ' . $apellidos; ?></p>
+                        <p>Apellidos: <?php echo $correo; ?></p>
                         <p>Telefono: <?php echo $telefono;?></p>
                         <p>Localidad</p>
                         <p>Direccion</p>
