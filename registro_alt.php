@@ -220,8 +220,8 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="(221) 123 456">
-                                        <label for="referencia"><span class="text-danger">*</span>Localidad</label>
+                                        <input type="text" class="form-control" id="localidad" name="localidad" placeholder="(221) 123 456">
+                                        <label for="localidad"><span class="text-danger">*</span>Localidad</label>
                                     </div>
                                 </div>
                             </div>
