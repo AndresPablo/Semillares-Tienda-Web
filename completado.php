@@ -28,7 +28,7 @@
             $id_compra = $row['id'];
             $total = $row['total'];
             $fecha = $row['fecha'];
-            $fecha_formateada = date('d-m-Y H:i:s', strtotime($fecha));
+            $fecha_formateada = date('d-m-Y H:i', strtotime($fecha));
             $correo = $row['email'];
             $email = getEmail($_SESSION['user_cliente'], $con);
 
