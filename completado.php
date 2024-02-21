@@ -28,6 +28,7 @@
             $id_compra = $row['id'];
             $total = $row['total'];
             $fecha = $row['fecha'];
+            $fecha_formateada = date('d-m-Y H:i:s', strtotime($fecha));
             $correo = $row['email'];
             $email = getEmail($_SESSION['user_cliente'], $con);
 
@@ -69,7 +70,7 @@
             </h2>
             <div class="">
                 <b>Número de orden: </b> <?php echo $id_transaccion; ?><br>
-                <b>Fecha de compra: </b><?php echo date_format($fecha,"d/m/Y H:i"); ?><br>
+                <b>Fecha de compra: </b><?php echo $fecha_formateada; ?><br>
                 <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
                 <br>
                 <p>Te enviamos un correo electrónico a <b><?php echo $correo; ?></b> con el detalle de tu compra.</p><br>
