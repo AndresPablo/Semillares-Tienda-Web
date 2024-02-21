@@ -126,7 +126,7 @@
                     </div>
                     <!-- Columna media -->
                     <div class="container col col-12 col-lg-6 p-3">
-                        <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
+                        <form action="registro_alt.php" method="post" class=" row g-3 " autocomplete="off">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
                                 <label for="usuario"><span class="text-danger">*</span>Usuario</label>
