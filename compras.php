@@ -17,6 +17,7 @@ $rowCliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
 $nombres = $row_cliente['nombres'];
 $apellidos = $row_cliente['apellidos'];
 $dni = $row_cliente['dni'];
+$correo = $row_cliente['email'];
 $telefono = $row_cliente['telefono'];
 $direccion = "Avenida Ejemplo 123 entre Calle A y Calle B, local verde";
 $localidad = "Localidad";
@@ -59,7 +60,7 @@ $sqlCompra->execute([$idCliente]);
         <main>
             <div class="container">
                 <!-- TITULAR -->
-                <div>
+                <div class="m-3 p-3">
                     <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
                 </div>
                 <!-- INFO PERSONAL -->
@@ -67,11 +68,12 @@ $sqlCompra->execute([$idCliente]);
                     <h4>Información Personal</h4>
                     <hr>
                     <div class="col-12 col-md-4">
-                        <p><?php echo $_SESSION['user_name']; ?></p>
-                        <p><?php echo $_SESSION['user_mail']; ?></p>
-                        <p>Telefono</p>
+                        <p><?php echo $nombres . ' ' . $apellidos; ?></p>
+                        <p><?php echo $correo; ?></p>
+                        <p>Telefono: <?php echo $telefono;?></p>
                         <p>Localidad</p>
                         <p>Direccion</p>
+                        <p>DNI: <?php echo $dni;?></p>
                         <a href="#" class="btn btn-primary">Editar Datos</a>
                     </div>
                     <hr>
@@ -90,8 +92,7 @@ $sqlCompra->execute([$idCliente]);
                                 ?>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">     <?php echo $rowCompra['id_transaccion']; ?>     </h5>
-                                <p><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?></p>
+                                <h5 class="card-title"><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?>     </h5>
                                 <p><strong>Total: </strong><?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?></p>                                
                                 <a href="compra_detalle.php?orden=<?php echo $rowCompra['id_transaccion']; ?>" class="btn btn-primary">Detalle</a>
                             </div>
