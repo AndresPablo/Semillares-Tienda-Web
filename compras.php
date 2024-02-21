@@ -10,7 +10,7 @@ $con = $db->conectar();
 print_r($_SESSION);
 $idCliente = $_SESSION['user_cliente'];
 
-$sqlCliente = $con->prepare("SELECT nombres, apellido, email, telefono, dni FROM clientes WHERE id=? LIMIT 1");
+$sqlCliente = $con->prepare("SELECT nombres, apellidos, email, telefono, dni FROM clientes WHERE id=? LIMIT 1");
 $sqlCliente->execute([$idCliente]);
 $rowCliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
 
