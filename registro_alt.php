@@ -16,14 +16,16 @@
         $telefono = trim($_POST['telefono']);
         $dni = trim($_POST['dni']);
         $usuario = trim($_POST['usuario']);
-        $provincia = trim($_POST['provincia']);
-        $localidad = trim($_POST['localidad']);
+
         $direccion = trim($_POST['direccion']);
         $referencia = trim($_POST['referencia']);
+        $provincia = trim($_POST['provincia']);
+        $localidad = trim($_POST['localidad']);
+
         $pass = trim($_POST['pass']);
         $repass = trim($_POST['repass']);
 
-        if(esNulo([$nombres, $apellidos, $correo, $telefono, $usuario, $pass, $repass]))
+        if(esNulo([$nombres, $apellidos, $correo, $telefono, $usuario, $direccion, $provincia, $localidad, $pass, $repass]))
         {
             $errors[] = "Debe llenar todos los campos obligatorios.";
         }
@@ -134,14 +136,14 @@
                             <div class="row mt-3 mx-0">
                                 <div class="col">
                                     <div class="col form-floating px-1">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
-                                        <label for="floatingInput"><span class="text-danger">*</span>Nombre</label>
+                                        <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre">
+                                        <label for="nombres"><span class="text-danger">*</span>Nombre</label>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="col form-floating px-1">
-                                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
-                                        <label for="floatingInput"><span class="text-danger">*</span>Apellido </label>
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellido">
+                                        <label for="apellidos"><span class="text-danger">*</span>Apellido </label>
                                     </div>
                                 </div>
                             </div>
@@ -153,13 +155,13 @@
                                 <div class="col">
                                     <div class="col form-floating">
                                         <input type="password" class="form-control" id="pass" name="pass" placeholder="">
-                                        <label for="referencia"><span class="text-danger">*</span>Contraseña</label>
+                                        <label for="pass"><span class="text-danger">*</span>Contraseña</label>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="col form-floating">
                                     <input type="password" class="form-control" id="repass" name="repass" placeholder="">
-                                <label for="referencia"><span class="text-danger">*</span>Repita Contraseña</label>
+                                <label for="repass"><span class="text-danger">*</span>Repita Contraseña</label>
                                     </div>
                                 </div>
                             </div>
@@ -175,13 +177,13 @@
                                 <div class="col">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="telefono" name="telefono" placeholder="(221) 123 456">
-                                        <label for="referencia"><span class="text-danger">*</span>Teléfono</label>
+                                        <label for="telefono"><span class="text-danger">*</span>Teléfono</label>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="dni" name="dni" placeholder="">
-                                        <label for="referencia">DNI</label>
+                                        <label for="dni">DNI</label>
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +222,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="localidad" name="localidad" placeholder="(221) 123 456">
+                                        <input type="text" class="form-control" id="localidad" name="localidad" placeholder="">
                                         <label for="localidad"><span class="text-danger">*</span>Localidad</label>
                                     </div>
                                 </div>
