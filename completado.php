@@ -24,6 +24,7 @@
             status=? LIMIT 1");
             $sql->execute([$id_transaccion, 'approved']);
             $row = $sql->fetch(PDO::FETCH_ASSOC);
+            
             $id_compra = $row['id'];
             $total = $row['total'];
             $fecha = $row['fecha'];
@@ -64,17 +65,15 @@
     <body>
         <div class="container m-3 p-2">
             <h2>
-                Gracias por su compra.
+                Gracias por su compra
             </h2>
             <div class="">
                 <b>Número de orden: </b> <?php echo $id_transaccion; ?><br>
-                <b>Fecha de compra: </b><?php echo $fecha; ?><br>
+                <b>Fecha de compra: </b><?php echo date_format($fecha,"d/m/Y H:i"); ?><br>
                 <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
                 <br>
-                <p>Te enviamos un correo electrónico a <b><?php echo $email; ?></b> con el detalle de tu compra</p><br>
-                <?php echo $_SESSION['user_mail']; ?>
-                <?php echo $correo; ?>
-                <a href="index.php"> <button class="btn btn-primary">
+                <p>Te enviamos un correo electrónico a <b><?php echo $correo; ?></b> con el detalle de tu compra.</p><br>
+                <a href="tienda.php"> <button class="btn btn-primary">
                         Volver a la tienda
                 </button></a>
                 <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
