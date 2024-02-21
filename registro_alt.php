@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="col form-floating px-1">
-                                        <input type="email" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+                                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
                                         <label for="floatingInput"><span class="text-danger">*</span>Apellido </label>
                                     </div>
                                 </div>
