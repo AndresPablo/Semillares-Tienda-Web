@@ -246,7 +246,10 @@ function getEmail($user_id, $con)
     if($sql->execute([$idCliente]))
     {
         $row_cliente = $sql->fetch(PDO::FETCH_ASSOC);
-        $email = $row_cliente['email'];
+        if($row_cliente)
+        {
+            $email = $row_cliente['email'];
+        }
     }
     return $email;
 }
