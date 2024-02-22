@@ -41,72 +41,93 @@
                                 <p>Distribuidora y fraccionadora<br>de productos naturales</p>
                             </div>
                     </div>
-                    <!-- Columna media -->
-                    <div class="container col col-12 col-lg-6 p-3">
-                        <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
-                                <label for="usuario"><span class="text-danger">*</span>Usuario</label>
-                            </div>
-                            <div class="row mt-3 mx-0">
-                                <div class="col">
-                                    <div class="col form-floating px-1">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
-                                        <label for="floatingInput"><span class="text-danger">*</span>Nombre</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="col form-floating px-1">
-                                        <input type="email" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
-                                        <label for="floatingInput"><span class="text-danger">*</span>Apellido </label>
-                                    </div>
+                    <!-- Columna derecha -->
+                    <div class="col-12 col-lg-6 d-inline-flex flex-column ingreso-derecha align-items-center justify-content-center">
+                        <div class="row">
+                            <div class="col-sm-6"><a class="active bold" href="login.php">Iniciar Sesión</a></div>
+                            <div class="col-sm-6"><a class="" href="registro.php">Registrarme</a></div>
+                        </div>
+                        <form class="row g-3" action="login.php" method="post" autocomplete="off">
+                            <!-- INICIO de los CAMPOS -->
+                            <!--  NOMBRE de USUARIO / ALIAS -->
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-envelope-fill"></i></span>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="usuario" id="usuario" placeholder="">
+                                    <label for="usuario">Usuario</label>
                                 </div>
                             </div>
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="correo" name="correo" placeholder="correo@ejemplo.com">
-                                <label for="correo"><span class="text-danger">*</span>Correo Electrónico</label>
-                            </div>
-                            <div class="row mt-3 mx-0">
-                                <div class="col">
-                                    <div class="col form-floating">
-                                        <input type="password" class="form-control" id="pass" name="pass" placeholder="">
-                                        <label for="referencia"><span class="text-danger">*</span>Contraseña</label>
-                                    </div>
+                            <!--  NOMBRE + APELLIDO -->
+                            <div class="input-group">
+                                <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-person-fill"></i></span>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="nombres" id="nombres" placeholder="Ejemplo">
+                                    <label for="nombres">Nombre</label>
                                 </div>
-                                <div class="col">
-                                    <div class="col form-floating">
-                                    <input type="password" class="form-control" id="repass" name="repass" placeholder="">
-                                <label for="referencia"><span class="text-danger">*</span>Repita Contraseña</label>
-                                    </div>
+                                <div class="form-floating ">
+                                    <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Ejemplo">
+                                    <label for="apellidos">Apellido</label>
                                 </div>
                             </div>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="">
-                                <label for="direccion"><span class="text-danger">*</span>Dirección de Envío</label>
-                            </div>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="referencia" name="referencia" placeholder="Ejemplo: Local verde">
-                                <label for="referencia">Referencia</label>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="(221) 123 456">
-                                        <label for="referencia"><span class="text-danger">*</span>Teléfono</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="dni" name="dni" placeholder="">
-                                        <label for="referencia">DNI</label>
-                                    </div>
+                                                       
+                            <!--  CORREO-->
+                            <div class="form-floating position-relative">
+                                <div class="input-group">
+                                    <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-envelope-fill"></i></span>
+                                    <input type="email" class="form-control text-start" id="correo" name="correo" placeholder="correo@ejemplo.com"> 
                                 </div>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="provincia" name="provincia" aria-label="Provincia">
-                                            <option selected><span class="text-danger">*</span>Elija su provincia</option>
+
+                            <!--  CONTRASEÑA + REPETIR-->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-lock-fill"></i></span>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" name="pass" id="pass" placeholder="">
+                                    <label for="pass">Contraseña</label>
+                                </div>
+                                <div class="form-floating ">
+                                    <input type="password" class="form-control" name="repass" id="repass" placeholder="">
+                                    <label for="repass">Repita contraseña</label>
+                                </div>
+                            </div>
+
+                            <!--  Telefono -->
+                            <div class="form-floating position-relative">
+                                <div class="input-group">
+                                    <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-telephone-fill"></i></span>
+                                    <input type="text" class="form-control text-start" id="correo" name="correo" placeholder="Teléfono"> 
+                                </div>
+                            </div>
+
+                            <!--  DNI -->
+                            <div class="form-floating position-relative mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-person-vcard-fill"></i></span>
+                                    <input type="text" class="form-control text-start" id="dni" name="dni" placeholder="DNI"> 
+                                </div>
+                            </div>
+
+                            <!--  Direccion -->
+                            <div class="form-floating position-relative">
+                                <div class="input-group">
+                                    <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-house-fill"></i></span>
+                                    <input type="text" class="form-control text-start" id="direccion" name="direccion" placeholder="Dirección"> 
+                                </div>
+                            </div>
+
+                            <!--  Referencia -->
+                            <div class="form-floating position-relative">
+                                <div class="input-group">
+                                    <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-house-fill"></i></span>
+                                    <input type="text" class="form-control text-start" id="referencia" name="referencia" placeholder="Referencia"> 
+                                </div>
+                            </div>
+
+                            <!--  PROVINCIA + LOCALIDAD-->
+                            <div class="input-group">
+                                <label class="input-group-text" for="provincia"><span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label>
+                                <select class="form-select" id="provincia" name="provincia" aria-label="Provincia">
+                                            <option selected>Elija su provincia</option>
                                             <option value="1">Buenos Aires</option>
                                             <option value="2">Ciudad Autónoma de Buenos Aires</option>
                                             <option value="4">Catamarca</option>
@@ -132,105 +153,16 @@
                                             <option value="24">Tierra del Fuego</option>
                                             <option value="25">Tucumán</option>
                                         </select>
-                                        <label for="provincia">Provincia</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="(221) 123 456">
-                                        <label for="referencia"><span class="text-danger">*</span>Localidad</label>
-                                    </div>
-                                </div>
+                                        <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Localidad">
                             </div>
+                            <!-- FIN de los CAMPOS -->
                             <p><span class="text-danger">*</span> Los campos con asterisco son obligatorios.</p>
+                            <br>
                             <div class="login_btn d-flex align-items-center justify-content-center my-3">
                                 <a href="cuenta.html" type="submit"> <button class="btn-primary">Resgistrarme</button></a>
                             </div>
-                            <br>
                         </form>
-                        
-                    </div>
-                    <div class="container"></div>
-                    <!-- Columna derecha -->
-                    <!--<div class="col col-12 col-lg-4 ingreso-derecha align-items-center justify-content-center">
-                        <div class="row">
-                            <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
-                            <div class="col-sm-6"><a class="active bold" href="#">Registrarme</a></div>
-                        </div>
-                        
-                        <form>
-                            <label for="nombre">Nombre</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-person-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control text-start" id="nombre" placeholder="Ejemplo"> 
-                                </div>
-                            </div>
-                            <label for="apellidos">Apellido</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-person"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="apellidos" placeholder="Ejemplo" > 
-                                </div>
-                            </div>
-                            <label for="email">Correo Electrónico</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="email" class="form-control  text-start" id="email" name="email" placeholder="ejemplo@correo.com" > 
-                                </div>
-                            </div>
-                            <label for="username">Nombre de Cuenta</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-person-vcard"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="username"  name="username" placeholder="Tu Local" > 
-                                </div>
-                            </div>
-                            <label for="nombre">Dirección</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="nombre" placeholder="Calle, altura" > 
-                                </div>
-                            </div>
-                            <label for="nombre">Referencia de Dirección</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-geo-alt"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="nombre" placeholder="Entrecalle, color de frente" > 
-                                </div>
-                            </div>
-                            <label for="nombre">DNI</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-person-badge-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="nombre" placeholder="12.123.123" > 
-                                </div>
-                            </div>
-                            <label for="telefono">Teléfono</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-telephone-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="text" class="form-control  text-start" id="telefono" name="telefono" placeholder="0221 570-2432" > 
-                                </div>
-                            </div>
-                            <label for="password">Contraseña</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-lock-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="password" class="form-control text-start" id="password" name="password" placeholder="Contraseña" > 
-                                </div>
-                            </div>
-                            <label for="repassword">Repetir Contraseña</label>
-                            <div class="form-floating mb-3 position-relative">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-lock-fill"></i><span class="text-danger">*</span></span>
-                                    <input type="password" class="form-control  text-start" id="repassword" name="repassword" placeholder="Contraseña" > 
-                                </div>
-                            </div>
-                        </form>
-                    </div>-->
+                    </div>                     
                 </div>
             </div>
             <div class="mb-3">

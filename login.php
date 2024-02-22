@@ -72,7 +72,7 @@ if(!empty($_POST))
                     <!-- Columna derecha -->
                     <div class="col-lg-6 d-inline-flex flex-column ingreso-derecha align-items-center justify-content-center">
                         <div class="row">
-                            <div class="col-sm-6"><a class="active bold" href="login.html">Iniciar Sesión</a></div>
+                            <div class="col-sm-6"><a class="active bold" href="#">Iniciar Sesión</a></div>
                             <div class="col-sm-6"><a class="" href="registro.php">Registrarme</a></div>
                         </div>
                         <form class="row g-3" action="login.php" method="post" autocomplete="off">
