@@ -126,7 +126,6 @@ function activarUsuario($id, $con)
 
 function mostrarMensajes(array $errors)
 {
-print($_SESSION);
     if(count($errors) > 0)
     {
         echo '<div class="alert alert-warning alert-dismissable fade show" role="alert"><ul>';
