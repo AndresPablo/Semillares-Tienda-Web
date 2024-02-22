@@ -439,17 +439,6 @@ footer h4 {
     text-decoration: none;
 }
 
-/* el contenedor del formulario ocupa al menos la altura completa de la ventana visible 
-en dispositivos móviles. 
-Esto evitará que el footer se superponga con el contenido. */
-@media (max-width: 767px) {
-    .ingreso-derecha {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
 
 .ingreso-derecha{
     color: #000000;

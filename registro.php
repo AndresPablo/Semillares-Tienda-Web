@@ -127,7 +127,7 @@
                             </div>
                     </div>
                     <!-- Columna derecha -->
-                    <div class=" container col-md-6 ingreso-derecha">
+                    <div class=" container col-md-6 ingreso-derecha vh-100">
                         <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
                             <!-- INICIO de los CAMPOS -->
                             <!--  NOMBRE de USUARIO / ALIAS -->
