@@ -83,7 +83,7 @@
 
     <body>
         <!-- Responsive navbar-->
-        <?php include 'menu-prueba.php'?>
+        <?php include 'menu.php'?>
 
         <!-- Header-->
         <header class="header-tienda ">

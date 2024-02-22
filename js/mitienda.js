@@ -14,7 +14,9 @@ function addProducto(id, cantidad, token)
     .then(data =>  {
         if(data.ok){
             let elemento = document.getElementById("num_cart")
+            let elementoMobile = document.getElementById("num_cart_mobile")
             elemento.innerHTML = data.numero 
+            elementoMobile.innerHTML = data.numero 
         }
     })
 

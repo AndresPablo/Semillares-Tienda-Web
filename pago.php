@@ -110,7 +110,7 @@
 
 <body>
     
-    <?php include 'menu-prueba.php'?>
+    <?php include 'menu.php'?>
 
     <!-- Contenido -->
     <main>

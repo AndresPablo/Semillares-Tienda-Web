@@ -24,7 +24,7 @@
                                 <i class="bi-cart-fill me-1"></i>
                                 <span id="num_cart" class="badge bg-marron text-white ms-1 rounded-pill"><?php echo $num_cart;?></span>
                             </a>
-                        </form>
+                            </form>
                         </ul>
                         
                     </div>
@@ -54,7 +54,7 @@
                         <form class="d-flex">
                             <a href="checkout.php" class="btn btn-outline-dark" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
-                                <span id="num_cart" class="badge bg-marron text-white ms-1 rounded-pill"><?php echo $num_cart;?></span>
+                                <span id="num_cart_mobile" class="badge bg-marron text-white ms-1 rounded-pill"><?php echo $num_cart;?></span>
                             </a>
                         </form>
                     </div>
