@@ -115,7 +115,7 @@
 
         <section>
             <div class="container-fluid">
-                <div class="container row vh-100">
+                <div class="container">
                     <!-- Columna izquierda -->
                     <div class="container ingreso-izquierda col-md-6 d-none d-lg-flex flex-column align-items-center justify-content-center">
                         <?php mostrarMensajes($errors); ?>
@@ -127,7 +127,7 @@
                             </div>
                     </div>
                     <!-- Columna derecha -->
-                    <div class=" container col-md-6 ingreso-derecha vh-100">
+                    <div class=" container col-md-6 ingreso-derecha">
                         <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
                             <!-- INICIO de los CAMPOS -->
                             <!--  NOMBRE de USUARIO / ALIAS -->

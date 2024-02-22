@@ -77,7 +77,7 @@
 
         <!-- Contenido -->
         <section id="main">
-            <div class="content vh-100">
+            <div class="content">
                     <div class="container mt-5 mb-3"> <h2>¡Hola titulo nombre de cliente!</h2> </div>
                     <div class="container">
                         <div class="bg-verde-claro p-5 row">

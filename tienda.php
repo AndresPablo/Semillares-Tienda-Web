@@ -80,8 +80,8 @@
 
 
     <!-- WRAPER -->
-    <section class="bg-white">
-        <div  id="wraper" class="container-fluid row">
+    <section class="bg-white my-3">
+        <div  id="wraper" class="container-fluid row my-3">
             <!-- Barra lateral -->
             <div class="col-lg-2 col-md-0 lateral-tienda">
                 <ul>

@@ -31,7 +31,7 @@
         
         <main>
             <div class="container-fluid">
-                <div class="container row vh-100">
+                <div class="container row ">
                     <!-- Columna izquierda -->
                     <div class=" col col-12 col-lg-6 d-none d-lg-block">
                         <div class="row logo-login">
@@ -42,20 +42,8 @@
                             </div>
                     </div>
                     <!-- Columna derecha -->
-                    <div class="col col-12 col-lg-6 vh-100">
+                    <div class="col col-12 col-lg-6">
                         <form action="registro_alt.php" method="post" class=" row g-3 " autocomplete="off">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
-                                <label for="usuario"><span class="text-danger">*</span>Usuario</label>
-                            </div>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
-                                <label for="usuario"><span class="text-danger">*</span>Usuario</label>
-                            </div>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
-                                <label for="usuario"><span class="text-danger">*</span>Usuario</label>
-                            </div>
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
                                 <label for="usuario"><span class="text-danger">*</span>Usuario</label>

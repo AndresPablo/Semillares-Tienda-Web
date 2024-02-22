@@ -116,7 +116,7 @@
         
         <main>
             <div class="container-fluid row mb-3">
-                <div class="container row vh-100 my-3 mx-3">
+                <div class="container row my-3 mx-3">
                     <!-- Columna izquierda -->
                     <div class="container ingreso-izquierda col-md-6 d-none d-lg-flex flex-column align-items-center justify-content-center">
                         <div class="row logo-login">

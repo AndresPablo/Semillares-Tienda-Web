@@ -58,7 +58,7 @@ if(!empty($_POST))
         <!-- Contenido -->
         <section id="main-login" class="">
             <div class="content-fluid text-center">
-                <div class="row vh-100">
+                <div class="row">
                     <!-- Columna izquierda -->
                     <div class="col-lg-6 ingreso-izquierda d-none d-lg-flex flex-column align-items-center justify-content-center ">
                         <div class="row logo-login">
