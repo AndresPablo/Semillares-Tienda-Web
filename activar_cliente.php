@@ -8,7 +8,7 @@
 
     if($id == '' || $token == '')
     {
-        //header("Location: index.php");
+        header("Location: index.php");
         exit;
     }
 
