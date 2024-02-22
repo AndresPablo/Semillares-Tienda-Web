@@ -140,7 +140,7 @@
                             <div class="input-group input-group-sm">
                                 <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-person-circle"></i></span>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" name="usuario" id="usuario" placeholder="">
+                                    <input type="text" class="form-control text-start" name="usuario" id="usuario" placeholder="">
                                     <label for="usuario">Nombre de Usuario</label>
                                 </div>
                             </div>
@@ -148,11 +148,11 @@
                             <div class="input-group">
                                 <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-person-fill"></i></span>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" name="nombres" id="nombres" placeholder="Ejemplo">
+                                    <input type="text" class="form-control text-start" name="nombres" id="nombres" placeholder="Ejemplo">
                                     <label for="nombres">Nombre</label>
                                 </div>
                                 <div class="form-floating ">
-                                    <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Ejemplo">
+                                    <input type="text" class="form-control text-start" name="apellidos" id="apellidos" placeholder="Ejemplo">
                                     <label for="apellidos">Apellido</label>
                                 </div>
                             </div>
@@ -169,11 +169,11 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-lock-fill"></i></span>
                                 <div class="form-floating">
-                                    <input type="password" class="form-control" name="pass" id="pass" placeholder="">
+                                    <input type="password" class="form-control text-start" name="pass" id="pass" placeholder="">
                                     <label for="pass">Contraseña</label>
                                 </div>
                                 <div class="form-floating ">
-                                    <input type="password" class="form-control" name="repass" id="repass" placeholder="">
+                                    <input type="password" class="form-control text-start" name="repass" id="repass" placeholder="">
                                     <label for="repass">Repita contraseña</label>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                             <!--  DNI -->
                             <div class="form-floating position-relative mb-3">
                                 <div class="input-group">
-                                    <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-person-vcard-fill"></i></span>
+                                    <span class="input-group-text"><i class="bi bi-person-vcard-fill"></i></span>
                                     <input type="text" class="form-control text-start" id="dni" name="dni" placeholder="DNI"> 
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                             <!--  Referencia -->
                             <div class="form-floating position-relative">
                                 <div class="input-group">
-                                    <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-house-fill"></i></span>
+                                    <span class="input-group-text"><i class="bi bi-house-fill"></i></span>
                                     <input type="text" class="form-control text-start" id="referencia" name="referencia" placeholder="Referencia"> 
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                                             <option value="24">Tierra del Fuego</option>
                                             <option value="25">Tucumán</option>
                                         </select>
-                                        <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Localidad">
+                                        <input type="text" class="form-control text-start" name="localidad" id="localidad" placeholder="Localidad">
                             </div>
 
                             <!-- FIN de los CAMPOS -->
@@ -270,6 +270,7 @@
                 </div>
             </div>
         </main>
+
 
         <!-- Footer -->
         <?php include 'footer.php'?>
