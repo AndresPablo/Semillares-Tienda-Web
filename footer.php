@@ -5,17 +5,17 @@
             <div class="col-lg-0">
                 <h4>Política de Seguridad</h4>
                 <li class="list-group ">
-                    <ul><a href="politicas.html">Política de devolución</a></ul>
-                    <ul><a href="envios.html" class="">Envíos</a></ul>
-                    <ul><a href="preguntas.html" class="">Preguntas Frecuentes</a></ul>
+                    <ul><a href="politicas.php">Política de devolución</a></ul>
+                    <ul><a href="envios.php" class="">Envíos</a></ul>
+                    <ul><a href="preguntas.php" class="">Preguntas Frecuentes</a></ul>
                 </li>
             </div>
             <div class="col-lg-0">
                 <h4>Contactanos</h4>
                 <li class="list-group ">
-                    <ul><i class="bi bi-pin"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
-                    <ul><i class="bi bi-telephone"></i><a class="#">  0221 570-2432</a></ul>
-                    <ul><i class="bi bi-envelope"> </i><a class="#">  semillares@gmail.com</a></ul>
+                    <ul><i class="bi bi-geo-alt-fill"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
+                    <ul><i class="bi bi-telephone"></i><a href="tel:0221-570-2432" class="">  0221 570-2432</a></ul>
+                    <ul><i class="bi bi-envelope"> </i><a href="mailto:semillares@gmail.com" class=""> semillares@gmail.com</a></ul>
                 </li>
             </div>               
             <div class="col-lg-0 ">
