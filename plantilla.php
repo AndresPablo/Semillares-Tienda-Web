@@ -29,8 +29,8 @@
         <?php include 'menu.php'?>
         <!------- -------------------->
         
-        <main>
-            <div class="container-fluid">
+        <main class="">
+            <div class="container">
                 <div class="container row ">
                     <!-- Columna izquierda -->
                     <div class=" col col-12 col-lg-6 d-none d-lg-block">

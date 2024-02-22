@@ -1,6 +1,6 @@
 <section>
 
-<nav class="navbar navbar-expand-lg shadow sticky-top navbar-light ">
+<nav class="navbar navbar-expand-lg shadow sticky-top navbar-light mb-5">
     <div class="container-fluid">
         <div class="col">
             <!-- BARRA SUPERIOR -->
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="d-inline d-sm-none ">
-                        <form class="d-flex">
+                        <form class="d-inline">
                             <a href="checkout.php" class="btn btn-outline-dark" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 <span id="num_cart_mobile" class="badge bg-marron text-white ms-1 rounded-pill"><?php echo $num_cart;?></span>

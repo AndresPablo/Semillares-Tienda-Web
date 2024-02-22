@@ -115,7 +115,7 @@
 
         <section>
             <div class="container-fluid">
-                <div class="container">
+                <div class="container my-5">
                     <!-- Columna izquierda -->
                     <div class="container ingreso-izquierda col-md-6 d-none d-lg-flex flex-column align-items-center justify-content-center">
                         <?php mostrarMensajes($errors); ?>

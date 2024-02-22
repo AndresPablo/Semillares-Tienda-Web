@@ -50,7 +50,7 @@
 
         <!-- Contenido -->
         <main>
-            <div class="container">
+            <div class="container my-5">
                 <div class="table table-responsive">
                     <table class="table">
                         <thead>
