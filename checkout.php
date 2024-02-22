@@ -50,7 +50,7 @@
 
         <!-- Contenido -->
         <main>
-            <div class="container">
+            <div class="container vh-100">
                 <div class="table table-responsive">
                     <table class="table">
                         <thead>
