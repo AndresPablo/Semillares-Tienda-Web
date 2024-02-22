@@ -113,29 +113,35 @@
         <!-- Responsive navbar-->
         <?php include 'menu.php'?>
 
-        <section>
-            <div class="container-fluid">
-                <div class="container my-5">
+        <main>
+            <div class="container-fluid row">
+                <div class="container row my-3 mx-3">
+
                     <!-- Columna izquierda -->
-                    <div class="container ingreso-izquierda col-md-6 d-none d-lg-flex flex-column align-items-center justify-content-center">
+                    <div class="container ingreso-izquierda d-none d-lg-flex col-md-6 d-flex flex-column align-items-center justify-content-center">
                         <?php mostrarMensajes($errors); ?>
                         <div class="row logo-login">
                             <img class="logo-login" src="img/marca/logo-semillares.png" alt="">
                         </div>
-                            <div class="row my-3">
-                                <p>Distribuidora y fraccionadora<br>de productos naturales</p>
-                            </div>
+                        <div class="row my-3">
+                            <p>Distribuidora y fraccionadora<br>de productos naturales</p>
+                        </div>
                     </div>
+
                     <!-- Columna derecha -->
-                    <div class=" container col-md-6 ingreso-derecha">
+                    <div class=" container col-md-6 ingreso-derecha my-4">
+                    <div class="row text-center mb-4">
+                            <div class="col-sm-6"><a class="" href="login.php">Iniciar Sesión</a></div>
+                            <div class="col-sm-6"><a class="active bold">Registrarme</a></div>
+                    </div>
                         <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
                             <!-- INICIO de los CAMPOS -->
                             <!--  NOMBRE de USUARIO / ALIAS -->
                             <div class="input-group input-group-sm">
-                                <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-envelope-fill"></i></span>
+                                <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-person-circle"></i></span>
                                 <div class="form-floating">
                                     <input type="text" class="form-control" name="usuario" id="usuario" placeholder="">
-                                    <label for="usuario">Usuario</label>
+                                    <label for="usuario">Nombre de Usuario</label>
                                 </div>
                             </div>
                             <!--  NOMBRE + APELLIDO -->
@@ -263,7 +269,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </main>
 
         <!-- Footer -->
         <?php include 'footer.php'?>
