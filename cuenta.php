@@ -11,7 +11,7 @@ $token = generarToken();
 $_SESSION['token'] = $token;
 $idCliente = $_SESSION['user_cliente'];
 
-$sqlCliente = $con->prepare("SELECT nombres, apellidos, email, telefono, dni, direccion, localidad, provincia FROM clientes WHERE id=? LIMIT 1");
+$sqlCliente = $con->prepare("SELECT nombres, apellidos, email, telefono, dni, direccion, referencia, localidad, provincia FROM clientes WHERE id=? LIMIT 1");
 $sqlCliente->execute([$idCliente]);
 $rowCliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
 
@@ -20,8 +20,9 @@ $apellidos = $rowCliente['apellidos'];
 $dni = $rowCliente['dni'];
 $correo = $rowCliente['email'];
 $telefono = $rowCliente['telefono'];
-$provincia = $rowCliente['provincia'];
 $direccion = $rowCliente['direccion'];
+$referencia = $rowCliente['referencia'];
+$provincia = $rowCliente['provincia'];
 $localidad = $rowCliente['localidad'];
 
 $sqlCompra = $con->prepare("SELECT id_transaccion, fecha, status, total FROM compra WHERE id_cliente=? ORDER BY DATE(fecha) DESC");
@@ -58,7 +59,7 @@ $sqlCompra->execute([$idCliente]);
 
         <!-- Contenido -->
         <main>
-            <div class="container-fluid m-1 row">
+            <div class="container-fluid mx-1 row">
                 <!-- TITULAR -->
                 <div class="mt-3 pt-3">
                     <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
@@ -74,6 +75,7 @@ $sqlCompra->execute([$idCliente]);
                         <p><strong>Localidad:  </strong><?php echo $localidad;?></p>
                         <p><strong>Provincia:  </strong><?php echo $provincia;?></p>
                         <p><strong>Direccion:  </strong><?php echo $direccion;?></p>
+                        <p><?php echo $referencia;?></p>
                         <p><strong>DNI: </strong><?php echo $dni;?></p>
                         <a href="#" class="btn btn-primary">Editar Datos</a>
                     </div>

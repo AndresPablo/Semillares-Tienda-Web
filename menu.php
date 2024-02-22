@@ -13,8 +13,8 @@
                     <div class="d-none d-md-inline ms-auto">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <?php if(isset($_SESSION['user_id'])){ ?>
-                                <li class="nav-item "><a class="nav-link texto-cuenta" href="cuenta.php"><?php echo $_SESSION['user_name']; ?></a></li>
-                                <li class="nav-item "><a class="nav-link texto-cuenta" href="logout.php">Cerrar Sesión</a></li>
+                                <li class="nav-item "><a class="nav-link texto-cuenta" href="cuenta.php"><i class="bi bi-person-fill"></i><?php echo $_SESSION['user_name']; ?></a></li>
+                                <li class="nav-item "><a class="nav-link texto-cuenta" href="logout.php"><i class="bi bi-arrow-right"></i>Cerrar Sesión</a></li>
                             <?php } else { ?>
                                 <li class="nav-item "><a class="nav-link texto-cuenta" href="login.php">Ingresar</a></li>
                                 <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.php">Registrarme</a></li>
@@ -41,8 +41,8 @@
                                 <li class="dropdown-item "><a class="nav-link " href="cuenta.php">Cuenta</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <?php if(isset($_SESSION['user_id'])){ ?>
-                                    <li class="dropdown-item "><a class="nav-link " href="cuenta.php"><?php echo $_SESSION['user_name']; ?></a></li>
-                                    <li class="dropdown-item "><a class="nav-link " href="logout.php">Cerrar Sesión</a></li>
+                                    <li class="dropdown-item "><a class="nav-link " href="cuenta.php"><i class="bi bi-person-fill"></i> <?php echo $_SESSION['user_name']; ?></a></li>
+                                    <li class="dropdown-item "><a class="nav-link " href="logout.php"><i class="bi bi-arrow-right"></i> Cerrar Sesión</a></li>
                                 <?php } else { ?>
                                     <li class="dropdown-item "><a class="nav-link " href="login.php">Ingresar</a></li>
                                     <li class="dropdown-item "><a class="nav-link " href="registro.php">Registrarme</a></li>
