@@ -99,18 +99,22 @@ if(!empty($_POST))
                             <div class="login_btn d-flex align-items-center justify-content-center my-3">
                                 <button type="submit" class="btn btn-primary" >Ingresar</button>
                             </div>
-                            <div class="text-center">O ingresá con</div>
-                            <div class="social-login">
-                                <a href="#" class="facebook">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <a href="#" class="google">
-                                    <i class="bi bi-google"></i>
-                                </a>
+                            <!-- Social login -->
+                            <div class="container d-none">
+                                <div class="text-center">O ingresá con</div>
+                                <div class="social-login">
+                                    <a href="#" class="facebook">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                    <a href="#" class="google">
+                                        <i class="bi bi-google"></i>
+                                    </a>
                                 </div>
-                            </div> 
+                            </div>
+                           
+                            
                         </form>
-                         
+                        </div> 
                     </div>
                 </div>
             </div>
