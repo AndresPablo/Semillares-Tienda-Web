@@ -110,6 +110,9 @@
 
 
     <body>
+        <!-- Responsive navbar-->
+        <?php include 'menu-prueba.php'?>
+        
         <section>
             <div class="container-fluid">
                 <div class="row vh-100">
@@ -233,7 +236,7 @@
                                         </select>
                                         <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Localidad">
                             </div>
-                            
+
                             <!-- FIN de los CAMPOS -->
                             <p><span class="text-danger">*</span> Los campos con asterisco son obligatorios.</p>
                             <br>
