@@ -37,7 +37,7 @@ $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
 
     <body>
         <!-- Responsive navbar-->
-        <?php include 'menu-prueba.php'?>
+        <?php include 'menu.php'?>
         <!-- Top Bar 
         <section>
             <div class="row justify-content-center top-bar bg-mostaza text-dark">
