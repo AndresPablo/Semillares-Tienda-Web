@@ -10,7 +10,7 @@ $token = $_GET['token'] ?? null;
 
 if($orden == null || $token == null || $token == $token_session)
 {
-    header("Location: compras.php");
+    header("Location: cuenta.php");
     exit;
 }
 

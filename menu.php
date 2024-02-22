@@ -145,7 +145,7 @@
                             <a class="dropdown-item"href="tienda.php">Tienda</a>
                             <a class="dropdown-item"href="conocenos.php"></a>
                             <a class="dropdown-item"href="trabajo-semillares.php">Trabajo Semillares</a>
-                            <a class="dropdown-item"href="compras.php">Compras</a>
+                            <a class="dropdown-item"href="cuenta.php">Compras</a>
                             <div class="dropdown-divider"></div>
                             <?php if(isset($_SESSION['user_id'])){ ?>
                                 <a class="dropdown-item texto-cuenta" href="cuenta.php"><?php echo $_SESSION['user_name']; ?></a>

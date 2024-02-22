@@ -1,3 +1,33 @@
+<?php
+
+require 'config/config.php';
+require 'config/database.php';
+require 'clases/clienteFunciones.php';
+
+$db = new Database();
+$con = $db->conectar();
+
+$token = generarToken();
+$_SESSION['token'] = $token;
+$idCliente = $_SESSION['user_cliente'];
+
+$sqlCliente = $con->prepare("SELECT nombres, apellidos, email, telefono, dni, direccion, localidad, provincia FROM clientes WHERE id=? LIMIT 1");
+$sqlCliente->execute([$idCliente]);
+$rowCliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
+
+$nombres = $rowCliente['nombres'];
+$apellidos = $rowCliente['apellidos'];
+$dni = $rowCliente['dni'];
+$correo = $rowCliente['email'];
+$telefono = $rowCliente['telefono'];
+$provincia = $rowCliente['provincia'];
+$direccion = $rowCliente['direccion'];
+$localidad = $rowCliente['localidad'];
+
+$sqlCompra = $con->prepare("SELECT id_transaccion, fecha, status, total FROM compra WHERE id_cliente=? ORDER BY DATE(fecha) DESC");
+$sqlCompra->execute([$idCliente]);
+
+?>
 <!DOCTYPE html>
 <html lang="es-AR">
     <head>
@@ -9,7 +39,7 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <!-- Custom CSS (personalizado)-->
@@ -22,144 +52,62 @@
 
 
     <body>
-
-        <!-- Top Bar 
-        <section>
-            <div class="row justify-content-center top-bar bg-mostaza text-dark">
-                    <div class="col-4 text-center">Compra Minima $5.000</div>
-            </div>
-        </section>
-        -->
-
+        
         <!-- Responsive navbar-->
-        <section>
-        <nav class="navbar navbar-expand-lg shadow sticky-top navbar-light ">
-            <div class="col">
-                <div class="nav-superior container-fluid row d-flex justify-content-center ">
-                    <nav class="navbar navbar-expand-lg navbar-light ">
-                        <a class="navbar-brand" href="index.php"><img class="nav-logo" src="img/marca/logo-semillares-simple.png" alt=""></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
-                        </button>
-                      
-                        <div class="col col-5 collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item "><a class="nav-link texto-cuenta" href="login.php">Ingresar</a></li>
-                                <li class="nav-item "><a class="nav-link texto-cuenta" href="registro.php">Registrarme</a></li>
-                            </ul>
-                            <form class="d-flex">
-                                <button class="btn btn-outline-dark" type="submit">
-                                    <i class="bi-cart-fill me-1"></i>
-                                    <span id="numerito" class="badge bg-marron text-white ms-1 rounded-pill">0</span>
-                                </button>
-                            </form>
-                        </div>
-                </div>      
-                <div class="nav-inferior me-5 ms-5">
-                    <ul class="container-fluid nav nav-pills nav-fill  collapse navbar-collapse">
-                        <li class="nav-item ">
-                          <a class="nav-link" href="tienda.php">Tienda</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="conocenos.html">Conocenos</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="trabajo-semillares.html">Trabajo Semillares</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link active" href="cuenta.html">Mi Cuenta</a>
-                          </li>
-                      </ul>
-                </div>                
-            </div>
-        </nav>
-        </section>
+        <?php include 'menu.php'?>
 
         <!-- Contenido -->
-        <section id="main">
-            <div class="content">
-                    <div class="container mt-5 mb-3"> <h2>¡Hola titulo nombre de cliente!</h2> </div>
-                    <div class="container">
-                        <div class="bg-verde-claro p-5 row">
-                            <div class="col-3">
-                                <h3 class="mb-4">Información Personal</h3>
-                                <p>Nombre y apellido</p>
-                                <p>nombre.apellido@gmail.com</p>
-                            </div>
-                            <div class="col-6">
-                                <h3 class="mb-4">Tus Pedidos</h3>
-                                <div class="container col contenedor-pedidos">
-                                    <div class="pedido-guardado col">
-                                    <div><h5>01/01/2023</h5></div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <ul class="lista-items-comprados">
-                                                <li>Semillas | 00 unidades</li>
-                                                <li>Cereal | 00 unidades</li>
-                                                <li>Yerba | 00 unidades</li>
-                                                <li>Envio</li>
-                                                <li>Total</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col">
-                                            <ul class="lista-montos-comprados">
-                                                <li>$100</li>
-                                                <li>$200</li>
-                                                <li>$300</li>
-                                                <li>$400</li>
-                                                <li>$1.000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-        </section>
-
-        <!-- Footer-->
-        <footer class="py-5 bg-verde-oscuro">
-            <div class="container">
-                <div class=" row-cols-lg-4 row row-cols-md-2 row-cols-sm-1 text-white">
-                    <div class="col-lg-0">
-                        <h4>Política de Seguridad</h4>
-                        <li class="list-group ">
-                            <ul><a href="politicas.html">Política de devolución</a></ul>
-                            <ul><a href="envios.html" class="">Envíos</a></ul>
-                            <ul><a href="preguntas.html" class="">Preguntas Frecuentes</a></ul>
-                        </li>
-                    </div>
-                    <div class="col-lg-0">
-                        <h4>Contactanos</h4>
-                        <li class="list-group ">
-                            <ul><i class="bi bi-pin"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
-                            <ul><i class="bi bi-telephone"></i><a class="#"> 0221 570-2432</a></ul>
-                            <ul><i class="bi bi-envelope"> </i><a class="#">  semillares@gmail.com</a></ul>
-                        </li>
-                    </div>               
-                    <div class="col-lg-0 ">
-                        <h4>Medios de pago</h4>
-                        <div class="row logos-pago">
-                            <img src="img/medios-pago/mercadopago@2x.png" alt="Mercado Pago">
-                            <img src="img/medios-pago/banelco@2x.png" alt="Banelco">
-                            <img src="img/medios-pago/visa@2x.png" alt="Mercado Pago">
-                            <img src="img/medios-pago/mastercard@2x.png" alt="Mastercard">
-                            <img src="img/medios-pago/rapipago@2x.png" alt="Rapipago">
-                            <img src="img/medios-pago/pagofacil@2x.png" alt="Pago Facil">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 d-flex justify-content-center">
-                        <img class="data-fiscal" src="img/Data-fiscal-Ejemplo.jpg" alt="Data Fiscal">
-                    </div>
+        <main>
+            <div class="container-fluid m-1 row">
+                <!-- TITULAR -->
+                <div class="mt-3 pt-3">
+                    <h2>Hola, <b><?php echo $_SESSION['user_name']; ?>!</b></h2>
                 </div>
-                <br>
-                <p class="m-0 text-center text-white">Copyright &copy; Semillares 2023</p>
+                <!-- INFO PERSONAL -->
+                <div class="mt-3 col-12 col-md-4">
+                    <h4>Información Personal</h4>
+                    <hr>
+                    <div class="">
+                        <p><strong>Nombre y Apellido: </strong><?php echo $nombres . ' ' . $apellidos; ?></p>
+                        <p><strong>Correo:</strong> <?php echo $correo; ?></p>
+                        <p><strong>Telefono:</strong> <?php echo $telefono;?></p>
+                        <p><strong>Localidad:  </strong><?php echo $localidad;?></p>
+                        <p><strong>Provincia:  </strong><?php echo $provincia;?></p>
+                        <p><strong>Direccion:  </strong><?php echo $direccion;?></p>
+                        <p><strong>DNI: </strong><?php echo $dni;?></p>
+                        <a href="#" class="btn btn-primary">Editar Datos</a>
+                    </div>
+                    <hr>
+                </div>
+                <!-- COMPRAS -->
+                    
+                <div class="col-12 col-md-8">
+                    <h4>Mis compras</h4>
+                    <hr>
+                    <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <?php 
+                                    $fecha = $rowCompra['fecha'];
+                                    $fecha_formateada = date('d-m-Y H:i', strtotime($fecha));
+                                    echo $fecha_formateada; 
+                                ?>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?>     </h5>
+                                <p><strong>Total: </strong><?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?></p>                                
+                                <a href="compra_detalles.php?orden=<?php echo $rowCompra['id_transaccion']; ?>$token=<?php echo $token;?>" class="btn btn-primary">Ver Detalle</a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>                
             </div>
-        </footer>
+        </main>
+
+        <!-- Footer -->
+        <?php include 'footer.php'?>
         
+        <!------- -------------------->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
