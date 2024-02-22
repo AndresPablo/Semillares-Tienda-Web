@@ -112,12 +112,12 @@
     <body>
         <!-- Responsive navbar-->
         <?php include 'menu-prueba.php'?>
-        
+
         <section>
             <div class="container-fluid">
-                <div class="row vh-100">
+                <div class="container row vh-100">
                     <!-- Columna izquierda -->
-                    <div class="ingreso-izquierda col-md-6 d-sm-none d-md-flex flex-column align-items-center justify-content-center">
+                    <div class="container ingreso-izquierda col-md-6 d-sm-none d-md-flex flex-column align-items-center justify-content-center">
                         <?php mostrarMensajes($errors); ?>
                         <div class="row logo-login">
                             <img class="logo-login" src="img/marca/logo-semillares.png" alt="">
@@ -127,7 +127,7 @@
                             </div>
                     </div>
                     <!-- Columna derecha -->
-                    <div class="col-md-6 ingreso-derecha">
+                    <div class=" container col-md-6 ingreso-derecha">
                         <form action="registro.php" method="post" class=" row g-3 " autocomplete="off">
                             <!-- INICIO de los CAMPOS -->
                             <!--  NOMBRE de USUARIO / ALIAS -->
