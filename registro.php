@@ -117,7 +117,7 @@
             <div class="container-fluid">
                 <div class="container row vh-100">
                     <!-- Columna izquierda -->
-                    <div class="container ingreso-izquierda col-md-6 d-sm-none d-md-flex flex-column align-items-center justify-content-center">
+                    <div class="container ingreso-izquierda col-md-6 d-none d-lg-flex flex-column align-items-center justify-content-center">
                         <?php mostrarMensajes($errors); ?>
                         <div class="row logo-login">
                             <img class="logo-login" src="img/marca/logo-semillares.png" alt="">

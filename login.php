@@ -60,7 +60,7 @@ if(!empty($_POST))
             <div class="content-fluid text-center">
                 <div class="row vh-100">
                     <!-- Columna izquierda -->
-                    <div class="col-lg-6 ingreso-izquierda d-sm-none d-md-inline-flex flex-column align-items-center justify-content-center ">
+                    <div class="col-lg-6 ingreso-izquierda d-none d-lg-flex flex-column align-items-center justify-content-center ">
                         <div class="row logo-login">
                             <img class="" src="img/marca/logo-semillares.png" alt="">
                         </div>

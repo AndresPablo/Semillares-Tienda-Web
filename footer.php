@@ -14,7 +14,7 @@
                 <h4>Contactanos</h4>
                 <li class="list-group ">
                     <ul><i class="bi bi-geo-alt-fill"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
-                    <ul><i class="bi bi-telephone"></i><a href="tel:0221-570-2432" class="">  0221 570-2432</a></ul>
+                    <ul><i class="bi bi-telephone"></i><a href="tel:+549-221-570-2432" class="">  0221 570-2432</a></ul>
                     <ul><i class="bi bi-envelope"> </i><a href="mailto:semillares@gmail.com" class=""> semillares@gmail.com</a></ul>
                 </li>
             </div>               
@@ -31,6 +31,6 @@
             </div>
         </div>
         <br>
-        <p class="m-0 text-center text-white">Copyright &copy; Semillares 2023</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Semillares 2024</p>
     </div>
 </footer>
