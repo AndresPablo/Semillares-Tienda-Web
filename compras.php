@@ -103,6 +103,9 @@ $sqlCompra->execute([$idCliente]);
                 </div>                
             </div>
         </main>
+
+        <!-- Footer -->
+        <?php include 'footer.php'?>
         
         <!------- -------------------->
         <!-- Bootstrap core JS-->

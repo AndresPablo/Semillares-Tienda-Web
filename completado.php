@@ -64,22 +64,28 @@
     </head>
 
     <body>
-        <div class="container m-3 p-2">
-            <h2>
-                Gracias por su compra
-            </h2>
-            <div class="">
-                <b>Número de orden: </b> <?php echo $id_transaccion; ?><br>
-                <b>Fecha de compra: </b><?php echo $fecha_formateada; ?><br>
-                <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
-                <br>
-                <p>Te enviamos un correo electrónico a <b><?php echo $correo; ?></b> con el detalle de tu compra.</p><br>
-                <a href="tienda.php"> <button class="btn btn-primary">
-                        Volver a la tienda
-                </button></a>
-                <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
+        <main>
+            <div class="container m-3 p-2">
+                <h2>
+                    Gracias por su compra
+                </h2>
+                <div class="">
+                    <b>Número de orden: </b> <?php echo $id_transaccion; ?><br>
+                    <b>Fecha de compra: </b><?php echo $fecha_formateada; ?><br>
+                    <b>Total: </b><?php echo MONEDA . number_format($total,2, '.', '.');?><br>
+                    <br>
+                    <p>Te enviamos un correo electrónico a <b><?php echo $correo; ?></b> con el detalle de tu compra.</p><br>
+                    <a href="tienda.php"> <button class="btn btn-primary">
+                            Volver a la tienda
+                    </button></a>
+                    <p>No te llegó? Revisá tu correo no deseado y spam. Si no lo encontrás comunicate con nosotros.</p>
+                </div>
             </div>
-        </div>
+        </main>
+
+        <!-- Footer -->
+        <?php include 'footer.php'?>
+
     </body>
 
 </html>
