@@ -176,7 +176,7 @@
                             <div class="form-floating position-relative">
                                 <div class="input-group">
                                     <span class="input-group-text"><span class="text-danger">*&nbsp;</span><i class="bi bi-telephone-fill"></i></span>
-                                    <input type="text" class="form-control text-start" id="correo" name="correo" placeholder="Teléfono"> 
+                                    <input type="text" class="form-control text-start" id="telefono" name="telefono" placeholder="Teléfono"> 
                                 </div>
                             </div>
 
