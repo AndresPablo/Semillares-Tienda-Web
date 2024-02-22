@@ -1,6 +1,6 @@
 <section>
 
-<nav class="navbar navbar-expand-lg shadow sticky-top navbar-light mb-5">
+<nav class="navbar navbar-expand-lg shadow sticky-top navbar-light">
     <div class="container-fluid">
         <div class="col">
             <!-- BARRA SUPERIOR -->

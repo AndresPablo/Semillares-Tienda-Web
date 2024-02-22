@@ -229,7 +229,7 @@
                             </div>
                             <p><span class="text-danger">*</span> Los campos con asterisco son obligatorios.</p>
                             <div class="login_btn d-flex align-items-center justify-content-center my-3">
-                                <a href="cuenta.html" type="submit"> <button class="btn-primary">Resgistrarme</button></a>
+                                <a href="cuenta.html" type="submit"> <button class="btn-primary">Registrarme</button></a>
                             </div>
                             <br>
                         </form>
