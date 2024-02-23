@@ -18,7 +18,11 @@ if ($idTransaccion != '') {
     $fecha = date("Y-m-d H:i:s");
     $monto = isset($_SESSION['carrito']['total']) ? $_SESSION['carrito']['total'] : 0;
     $row_cliente = $sqlProd->fetch(PDO::FETCH_ASSOC);
-    $email = $row_cliente['email'];
+    $email = $row_cliente['email']; // enviamos a este mail
+    $direccion = $row_cliente['direccion'];
+    $referencia = $row_cliente['referencia'];
+    $provincia = $row_cliente['provincia'];
+    $localidad = $row_cliente['localidad'];
 
 
     $datos = [];
@@ -38,16 +42,15 @@ if ($idTransaccion != '') {
     if($id > 0) {
         $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : 
         null;
-
+        
         // Tabla para el mail
-        $tabla = '<table class="table" border="1">
+        $tabla = '<table class="table" border="0" cellpadding="10" cellspacing="0" style="border:1px solid #eee">
                     <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Subtotal</th>
-                            <th></th>
+                        <tr style="background: #fff5ee">
+                            <th style="text-align:left; padding:10px; border:1px solid #eee;">Producto</th>
+                            <th style="text-align:center; padding:10px; border:1px solid #eee;">Precio</th>
+                            <th style="text-align:center; padding:10px; border:1px solid #eee;">Cantidad</th>
+                            <th style="text-align:center; padding:10px; border:1px solid #eee;">Subtotal</th>
                         </tr>
                     </thead>
                 <tbody>';
@@ -91,7 +94,7 @@ if ($idTransaccion != '') {
             $cuerpo = '<h4> Gracias por su compra! </h4>';
             $cuerpo .= '<p>El ID de su compra es <b>'. $idTransaccion .'</b></p>';
             $cuerpo .= '<p>Ha comprado por <b>$'. $monto .'</b></p>';
-            $cuerpo .= '<p>Te enviaremos el pedido a ' . $rowCliente['direccion'] . ', ' . $rowCliente['localidad'] . ', ' . $rowCliente['localidad'] . '.';
+            $cuerpo .= '<p>Te enviaremos el pedido a ' . $direccion . ', ' . $localidad . ', ' . $provincia . '.';
             $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al 0221 570-2432.</p><br>';
             $cuerpo .= $tabla;
     

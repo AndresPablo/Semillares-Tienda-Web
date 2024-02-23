@@ -210,6 +210,8 @@
                                 </div>
                             </div>
 
+                            <p>Te enviaremos tus pedidos a esta dirección.</p>
+
                             <!--  PROVINCIA + LOCALIDAD-->
                             <div class="input-group">
                                 <label class="input-group-text" for="provincia"><span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label>
