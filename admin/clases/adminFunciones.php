@@ -123,7 +123,7 @@ function mostrarMensajes(array $errors)
     }
 }
 
-function login($usuario, $password, $con, $proceso)
+function login($usuario, $password, $con)
 {
     $sql = $con->prepare("SELECT id, usuario, password, nombre FROM admin WHERE usuario LIKE ? AND activo = 1 LIMIT 1");
     $sql->execute([$usuario]);
