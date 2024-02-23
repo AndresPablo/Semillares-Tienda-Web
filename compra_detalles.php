@@ -8,7 +8,7 @@ $token_session = $_SESSION['token'];
 $orden = $_GET['orden'] ?? null;
 $token = $_GET['token'] ?? null;
 
-if($orden == null || $token == null || $token == $token_session)
+if($orden == null || $token == null || $token == !$token_session)
 {
     header("Location: cuenta.php");
     exit;
