@@ -50,7 +50,7 @@
                                     <div class="card-body">
                                         <form>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario />
+                                                <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario" />
                                                 <label for="usuario">Usuario</label>
                                             </div>
                                             <div class="form-floating mb-3">
