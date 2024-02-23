@@ -91,7 +91,7 @@ $sqlCompra->execute([$idCliente]);
                         $rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC);
                         if($rowCompra == null)
                         {
-                            echo '<p> class="text-center"><b>No hay compras todavía.</b></p>';
+                            echo '<p class="text-center"> <b>No hay compras todavía.</b> </p>';
                         }
                         while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
                         
