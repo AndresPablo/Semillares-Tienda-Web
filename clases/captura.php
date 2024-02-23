@@ -50,8 +50,7 @@ if ($idTransaccion != '') {
                             <th></th>
                         </tr>
                     </thead>
-                <tbody>
-                <tr>';
+                <tbody>';
 
         if($productos != null)
         {
@@ -76,13 +75,15 @@ if ($idTransaccion != '') {
                 $sql_insert->execute(array_values($detalles)); // Inserta la compra en la tabla "detalle_compra"
 
                 // construye el cuerpo de la tabla para enviar luego por correo
+                $tabla .= '<tr>';
                 $tabla .= '<td>' . $row_prod['nombre'] . '</td>';
                 $tabla .= '<td>' . $precio_desc . '</td>';
                 $tabla .= '<td>' . $cantidad . '</td>';
                 $tabla .= '<td>' . $precio_desc * $cantidad . '</td>';
+                $tabla .= '</tr>';
             }
             
-            $tabla .= '</tr></tbody></table>';
+            $tabla .= '</tbody></table>';
             
             // ENVIAR mail con Mailer.php
             require 'Mailer.php';

@@ -92,13 +92,13 @@ $sqlDetalle->execute([$idCompra]);
                                             $precio = $rowDetalle['precio'];
                                             $cantidad = $rowDetalle['cantidad'];
                                             $subtotal = $precio * $cantidad;
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $rowDetalle['nombre']; ?></td>
-                                            <td><?php echo MONEDA . ' ' . number_format($precio, 2, ',', '.'); ?></td>
-                                            <td><?php echo $cantidad; ?></td>
-                                            <td><?php echo MONEDA . ' ' . number_format($subtotal, 2, ',', '.'); ?></td>
-                                        </tr>
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $rowDetalle['nombre']; ?></td>
+                                                <td><?php echo MONEDA . ' ' . number_format($precio, 2, ',', '.'); ?></td>
+                                                <td><?php echo $cantidad; ?></td>
+                                                <td><?php echo MONEDA . ' ' . number_format($subtotal, 2, ',', '.'); ?></td>
+                                            </tr>
 
                                         <?php } ?>
                                     </tbody>
