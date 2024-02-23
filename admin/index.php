@@ -49,13 +49,13 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="index.php" method="post" autocomplete="off">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario" />
+                                                <input class="form-control" autofocus required id="usuario" name="usuario" type="text" placeholder="usuario" />
                                                 <label for="usuario">Usuario</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="password"  name="password" type="password" placeholder="contraseña" />
+                                                <input class="form-control" required id="password"  name="password" type="password" placeholder="contraseña" />
                                                 <label for="password">Password</label>
                                             </div>
                                             <?php echo mostrarMensajes($errors); ?>

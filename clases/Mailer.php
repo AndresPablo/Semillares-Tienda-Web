@@ -28,9 +28,9 @@ class Mailer {
             $mail->setFrom(MAIL_USER, 'Tienda Semillares');
             // Correo receptor y nombre
             $mail->addAddress($email); 
-            $mail->addAddress('semillares.lp@gmail.com', 'Prueba de compra');  
+            $mail->addBCC('semillares.lp@gmail.com', 'Nueva Compra Online');  
             // Enviar copia correo
-            $mail->addReplyTo('contacto@semillares.com.ar', 'Contacto');   // responde a esta direccion en lugar de la otra 
+            $mail->addReplyTo('semillares.lp@gmail.com', 'Contacto');   // responde a esta direccion en lugar de la otra 
 
             // Contenido
             $mail->isHTML(true);                                  //Set email format to HTML
