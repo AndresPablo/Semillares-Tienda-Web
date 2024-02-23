@@ -91,7 +91,7 @@ if ($idTransaccion != '') {
             $cuerpo = '<h4> Gracias por su compra! </h4>';
             $cuerpo .= '<p>El ID de su compra es <b>'. $idTransaccion .'</b></p>';
             $cuerpo .= '<p>Ha comprado por <b>$'. $monto .'</b></p>';
-            $cuerpo .= '<p>Te enviaremos el pedido a ' . $rowCliente['direccion'] . ', ' . $rowCliente['localidad'] . '.';
+            $cuerpo .= '<p>Te enviaremos el pedido a ' . $rowCliente['direccion'] . ', ' . $rowCliente['localidad'] . ', ' . $rowCliente['localidad'] . '.';
             $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al 0221 570-2432.</p><br>';
             $cuerpo .= $tabla;
     
