@@ -86,7 +86,9 @@ $sqlCompra->execute([$idCliente]);
                 <div class="col-12 col-md-8">
                     <h4>Mis compras</h4>
                     <hr>
+                    
                     <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
+                    
                         <div class="card mb-3">
                             <div class="card-header">
                                 <?php 
@@ -98,10 +100,13 @@ $sqlCompra->execute([$idCliente]);
                             <div class="card-body">
                                 <h5 class="card-title"><strong>Orden: </strong><?php echo $rowCompra['id_transaccion']; ?>     </h5>
                                 <p><strong>Total: </strong><?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?></p>                                
-                                <a href="compra_detalles.php?orden=<?php echo $rowCompra['id_transaccion']; ?>$token=<?php echo $token;?>" class="btn btn-primary">Ver Detalle</a>
+                                <a href="compra_detalles.php?orden=<?php echo $rowCompra['id_transaccion']; ?>&token=<?php echo 
+                                $token; ?>" class="btn btn-primary">Ver Detalle</a>
                             </div>
                         </div>
+                        
                     <?php } ?>
+
                 </div>                
             </div>
         </main>
