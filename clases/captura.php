@@ -12,7 +12,7 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
 if ($idTransaccion != '') {
     // 19. asignar compras
     $idCliente = $_SESSION['user_cliente'];
-    $sqlProd = $con->prepare("SELECT email FROM clientes WHERE id=? AND estatus=1");
+    $sqlProd = $con->prepare("SELECT email, direccion, referencia, provincia, localidad FROM clientes WHERE id=? AND estatus=1");
     $sqlProd->execute([$idCliente]);
 
     $fecha = date("Y-m-d H:i:s");
