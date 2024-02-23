@@ -10,6 +10,7 @@
     VALUES ('admin', '$password','Administrador','contacto@codigosdeprogramacion.com','1',NOW())";
     $con->query($sql);*/
 
+    $errors = [];
     if(!empty($_POST)) {
         $usuario = trim($_POST['usuario']);
         $password = trim($_POST['password']);
