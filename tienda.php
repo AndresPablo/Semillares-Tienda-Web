@@ -80,7 +80,8 @@
 
 
     <!-- WRAPER -->
-    <section class="bg-white my-3">
+    <main>
+    <section class="bg-white my-5">
         <div  id="wraper" class="container-fluid row my-3">
             <!-- Barra lateral -->
             <div class="col-lg-2 col-md-0 lateral-tienda">
@@ -158,6 +159,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
         <?php include 'footer.php'?>
