@@ -11,6 +11,14 @@ $token = generarToken();
 $_SESSION['token'] = $token;
 $idCliente = $_SESSION['user_cliente'];
 
+
+if($idCliente == null || $idCliente == 0)
+{
+    header("Location: login.php");
+    exit;
+}
+
+
 $sqlCliente = $con->prepare("SELECT nombres, apellidos, email, telefono, dni, direccion, referencia, localidad, provincia FROM clientes WHERE id=? LIMIT 1");
 $sqlCliente->execute([$idCliente]);
 $rowCliente = $sqlCliente->fetch(PDO::FETCH_ASSOC);
