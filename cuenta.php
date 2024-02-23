@@ -77,7 +77,7 @@ $sqlCompra->execute([$idCliente]);
                         <p><strong>Direccion:  </strong><?php echo $direccion;?></p>
                         <p><?php echo $referencia;?></p>
                         <p><strong>DNI: </strong><?php echo $dni;?></p>
-                        <a href="#" class="btn btn-primary">Editar Datos</a>
+                        <a href="#" class="btn btn-primary disabled">Editar Datos</a>
                     </div>
                     <hr>
                 </div>
@@ -87,8 +87,14 @@ $sqlCompra->execute([$idCliente]);
                     <h4>Mis compras</h4>
                     <hr>
                     
-                    <?php while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
-                    
+                    <?php 
+                        $rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC);
+                        if($rowCompra == null)
+                        {
+                            echo '<p> class="text-center"><b>No hay compras todavía.</b></p>';
+                        }
+                        while($rowCompra = $sqlCompra->fetch(PDO::FETCH_ASSOC)){ ?>
+                        
                         <div class="card mb-3">
                             <div class="card-header">
                                 <?php 
