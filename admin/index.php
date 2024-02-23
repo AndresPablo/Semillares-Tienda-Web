@@ -5,10 +5,10 @@
     $db = new Database();
     $con = $db->conectar();
 
-    $password = password_hash('admin', PASSWORD_DEFAULT);
+    /*$password = password_hash('admin', PASSWORD_DEFAULT);
     $sql = "INSERT INTO admin (usuario, password, email, activo, fecha_alta) 
     VALUES ('admin', '$password','Administrador','contacto@codigosdeprogramacion.com','1',NOW())";
-    $con->query($sql);
+    $con->query($sql);*/
 
     if(!empty($_POST)) {
         $usuario = trim($_POST['usuario']);
