@@ -39,6 +39,20 @@ if ($idTransaccion != '') {
         $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : 
         null;
 
+        // Tabla para el mail
+        $tabla = '<table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                <tbody>
+                <tr>';
+
         if($productos != null)
         {
             foreach($productos as $clave => $cantidad)
@@ -60,14 +74,25 @@ if ($idTransaccion != '') {
                 
                 $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad)  VALUES (?,?,?,?,?)");
                 $sql_insert->execute(array_values($detalles)); // Inserta la compra en la tabla "detalle_compra"
+
+                // construye el cuerpo de la tabla para enviar luego por correo
+                $tabla .= '<td>' . $row_prod['nombre'] . '</td>';
+                $tabla .= '<td>' . $precio_desc . '</td>';
+                $tabla .= '<td>' . $cantidad . '</td>';
+                $tabla .= '<td>' . $precio_desc * $cantidad . '</td>';
             }
+            
+            $tabla .= '</tr></tbody></table>';
+            
             // ENVIAR mail con Mailer.php
             require 'Mailer.php';
             $asunto = "Detalles de tu compra";
             $cuerpo = '<h4> Gracias por su compra! </h4>';
             $cuerpo .= '<p>El ID de su compra es <b>'. $idTransaccion .'</b></p>';
             $cuerpo .= '<p>Ha comprado por <b>$'. $monto .'</b></p>';
-            $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al 0221 570-2432.</p>';
+            $cuerpo .= '<p>Te enviaremos el pedido a ' . $rowCliente['direccion'] . ', ' . $rowCliente['localidad'] . '.';
+            $cuerpo .= '<br><p>En breve te contactamos para coordinar el envio, o llamanos al 0221 570-2432.</p><br>';
+            $cuerpo .= $tabla;
     
             $mailer = new Mailer();
             $mailer->enviarMail($email, $asunto, $cuerpo);
