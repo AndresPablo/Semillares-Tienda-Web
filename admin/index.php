@@ -50,11 +50,11 @@
                                     <div class="card-body">
                                         <form>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="usuario" name="usuario" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" id="usuario" name="usuario" type="text" placeholder="usuario />
                                                 <label for="usuario">Usuario</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="password"  name="password" type="password" placeholder="Password" />
+                                                <input class="form-control" id="password"  name="password" type="password" placeholder="contraseña" />
                                                 <label for="password">Password</label>
                                             </div>
                                             <?php echo mostrarMensajes($errors); ?>
