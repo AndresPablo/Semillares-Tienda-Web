@@ -58,50 +58,53 @@ $sqlDetalle->execute([$idCompra]);
         <?php include 'menu.php'?>
         <!------- -------------------->
         <main>
-            <div class="container">
-                <div class="col-12 col-md-4">
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <strong>Detalle de la Compra</strong>
-                        </div>
-                        <div class="card-body">
-                            <p><strong>Fecha: </strong> <?php echo $fecha;?></p>
-                            <p><strong>Orden: #</strong> <?php echo $rowCompra['id_transaccion'];?></p>
-                            <p><strong>Total: </strong> <?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?> </p>
-                        </div>
-                    </div>    
-                </div>
-                <div class="col-12 col-md-8">
-                    <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Precio</th>
-                                        <th>Cantidad</th>
-                                        <th>Subtotal</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
+            <div class="container my-5">
 
-                                <tbody>
-                                <?php 
-                                    while($rowDetalle = $sqlDetalle->fetch(PDO::FETCH_ASSOC)){ 
-                                        $precio = $rowDetalle['precio'];
-                                        $cantidad = $rowDetalle['cantidad'];
-                                        $subtotal = $precio * $cantidad;
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $rowDetalle['nombre']; ?></td>
-                                        <td><?php echo MONEDA . ' ' . number_format($precio, 2, ',', '.'); ?></td>
-                                        <td><?php echo $cantidad; ?></td>
-                                        <td><?php echo MONEDA . ' ' . number_format($subtotal, 2, ',', '.'); ?></td>
-                                    </tr>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <strong>Detalle de la Compra</strong>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Orden #</strong><?php echo $rowCompra['id_transaccion'];?></p>
+                                <p><strong>Fecha: </strong> <?php echo $fecha;?></p>
+                                <p><strong>Total: </strong> <?php echo MONEDA . ' ' . number_format($rowCompra['total'], 2, ',', '.'); ?> </p>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
 
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                    <tbody>
+                                    <?php 
+                                        while($rowDetalle = $sqlDetalle->fetch(PDO::FETCH_ASSOC)){ 
+                                            $precio = $rowDetalle['precio'];
+                                            $cantidad = $rowDetalle['cantidad'];
+                                            $subtotal = $precio * $cantidad;
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $rowDetalle['nombre']; ?></td>
+                                            <td><?php echo MONEDA . ' ' . number_format($precio, 2, ',', '.'); ?></td>
+                                            <td><?php echo $cantidad; ?></td>
+                                            <td><?php echo MONEDA . ' ' . number_format($subtotal, 2, ',', '.'); ?></td>
+                                        </tr>
+
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
                 </div>
             </div>
         </main>
