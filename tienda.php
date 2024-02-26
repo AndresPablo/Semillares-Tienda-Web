@@ -86,7 +86,7 @@
             <!-- Barra lateral -->
             <div class="col-lg-2 col-md-0 lateral-tienda">
                 <ul>
-                    <a href="#">Lista PDF para revendedores</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1AefP8nflH0No016VzEfEh1-_rWwRPf50PUREUgB7ytk/edit#gid=0">Lista PDF para revendedores</a>
                     <br>
                     <a href="#">Lista PDF para distribuidores</a>
                 </ul>

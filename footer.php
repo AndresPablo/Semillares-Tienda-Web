@@ -16,6 +16,7 @@
                     <ul><i class="bi bi-geo-alt-fill"></i><a href="https://goo.gl/maps/aJRv7TEeXq5S28246" class=""> Calle 45 420 <br> La Plata, Buenos Aires, Argentina</a></ul>
                     <ul><i class="bi bi-telephone"></i><a href="tel:+549-221-570-2432" class="">  0221 570-2432</a></ul>
                     <ul><i class="bi bi-envelope"> </i><a href="mailto:semillares@gmail.com" class=""> semillares@gmail.com</a></ul>
+                    <ul><i class="bi bi-instagram"> </i><a href="https://www.instagram.com/semillares/" class=""> Instagram</a></ul>
                 </li>
             </div>               
             <div class="col-lg-0 ">
@@ -27,7 +28,7 @@
                 </div>
             </div>
             <div class="col-lg-2 d-flex justify-content-center">
-                <img class="data-fiscal" src="img/Data-fiscal-Ejemplo.jpg" alt="Data Fiscal">
+                <img class="data-fiscal" href="img/data-fiscal/QR-fiscal.png" src="img/Data-fiscal-2024.png" alt="Data Fiscal">
             </div>
         </div>
         <br>
