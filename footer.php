@@ -28,7 +28,9 @@
                 </div>
             </div>
             <div class="col-lg-2 d-flex justify-content-center">
-                <img class="data-fiscal" href="img/data-fiscal/QR-fiscal.png" src="img/Data-fiscal-2024.png" alt="Data Fiscal">
+                <a href="img/data-fiscal/QR-fiscal.png" >
+                    <img class="data-fiscal"  src="img/Data-fiscal-2024.png" alt="Data Fiscal">
+                </a>
             </div>
         </div>
         <br>
