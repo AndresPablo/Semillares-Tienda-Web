@@ -70,7 +70,7 @@
 
                     if($mailer->enviarMail($correo, $asunto, $cuerpo))
                     {
-                        echo "para completar el proceso de registro, siga las instrucciones que enviamos a su correo electrónico $correo";
+                        echo "<h3>Revise su correo electrónico</h3> <br> <p>Para completar el proceso de registro, siga las instrucciones que enviamos a su correo electrónico" . $correo . ".</p>";
                         exit;
                     }
                 }
