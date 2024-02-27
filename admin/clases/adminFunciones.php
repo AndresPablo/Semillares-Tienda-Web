@@ -44,21 +44,10 @@ function registraClienteAvanzado(array $datos, $con)
     return 0;
 }
 
-function registraUsuario(array $datos, $con)
-{
-    // omitimos la columna "activacion"
-    $sql = $con->prepare ("INSERT INTO usuarios (usuario, password, token, id_cliente, email) VALUES(?,?,?,?,?)");
-    if($sql->execute(array_values($datos)))
-    {
-        return $con->lastInsertId();
-    }
-    return 0;
-}
-
 function usuarioExiste($usuario, $con)
 {
     // estamos trabajando con PDO para los valores, pore eso los ?????
-    $sql = $con->prepare ("SELECT id FROM usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql = $con->prepare ("SELECT id FROM admin WHERE usuario LIKE ? LIMIT 1");
     $sql->execute([$usuario]);
     if($sql->fetchColumn() > 0)
     {
@@ -84,7 +73,7 @@ function validaToken($id, $token, $con)
     $datos = [];
     $datos['id'] = $id; 
     $datos['token'] = $token; 
-    $sql = $con->prepare ("SELECT id FROM usuarios WHERE id = ? AND token LIKE ? LIMIT 1");
+    $sql = $con->prepare ("SELECT id FROM admin WHERE id = ? AND token LIKE ? LIMIT 1");
     $sql->execute([$id, $token]);
     if($sql->fetchColumn() > 0)
     {
@@ -111,14 +100,15 @@ function mostrarMensajes(array $errors)
 {
     if(count($errors) > 0)
     {
-        echo '<div class="alert alert-warning alert-dismissable fade show" role="alert"> <ul>';
-        foreach($errors as $error)
-        {
-            echo '<li>' . $error . '</li>';
-        }
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">';
+        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>';
+        echo '<ul>';
+            foreach($errors as $error)
+            {
+                echo '<li>' . $error . '</li>';
+            }
         echo '</ul>';
-        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" 
-        aria-label="Close"> </button></div>';
+        echo '</div>';
     }
 }
 
@@ -151,7 +141,7 @@ function login($usuario, $password, $con)
 
 function login_correo($correo, $password, $con, $proceso)
 {
-    $sql = $con->prepare("SELECT id, email, password, id_cliente FROM usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql = $con->prepare("SELECT id, email, password, id_cliente FROM admin WHERE usuario LIKE ? LIMIT 1");
     $sql->execute([$correo]);
     if($row = $sql->fetch(PDO::FETCH_ASSOC)) {
         if(esActivo($correo, $con)){
@@ -198,7 +188,7 @@ function solicitaPassword($user_id, $con)
 {
     $token = generarToken();
 
-    $sql = $con->prepare("UPDATE usuarios SET token_password=?, password_request=1 WHERE id=?");
+    $sql = $con->prepare("UPDATE admin SET token_password=?, password_request=1 WHERE id=?");
     if($sql->execute([$token, $user_id]))
     {
         return $token;
@@ -208,7 +198,7 @@ function solicitaPassword($user_id, $con)
 
 function verificaTokenRequest($userId, $token, $con)
 {
-    $sql = $con->prepare("SELECT id FROM usuarios WHERE id=? AND token_password LIKE ? AND password_request=1 LIMIT 1");
+    $sql = $con->prepare("SELECT id FROM admin WHERE id=? AND token_password LIKE ? AND password_request=1 LIMIT 1");
     $sql->execute([$userId, $token]);
     if($sql->fetchColumn() > 0)
     {
@@ -220,7 +210,7 @@ function verificaTokenRequest($userId, $token, $con)
 
 function actualizaPassword($user_id, $password, $con)
 {
-    $sql = $con->prepare("UPDATE usuarios SET password=?, token_password = '', password_request = 0 WHERE id = ?");
+    $sql = $con->prepare("UPDATE admin SET password=?, token_password = '', password_request = 0 WHERE id = ?");
     if($sql->execute([$password, $user_id]))
     {
         return true;
