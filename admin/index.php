@@ -47,7 +47,6 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <?php echo mostrarMensajes($errors); ?>
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Ingreso Admin</h3></div>
                                     <div class="card-body">
                                         <form action="index.php" method="post" autocomplete="off">
@@ -85,9 +84,9 @@
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Semillares 2024</div>
                             <div>
-                                <a href="./index.php">Página Principal</a>
+                                <a href="../index.php">Página Principal</a>
                                 &middot;
-                                <a href="./tienda.php">Tienda</a>
+                                <a href="../tienda.php">Tienda</a>
                             </div>
                         </div>
                     </div>

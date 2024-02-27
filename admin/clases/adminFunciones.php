@@ -185,10 +185,10 @@ function login_correo($correo, $password, $con, $proceso)
 
 function esActivo($usuario, $con)
 {
-    $sql = $con->prepare ("SELECT activacion from usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql = $con->prepare ("SELECT activo from admin WHERE usuario LIKE ? LIMIT 1");
     $sql->execute([$usuario]);
     $row = $sql->fetch(PDO::FETCH_ASSOC);
-    if($row['activacion'] == 1)
+    if($row['activo'] == 1)
     {
         return true;
     }
