@@ -66,7 +66,7 @@
                 {
                     $url = SITE_URL . '/activar_cliente.php?id='.$idUsuario.'&token='.$token;
                     $asunto ="Activar cuenta - Semillares";
-                    $cuerpo="Estimado $nombres: <br> para confirmar su cuenta debe clickear el siguiente link <a href='$url'>Activar Cuenta</a>";
+                    $cuerpo="Estimado $nombres: <br> Para confirmar su cuenta debe clickear el siguiente link: <a href='$url'>Activar Cuenta</a>";
 
                     if($mailer->enviarMail($correo, $asunto, $cuerpo))
                     {
@@ -76,11 +76,11 @@
                 }
                 else
                 {
-                    $errors[] = "error al registrar Usuario";
+                    $errors[] = "Error al registrar Usuario";
                 }
             }else
             {
-                $errors[] = "error al registrar Cliente";
+                $errors[] = "Error al registrar Cliente";
             }
         }
     }
@@ -281,6 +281,28 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script>
+            let txtUsuario = document.getElementById('usuario');
+            txtUsuario.addEventListener("blur", function(){
+                existeUsuario(txtUsuario.value);
+            }, false)
+
+            function existeUsuario(usuario)
+            {
+                let url = "clases/clienteAjax.php"
+                let formData = new FormData()
+                formData.append("action", "existeUsuario")
+                fetch(url, ({
+                    method: POST,
+                    body: formData
+                }).then(response => response.json())
+                .then(data => {
+                    if(data.ok){
+                        document.getElementById('usuario').value = ''
+                    }
+                })
+            }
+        </script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

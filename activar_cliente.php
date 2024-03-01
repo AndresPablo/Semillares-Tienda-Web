@@ -1,4 +1,5 @@
 <?php
+
     require 'config/config.php';
     require 'config/database.php';
     require 'clases/clienteFunciones.php';
@@ -16,4 +17,3 @@
     $con = $db->conectar();
 
     echo validaToken($id, $token, $con);
-?>
