@@ -214,6 +214,39 @@
 
                             <p>Te enviaremos tus pedidos a esta dirección.</p>
 
+
+                        <!--  PROVINCIA + LOCALIDAD-->
+                        <div class="input-group">
+                                <label class="input-group-text" for="provincia"><span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label>
+                                <select class="form-select" id="provincia" name="provincia" aria-label="Provincia">
+                                            <option selected>Elija su provincia</option>
+                                            <option value="1">Buenos Aires</option>
+                                            <option value="2">Ciudad Autónoma de Buenos Aires</option>
+                                            <option value="4">Catamarca</option>
+                                            <option value="5">Chaco</option>
+                                            <option value="6">Chubut</option>
+                                            <option value="7">Córdoba</option>
+                                            <option value="8">Corrientes</option>
+                                            <option value="9">Entre Ríos</option>
+                                            <option value="10">Formosa</option>
+                                            <option value="11">Jujuy</option>
+                                            <option value="12">La Pampa</option>
+                                            <option value="13">La Rioja</option>
+                                            <option value="14">Mendoza</option>
+                                            <option value="15">Misiones</option>
+                                            <option value="16">Neuquén</option>
+                                            <option value="17">Río Negro</option>
+                                            <option value="18">Salta</option>
+                                            <option value="19">San Juan</option>
+                                            <option value="20">San Luis</option>
+                                            <option value="21">Santa Cruz</option>
+                                            <option value="22">Santa Fe</option>
+                                            <option value="23">Santaigo del Estero</option>
+                                            <option value="24">Tierra del Fuego</option>
+                                            <option value="25">Tucumán</option>
+                                        </select>
+                                        <input type="text" class="form-control text-start" name="localidad" id="localidad" placeholder="Localidad">
+
                             <!-- PROVINCIA AJAX -->
                             <div class="form-floating position-relative">
                                 <div class="input-group"><label for="provincia">Provincia<span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label><br>
