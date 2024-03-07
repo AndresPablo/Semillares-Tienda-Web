@@ -215,7 +215,7 @@
                             <p>Te enviaremos tus pedidos a esta dirección.</p>
 
                             <!-- PROVINCIA AJAX -->
-                            <div class="form-group"><label for="provincia">Provincia<span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label><br>
+                            <div class="form-input"><label for="provincia">Provincia<span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label><br>
                                 <select style="text-transform: capitalize!important" name="provincia" class="form-control col" 
                                 aria-label="Provincia" id="provincia" 
                                 onchange="localiades(document.getElementById('localidad'), document.getElementById('provincia').value);" required>
@@ -248,7 +248,7 @@
                             </div>
 
                             <!-- LOCALIDAD-->
-                            <div class="form-group"><label for="localidad">Localidad <small>*</small></label><br>
+                            <div class="form-input"><label for="localidad">Localidad <small>*</small></label><br>
                                 <select style="text-transform: capitalize!important" name="dir_localidad" class="form-control col" id="localidad" required>
                                     <option value="" selected disabled hidden>localidad</option>
                                 </select>
