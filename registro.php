@@ -217,7 +217,7 @@
                             <!-- PROVINCIA AJAX -->
                             <div class="form-floating position-relative">
                                 <div class="input-group"><label for="provincia">Provincia<span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label><br>
-                                    <select style="text-transform: capitalize!important" name="provincia" class="form-control col" 
+                                    <select style="text-transform: capitalize!important" name="provincia" class="form-select col" 
                                     aria-label="Provincia" id="provincia" 
                                     onchange="localiades(document.getElementById('localidad'), document.getElementById('provincia').value);" required>
                                         <option value="" selected disabled hidden>provincia</option>
@@ -251,7 +251,7 @@
 
                             <!-- LOCALIDAD-->
                             <div class="form-input"><label for="localidad">Localidad <small>*</small></label><br>
-                                <select style="text-transform: capitalize!important" name="dir_localidad" class="form-control col" id="localidad" required>
+                                <select style="text-transform: capitalize!important" name="dir_localidad" class="form-select col" id="localidad" required>
                                     <option value="" selected disabled hidden>localidad</option>
                                 </select>
                             </div>
