@@ -215,36 +215,38 @@
                             <p>Te enviaremos tus pedidos a esta dirección.</p>
 
                             <!-- PROVINCIA AJAX -->
-                            <div class="form-input"><label for="provincia">Provincia<span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label><br>
-                                <select style="text-transform: capitalize!important" name="provincia" class="form-control col" 
-                                aria-label="Provincia" id="provincia" 
-                                onchange="localiades(document.getElementById('localidad'), document.getElementById('provincia').value);" required>
-                                    <option value="" selected disabled hidden>provincia</option>
-                                    <option value="ciudad autonoma de bsas y gba">ciudad autonoma de bsas y gba</option>
-                                    <option value="buenos aires">buenos aires</option>
-                                    <option value="santa fe">santa fe</option>
-                                    <option value="cordoba">cordoba</option>
-                                    <option value="mendoza">mendoza</option>
-                                    <option value="san juan">san juan</option>
-                                    <option value="san luis">san luis</option>
-                                    <option value="la rioja">la rioja</option>
-                                    <option value="catamarca">catamarca</option>
-                                    <option value="tucuman">tucuman</option>
-                                    <option value="jujuy">jujuy</option>
-                                    <option value="salta">salta</option>
-                                    <option value="neuquen">neuquen</option>
-                                    <option value="rio negro">rio negro</option>
-                                    <option value="chubut">chubut</option>
-                                    <option value="santa cruz">santa cruz</option>
-                                    <option value="tierra del fuego">tierra del fuego</option>
-                                    <option value="santiago del estero">santiago del estero</option>
-                                    <option value="chaco">chaco</option>
-                                    <option value="formosa">formosa</option>
-                                    <option value="misiones">misiones</option>
-                                    <option value="corrientes">corrientes</option>
-                                    <option value="entre rios">entre rios</option>
-                                    <option value="la pampa">la pampa</option>
-                                </select>
+                            <div class="form-floating position-relative">
+                                <div class="input-group"><label for="provincia">Provincia<span class="text-danger">*&nbsp;</span><i class="bi bi-geo-alt-fill"></i></label><br>
+                                    <select style="text-transform: capitalize!important" name="provincia" class="form-control col" 
+                                    aria-label="Provincia" id="provincia" 
+                                    onchange="localiades(document.getElementById('localidad'), document.getElementById('provincia').value);" required>
+                                        <option value="" selected disabled hidden>provincia</option>
+                                        <option value="ciudad autonoma de bsas y gba">ciudad autonoma de bsas y gba</option>
+                                        <option value="buenos aires">buenos aires</option>
+                                        <option value="santa fe">santa fe</option>
+                                        <option value="cordoba">cordoba</option>
+                                        <option value="mendoza">mendoza</option>
+                                        <option value="san juan">san juan</option>
+                                        <option value="san luis">san luis</option>
+                                        <option value="la rioja">la rioja</option>
+                                        <option value="catamarca">catamarca</option>
+                                        <option value="tucuman">tucuman</option>
+                                        <option value="jujuy">jujuy</option>
+                                        <option value="salta">salta</option>
+                                        <option value="neuquen">neuquen</option>
+                                        <option value="rio negro">rio negro</option>
+                                        <option value="chubut">chubut</option>
+                                        <option value="santa cruz">santa cruz</option>
+                                        <option value="tierra del fuego">tierra del fuego</option>
+                                        <option value="santiago del estero">santiago del estero</option>
+                                        <option value="chaco">chaco</option>
+                                        <option value="formosa">formosa</option>
+                                        <option value="misiones">misiones</option>
+                                        <option value="corrientes">corrientes</option>
+                                        <option value="entre rios">entre rios</option>
+                                        <option value="la pampa">la pampa</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <!-- LOCALIDAD-->
