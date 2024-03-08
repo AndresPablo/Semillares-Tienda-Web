@@ -246,12 +246,6 @@
                                     <option value="entre rios">entre rios</option>
                                     <option value="la pampa">la pampa</option>
                                 </select>
-                                
-                                <input style="text-transform: capitalize!important" type="text" class="form-control text-start" name="localidad" id="localidad" placeholder="Localidad" required>
-                            </div>
-                            
-                            <!-- LOCALIDAD-->
-                            <div class="form-input"><label for="localidad">Localidad <small>*</small></label><br>
                                 <select style="text-transform: capitalize!important"class="form-control text-start" name="localidad" class="form-select col" id="localidad" required>
                                     <option value="" selected disabled hidden>localidad</option>
                                 </select>
