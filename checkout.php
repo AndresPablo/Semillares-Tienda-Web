@@ -138,24 +138,24 @@
                                 <?php } ?>
                             </tbody> 
                     </table>
+                </div>
 
-                    <div id="contenedor-envio">
-                        <h2>Envío</h2>
+                <div id="contenedor-envio">
+                        <h4>Envío</h4>
                         <form action="">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Envío por Correo Argentino
-                            </label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Envío por Correo Argentino
+                                </label>
                             </div>
                             <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Retirar en el local
-                            </label>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Retirar en el local
+                                </label>
                             </div>
                         </form>
-                    </div>
                 </div>
 
                 <?php if($lista_carrito != null) { ?>
@@ -174,6 +174,8 @@
                         </div>
                     </div>
                 <?php  }?>
+
+
             </div>
         </main>
 
