@@ -140,26 +140,27 @@
                     </table>
                 </div>
 
-                <div id="contenedor-envio">
-                        <h4>Envío</h4>
-                        <form action="">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Envío por Correo Argentino
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Retirar en el local
-                                </label>
-                            </div>
-                        </form>
-                </div>
+
 
                 <?php if($lista_carrito != null) { ?>
                     <div class="row">
+                        <div class="col-md-5" id="contenedor-envio">
+                            <h4>Envío</h4>
+                            <form action="">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Envío por Correo Argentino (<?php echo MONEDA . number_format($costo_envio, 0, '.', ','); ?>)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Retirar en nuestro local (gratis)
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
                         <div class="col-md-5 offset-md-7 d-grid gap-2">
                             <!-- COMPRA SIN REGISTRARSE -->
                              <!--    <a href="pago.php"><button class="btn btn-primary btn-lg">Realizar Pago</button></a>   -->
