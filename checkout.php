@@ -16,6 +16,18 @@
             $sql->execute([$clave]);
             $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
         }
+        
+        $sql_envio=  $con->prepare ("SELECT provincia, localidad FROM clientes WHERE id LIKE ? LIMIT 1");
+        $sql_envio->execute([$_SESSION['user_cliente']]);
+        $row_envio = $sql_envio->fetch(PDO::FETCH_ASSOC);
+        $provincia_envio = $row_envio['provincia'];
+        $localidad_envio = $row_envio['localidad'];
+        $costo_envio = 0;
+
+        if($provincia_envio == 'Buenos Aires' && $localidad_envio == 'La Plata')
+        {
+            $costo_envio = 0;
+        }
     }
 ?>
 
@@ -102,11 +114,18 @@
                                 <tr>
                                     <td colspan="3"></td>
                                     <td colspan="2">
+                                        <p class="h3" id="envío"><?php echo MONEDA . number_format($costo_envio, 2, '.', ','); ?></p>
+                                        <?php $total += $costo_envio; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td colspan="2">
                                         <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
                                     </td>
                                 </tr>
+                                <?php } ?>
                             </tbody> 
-                        <?php } ?>
                     </table>
                 </div>
 
@@ -128,6 +147,24 @@
                 <?php  }?>
             </div>
         </main>
+
+        <div>
+            <h3>Envío</h3>
+            <form action="">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Envío por Correo Argentino
+                </label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Retirar en el local
+                </label>
+                </div>
+            </form>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
