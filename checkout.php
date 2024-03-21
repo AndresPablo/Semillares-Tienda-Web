@@ -22,7 +22,7 @@
         $row_envio = $sql_envio->fetch(PDO::FETCH_ASSOC);
         $provincia_envio = $row_envio['provincia'];
         $localidad_envio = $row_envio['localidad'];
-        $costo_envio = 0;
+        $costo_envio = 'error';
 
         if($provincia_envio == 'CABA Y GBA')
         {
