@@ -221,7 +221,7 @@
                                 <select class="form-select" id="provincia" name="provincia" aria-label="Provincia" style="text-transform: capitalize!important"
                                 onchange="localiades(document.getElementById('localidad'), document.getElementById('provincia').value);" required>
                                     <option value="" selected disabled hidden>provincia</option>
-                                    <option value="ciudad autonoma de bsas y gba">CABA y GBA</option>
+                                    <option value="CABA y GBA">CABA y GBA</option>
                                     <option value="buenos aires">buenos aires</option>
                                     <option value="santa fe">santa fe</option>
                                     <option value="cordoba">cordoba</option>
