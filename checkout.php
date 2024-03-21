@@ -129,7 +129,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        Total:
+                                        <p class="h3">Total: </p>
                                     </td>
                                     <td colspan="2">
                                         <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
