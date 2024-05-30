@@ -118,16 +118,16 @@ function login($usuario, $password, $con)
     AND activo = 1 LIMIT 1");
     $sql->execute([$usuario]);
     if($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-            if(password_verify($password, $row['password'])) {
-                // Inicio exitoso
-                $_SESSION['user_id'] = $row['id'];
-                $_SESSION['user_name'] = $row['usuario'];
-                $_SESSION['user_type'] = 'admin';
-                header('Location: inicio.php');
-                exit;
-            }
+        if(password_verify($password, $row['password'])) {
+            // Inicio exitoso
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['usuario'];
+            $_SESSION['user_type'] = 'admin';
+            header('Location: inicio.php');
+            exit;
         }
-        return 'El usuario y/o contraseña son incorrectos';
+    }
+    return 'El usuario y/o contraseña son incorrectos';
 }
 
 function login_correo($correo, $password, $con, $proceso)

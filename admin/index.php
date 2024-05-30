@@ -51,11 +51,11 @@
                                     <div class="card-body">
                                         <form action="index.php" method="post" autocomplete="off">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" autofocus required id="usuario" name="usuario" type="text" placeholder="usuario" />
+                                                <input class="form-control" autofocus id="usuario" name="usuario" type="text" placeholder="usuario" />
                                                 <label for="usuario">Usuario</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" required id="password"  name="password" type="password" placeholder="contraseña" />
+                                                <input class="form-control" id="password"  name="password" type="password" placeholder="contraseña" />
                                                 <label for="password">Password</label>
                                             </div>
                                             <?php echo mostrarMensajes($errors); ?>
@@ -64,13 +64,10 @@
                                                 <label class="form-check-label" for="inputRememberPassword">Recordarme</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Olvidaste la contraseña?</a>
+                                                <a class="small" href="">Olvidaste la contraseña?</a>
                                                 <button type="submit" class="btn btn-primary">Ingresar</button>
                                             </div>
                                         </form>
-                                    </div>
-                                    <div class="card-footer d-none text-center py-3">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>
