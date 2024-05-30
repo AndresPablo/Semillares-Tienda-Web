@@ -5,10 +5,10 @@
     $db = new Database();
     $con = $db->conectar();
 
-    /*$password = password_hash('admin', PASSWORD_DEFAULT);
+    $password = password_hash('admin', PASSWORD_DEFAULT);
     $sql = "INSERT INTO admin (usuario, password, email, activo, fecha_alta) 
     VALUES ('admin', '$password','Administrador','contacto@codigosdeprogramacion.com','1',NOW())";
-    $con->query($sql);*/
+    $con->query($sql);
 
     $errors = [];
     if(!empty($_POST)) {
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="password"  name="password" type="password" placeholder="Contraseña" />
-                                                <label for="password">Password</label>
+                                                <label for="password">Contraseña</label>
                                             </div>
                                             <?php echo mostrarMensajes($errors); ?>
                                             <div class="form-check mb-3">
