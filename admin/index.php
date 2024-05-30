@@ -34,7 +34,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Login - SB Admin</title>
+        <title>Ingreso - Administrador</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -47,15 +47,15 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Ingreso Admin</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Ingreso Administrador</h3></div>
                                     <div class="card-body">
                                         <form action="index.php" method="post" autocomplete="off">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" autofocus id="usuario" name="usuario" type="text" placeholder="usuario" />
+                                                <input class="form-control" autofocus id="usuario" name="usuario" type="text" placeholder="Usuario" />
                                                 <label for="usuario">Usuario</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="password"  name="password" type="password" placeholder="contraseña" />
+                                                <input class="form-control" id="password"  name="password" type="password" placeholder="Contraseña" />
                                                 <label for="password">Password</label>
                                             </div>
                                             <?php echo mostrarMensajes($errors); ?>

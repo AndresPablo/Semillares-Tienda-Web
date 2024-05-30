@@ -20,29 +20,6 @@ function generarToken()
     return md5(uniqid(mt_rand(), false));
 }
 
-function registraCliente(array $datos, $con)
-{
-    // estamos trabajando con PDO para los valores, pore eso los ?????
-    $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, estatus, fecha_alta) VALUES(?,?,?,?,?,1, now())");
-    if($sql->execute(array_values($datos)))
-    {
-        return $con->lastInsertId();
-    }
-    return 0;
-}
-
-// Esta insercion incluye direccion, referencia, provincia y localidad
-function registraClienteAvanzado(array $datos, $con)
-{
-    // estamos trabajando con PDO para los valores, pore eso los ?????
-    $sql = $con->prepare ("INSERT INTO clientes (nombres, apellidos, email, telefono, dni, direccion, referencia, provincia, localidad, estatus, fecha_alta) 
-        VALUES(?,?,?,?,?,?,?,?,?,1, now())");
-    if($sql->execute(array_values($datos)))
-    {
-        return $con->lastInsertId();
-    }
-    return 0;
-}
 
 function usuarioExiste($usuario, $con)
 {
@@ -130,38 +107,6 @@ function login($usuario, $password, $con)
     return 'El usuario y/o contraseña son incorrectos';
 }
 
-function login_correo($correo, $password, $con, $proceso)
-{
-    $sql = $con->prepare("SELECT id, email, password, id_cliente FROM admin WHERE usuario LIKE ? LIMIT 1");
-    $sql->execute([$correo]);
-    if($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-        if(esActivo($correo, $con)){
-            if(password_verify($password, $row['password']))
-            {
-                // Inicio exitoso
-                $_SESSION['user_id'] = $row['id'];
-                $_SESSION['user_name'] = $row['usuario'];
-                $_SESSION['user_mail'] = $row['email'];
-                $_SESSION['user_cliente'] = $row['id_cliente'];
-                if($proceso == 'pago')
-                {
-                    header("Location: checkout.php");
-                } else{
-                    header("Location: index.php");
-                }
-                exit;
-            }
-        }
-        else
-        {
-            return 'El usuario no ha sido activado';
-        }
-    }
-    else
-    {
-        return 'El usuario y/o contraseña son incorrectos';
-    }
-}
 
 function esActivo($usuario, $con)
 {
